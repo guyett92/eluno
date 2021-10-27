@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #000;
 }
 
 a {
@@ -22,9 +23,13 @@ a {
 }
 
 .aqua {
-  background-color: #10fffd;
+  background-color: #00e0dd;
 }
 
 .aqua-text {
-  color: #10fffd;
+  color: #00e0dd;
+}
+
+.nav-hover:hover {
+  color: #00e0dd !important;
 }

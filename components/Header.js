@@ -32,22 +32,43 @@ const Header = () => {
       <Navbar light expand="md">
         <Container>
           <NavbarBrand href="/">
-            <img src="./images/eluno blue.png" width="50px" />
+            <img src="./images/eluno blue.png" alt="logo" width="50px" />
           </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="m-auto" navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
+                <NavLink
+                  className={sticky ? "" : "text-light nav-hover"}
+                  href="/"
+                  component="a"
+                >
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#feature">Features</NavLink>
+                <NavLink
+                  className={sticky ? "" : "text-light nav-hover"}
+                  href="#feature"
+                >
+                  Features
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#service">Services</NavLink>
+                <NavLink
+                  className={sticky ? "" : "text-light nav-hover"}
+                  href="#service"
+                >
+                  Services
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#about">About</NavLink>
+                <NavLink
+                  className={sticky ? "" : "text-light nav-hover"}
+                  href="#about"
+                >
+                  About
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

@@ -7,10 +7,10 @@ const Hero = () => {
         <Row className="align-items-center">
           <Col lg={6}>
             <div className="pr-lg-5">
-              <p className="text-uppercase text-primary font-weight-medium f-14 mb-4">
+              <p className="text-uppercase aqua-text font-weight-medium f-14 mb-4">
                 Eluno
               </p>
-              <h1 className="mb-4 font-weight-normal line-height-1_4">
+              <h1 className="mb-4 font-weight-normal text-light line-height-1_4">
                 Share your collection
               </h1>
               <p className="text-muted mb-4 pb-2">
