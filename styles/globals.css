@@ -22,6 +22,14 @@ a {
   position: relative;
 }
 
+.white-section {
+  background-color: #fff !important;
+}
+
+.vision-section {
+  padding-bottom: 0px;
+}
+
 .aqua {
   background-color: #00e0dd;
 }

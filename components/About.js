@@ -7,55 +7,24 @@ const About = () => {
         <Row className="justify-content-center">
           <Col lg={6} md={8}>
             <div className="title text-center mb-5">
-              <h3 className="font-weight-normal text-dark">About Us</h3>
-              <p className="text-muted">
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-              </p>
+              <h3 className="font-weight-normal text-dark">The Squad</h3>
+              <img src="/images/eluno team.png" alt="eluno team" width="100%" />
+              <Row className="justify-content-center">
+                <Col md={3}>
+                  <h6 className="text-dark font-weight-light f-20 mb-3">
+                    Earthworm
+                  </h6>
+                </Col>
+                <Col md={3}>
+                  <h6 className="text-dark font-weight-light f-20 mb-3">KC</h6>
+                </Col>
+                <Col md={3}>
+                  <h6 className="text-dark font-weight-light f-20 mb-3">
+                    Goodvibesylno
+                  </h6>
+                </Col>
+              </Row>
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
-            <h2 className="font-weight-light line-height-1_6 text-dark mb-4">
-              Lorem Ipsum has been the industry's standard dummy text
-            </h2>
-          </Col>
-          <Col md={{ size: 7, offset: 1 }}>
-            <Row>
-              <Col md={6}>
-                <h6 className="text-dark font-weight-light f-20 mb-3">
-                  Our Mission
-                </h6>
-                <p className="text-muted font-weight-light">
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s, when an unknown printer took a galley of type
-                </p>
-              </Col>
-              <Col md={6}>
-                <h6 className="text-dark font-weight-light f-20 mb-3">
-                  Our Vision
-                </h6>
-                <p className="text-muted font-weight-light">
-                  Lorem Ipsum has been the industry's standard dummy text ever
-                  since the 1500s, when an unknown printer took a galley of type
-                </p>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row className="justify-content-center">
-          <Col>
-            <p className="text-muted font-weight-light">KC</p>
-            <img src="./images/doge.gif" width="50%" />
-          </Col>
-          <Col>
-            <p className="text-muted font-weight-light">Earthworm</p>
-            <img src="./images/moredoge.gif" width="50%" />
-          </Col>
-          <Col>
-            <p className="text-muted font-weight-light">KC</p>
-            <img src="./images/dog.gif" width="50%" />
           </Col>
         </Row>
       </Container>

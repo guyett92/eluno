@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
+import FadeIn from "react-fade-in";
+
 const FeatureBox = (props) => {
   return (
     <>
@@ -27,7 +29,7 @@ const FeatureBox = (props) => {
                 <div className="my-4">
                   <i className={feature.icon}></i>
                 </div>
-                <h5 className="text-light font-weight-normal mb-3 pt-3">
+                <h5 className="text-dark font-weight-normal mb-3 pt-3">
                   {feature.title}
                 </h5>
                 <p className="text-muted mb-3 f-15">{feature.desc}</p>
@@ -44,7 +46,7 @@ const FeatureBox = (props) => {
                 <div className="my-4">
                   <i className="mdi mdi-account-group"></i>
                 </div>
-                <h5 className="text-light font-weight-normal mb-3 pt-3">
+                <h5 className="text-dark font-weight-normal mb-3 pt-3">
                   {feature.title}
                 </h5>
                 <p className="text-muted mb-3 f-15">{feature.desc}</p>
@@ -74,42 +76,45 @@ const Feature = () => {
       id: 1,
       img: "./images/clothes.svg",
       title: "Quality",
-      desc: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      desc: "We visited over 100 manufacturers, unrolled miles of fabrics, and meticulously rolled around searching for the optimum feel. We selected premium organic cotton usually reserved for royalty. This is the quality your NFT deserves. This is the quality you deserve.",
       link: "/",
     },
     {
       id: 2,
       img: "./images/photoshoot.svg",
       title: "Style",
-      desc: "Sed perspiciatis unde omnis natus error voluptatem accusantium doloremque laudantium totam rem aperiam eaque ipsa quae ab illo excepturi sint occaecati cupiditate architecto.",
+      desc: "This isn't your sister's Forever 21 collection. We are take our time to ensure each stitch on every piece from our collection is filled with passion, style, and integrity with hopes that you treat it as well as we do.",
       link: "/",
     },
     {
       id: 3,
       img: "./images/shopping.svg",
       title: "Exclusivity",
-      desc: "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+      desc: "Each piece, like your NFT, is one of one. It’s handmade and stamped with a unique identifier. You’ll be the only one in the galaxy to own what we’ve made for you. How do we know this? Because you’re the only one in the world with this NFT in your wallet. ",
       link: "/",
     },
   ];
   return (
-    <section className="section" id="feature">
+    <FadeIn delay={1500} className="section white-section" id="feature">
       <Container>
         <Row className="justify-content-center">
           <Col lg={6} md={8}>
             <div className="title text-center mb-5">
-              <h3 className="font-weight-normal text-light">Features</h3>
+              <h3 className="font-weight-normal text-dark">Our Vision</h3>
               <p className="text-muted">
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book
+                You’re proudly rocking an eluno and a friend or NFT fan scans
+                the shirt, links to your opensea page and makes an offer you
+                can’t refuse. Depending on the deal you strike with them, you
+                might need to give up your shirt. But at that point, you’ve just
+                loaded up your wallet and can pull the trigger on the next epic
+                NFT and proudly display it on your next eluno.
               </p>
             </div>
           </Col>
         </Row>
         <FeatureBox features={features} />
       </Container>
-    </section>
+    </FadeIn>
   );
 };
 export default Feature;

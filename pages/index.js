@@ -4,12 +4,14 @@ import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Feature from "../components/Feature";
-import Service from "../components/Service";
+import Vision from "../components/Vision";
 import About from "../components/About";
 import Footer from "../components/Footer";
+
 const Index = () => {
   // State
   const [currentAccount, setCurrentAccount] = useState(null);
+  const [currentNFTs, setCurrentNFTs] = useState([]);
 
   // Let's connect to the wallet FIXME: Add this the purchase portal only
   const checkIfWalletIsConnected = async () => {
@@ -22,7 +24,7 @@ const Index = () => {
       } else {
         console.log("We have the ethereum object:", ethereum);
         // Let's get the accounts
-        const accounts = await ethereum.request({ method: "eth_accounts " });
+        const accounts = await ethereum.request({ method: "eth_accounts" });
 
         // Get the first account
         if (accounts.length !== 0) {
@@ -38,6 +40,7 @@ const Index = () => {
     }
   };
 
+  // FIXME: Convert to a promise
   const connectWalletAction = async () => {
     try {
       const { ethereum } = window;
@@ -53,22 +56,60 @@ const Index = () => {
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
+      fetch(
+        `https://api.opensea.io/api/v1/assets?owner=${accounts[0]}&order_direction=desc&offset=0&limit=20`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            console.log(result);
+            setCurrentNFTs(result);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
     } catch (e) {
       console.log(e);
     }
   };
 
+  // const getNFTs = async () => {
+  //   try {
+  //     console.log(currentAccount);
+  //     fetch(
+  //       `https://api.opensea.io/api/v1/assets?owner=${currentAccount}&order_direction=desc&offset=0&limit=20`
+  //     )
+  //       .then((res) => res.json())
+  //       .then(
+  //         (result) => {
+  //           console.log(result);
+  //         },
+  //         (err) => {
+  //           console.log(err);
+  //         }
+  //       );
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
   // When the components have loaded...
   useEffect(() => {
     checkIfWalletIsConnected();
+    connectWalletAction();
+  }, []);
+
+  useEffect(() => {
+    // getNFTs();
   }, []);
 
   return (
-    <Layout pageTitle="Landing Page Nextjs">
+    <Layout pageTitle="⭐ Eluno">
       <Header />
       <Hero />
       <Feature />
-      <Service />
+      <Vision />
       <About />
       <Footer />
     </Layout>

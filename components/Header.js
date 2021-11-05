@@ -70,6 +70,14 @@ const Header = () => {
                   About
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink
+                  className={sticky ? "" : "text-light nav-hover"}
+                  href="/purchase"
+                >
+                  Purchase
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Container>
