@@ -24,24 +24,24 @@ const Footer = () => {
   ];
 
   return (
-    <section className="footer section">
+    <section className="footer white-section section">
       <Container>
         <Row>
           <Col lg={4}>
             <div className="mb-4">
-              <p className="text-light mt-4 mb-2">email@email.com</p>
-              <h6 className="text-light font-weight-normal">+99 1234-5678-9</h6>
+              <p className="text-muted mt-4 mb-2">email@email.com</p>
+              <h6 className="text-muted font-weight-normal">+99 1234-5678-9</h6>
             </div>
           </Col>
           <Col lg={8}>
             <Row>
               {links.map((link, key) => (
                 <Col key={key} md={4}>
-                  <h6 className="text-white mb-3">{link.title}</h6>
+                  <h6 className="text-dark mb-3">{link.title}</h6>
                   <ul className="list-unstyled company-sub-menu">
                     {link.child.map((fLink, key) => (
                       <li key={key}>
-                        <a className="nav-hover text-light" href={fLink.link}>
+                        <a className="nav-hover text-muted" href={fLink.link}>
                           {fLink.title}
                         </a>
                       </li>
@@ -51,11 +51,11 @@ const Footer = () => {
               ))}
 
               <Col md={4}>
-                <h6 className="text-white mb-3">Our Address</h6>
-                <p className="text-light f-14">
+                <h6 className="text-dark mb-3">Our Address</h6>
+                <p className="text-muted f-14">
                   1234 Lorem Ipsum dummy text, 12345
                 </p>
-                <h6 className="text-light pb-2">Email: email@email.com</h6>
+                <h6 className="text-muted pb-2">Email: email@email.com</h6>
                 <ul className="list-unstyled footer-social-list mt-4">
                   <li className="list-inline-item">
                     <a href="#">

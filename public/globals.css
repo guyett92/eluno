@@ -41,11 +41,3 @@ a {
 .nav-hover:hover {
   color: #00e0dd !important;
 }
-
-.faq-section {
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 12px;
-  padding-right: 12px;
-}

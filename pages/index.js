@@ -7,6 +7,7 @@ import Feature from "../components/Feature";
 import Vision from "../components/Vision";
 import About from "../components/About";
 import Footer from "../components/Footer";
+import FAQ from "../components/Faq";
 
 const Index = () => {
   // State
@@ -62,8 +63,8 @@ const Index = () => {
         .then((res) => res.json())
         .then(
           (result) => {
-            console.log(result);
             setCurrentNFTs(result);
+            console.log(currentNFTs);
           },
           (err) => {
             console.log(err);
@@ -107,10 +108,12 @@ const Index = () => {
   return (
     <Layout pageTitle="⭐ Eluno">
       <Header />
+      {/* <img src={currentNFTs[0]["image_original_url"]} alt="nft" /> */}
       <Hero />
       <Feature />
       <Vision />
       <About />
+      <FAQ />
       <Footer />
     </Layout>
   );
