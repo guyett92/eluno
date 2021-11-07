@@ -7,7 +7,7 @@ import Feature from "../components/Feature";
 import Vision from "../components/Vision";
 import About from "../components/About";
 import Footer from "../components/Footer";
-import FAQ from "../components/Faq";
+import FAQ from "../components/FAQ";
 
 const Index = () => {
   // State
