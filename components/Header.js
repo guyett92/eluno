@@ -73,9 +73,9 @@ const Header = () => {
               <NavItem>
                 <NavLink
                   className={sticky ? "" : "text-light nav-hover"}
-                  href="/purchase"
+                  href="/order"
                 >
-                  Purchase
+                  Order
                 </NavLink>
               </NavItem>
             </Nav>

@@ -78,7 +78,7 @@ const config = {
 
 const FAQ = () => {
   return (
-    <section className="section faq-section">
+    <section className="section faq-section" id="faq">
       <Faq data={data} styles={faqStyles} config={config} />
     </section>
   );

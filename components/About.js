@@ -8,19 +8,28 @@ const About = () => {
           <Col lg={6} md={8}>
             <div className="title text-center mb-5">
               <h3 className="font-weight-normal text-dark">The Squad</h3>
-              <img src="/images/eluno team.png" alt="eluno team" width="100%" />
               <Row className="justify-content-center">
-                <Col md={3}>
+                <Col>
+                  <img src="/images/jonah.png" alt="jonah" width={200} />
                   <h6 className="text-dark font-weight-light f-20 mb-3">
-                    Earthworm
+                    Jonah
                   </h6>
                 </Col>
-                <Col md={3}>
-                  <h6 className="text-dark font-weight-light f-20 mb-3">KC</h6>
+                <Col>
+                  <img
+                    src="/images/aaron.png"
+                    alt="aaron"
+                    width={200}
+                    className="image-align-text"
+                  />
+                  <h6 className="text-dark center font-weight-light f-20 mb-3">
+                    Aaron
+                  </h6>
                 </Col>
-                <Col md={3}>
+                <Col>
+                  <img src="/images/anayo.png" alt="anayo" width={200} />
                   <h6 className="text-dark font-weight-light f-20 mb-3">
-                    Goodvibesylno
+                    Anayo
                   </h6>
                 </Col>
               </Row>

@@ -41,9 +41,13 @@ const Hero = () => {
               <p className="aqua-text mb-4 pb-2">
                 Bring your NFTs back into the physical world with <b>eluno</b>.
               </p>
-              <a href="#" className="btn aqua">
-                Order Now <span className="ml-2 right-icon">&#8594;</span>
-              </a>
+              <div className="btn btn-container">
+                <div className="border-container">
+                  <a className="btn" href="/order" role="button">
+                    Order Now <span className="ml-2 right-icon">&#8594;</span>
+                  </a>
+                </div>
+              </div>
             </FadeIn>
           </Col>
           <Col lg={6}>
