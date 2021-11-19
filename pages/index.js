@@ -12,8 +12,7 @@ import FAQ from "../components/FAQ";
 const Index = () => {
   return (
     <Layout pageTitle="eluno ⭐">
-      <Header />
-      {/* <img src={currentNFTs[0]["image_original_url"]} alt="nft" /> */}
+      {/* <Header /> */}
       <Hero />
       <Feature />
       <Vision />

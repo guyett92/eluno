@@ -95,8 +95,8 @@ const Feature = () => {
     },
   ];
   return (
-    <FadeIn delay={1500} className="section white-section" id="feature">
-      <Container>
+    <FadeIn delay={1500} className="section animated-background" id="feature">
+      <Container className="bg-white br-10 rounded p-4">
         <Row className="justify-content-center">
           <Col lg={6} md={8}>
             <div className="title text-center mb-5">

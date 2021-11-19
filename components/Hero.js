@@ -10,9 +10,11 @@ const Hero = () => {
         <Row className="align-items-center">
           <Col lg={6}>
             <FadeIn className="pr-lg-5">
-              <p className="text-uppercase aqua-text font-weight-medium f-14 mb-4">
-                Eluno
-              </p>
+              <div className="eluno-image-container">
+                <div className="eluno-image">
+                  <img src="/images/logo.png" alt="logo" width="95px" />
+                </div>
+              </div>
               <h1 className="mb-4 font-weight-normal text-light line-height-1_4">
                 Share your{" "}
                 <TextLoop>
@@ -51,12 +53,12 @@ const Hero = () => {
             </FadeIn>
           </Col>
           <Col lg={6}>
-            <div className="mt-5 mt-lg-0">
-              <img
+            <div className="mt-5 mt-lg-0 animation-bubble">
+              {/* <img
                 src="/images/landing.svg"
                 alt=""
                 className="img-fluid mx-auto d-block"
-              />
+              /> */}
             </div>
           </Col>
         </Row>

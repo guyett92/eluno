@@ -2,11 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 const About = () => {
   return (
-    <section className="section bg-white" id="about">
+    <section className="section animated-background" id="about">
       <Container>
         <Row className="justify-content-center">
           <Col lg={6} md={8}>
-            <div className="title text-center mb-5">
+            <div className="title text-center bg-white p-4 rounded mb-5">
               <h3 className="font-weight-normal text-dark">The Squad</h3>
               <Row className="justify-content-center">
                 <Col>
