@@ -121,6 +121,21 @@ a {
   display: grid;
 }
 
+.center {
+  justify-content: center;
+  display: grid;
+}
+
+.image-container-no-overflow {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border: 5px solid black;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
