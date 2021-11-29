@@ -76,18 +76,18 @@ const Feature = () => {
       id: 1,
       img: "./images/clothes.svg",
       title: "Quality",
-      desc: "We visited over 100 manufacturers, unrolled miles of fabrics, and meticulously rolled around searching for the optimum feel. We selected premium organic cotton usually reserved for royalty. This is the quality your NFT deserves. This is the quality you deserve.",
+      desc: "We visited over 100 manufacturers, unrolled miles of fabrics, and meticulously rolled around searching for the optimum feel. We selected Pima organic cotton usually reserved for royalty. This is the quality your NFT deserves. This is the quality you deserve.",
       link: "/",
     },
+    // {
+    //   id: 2,
+    //   img: "./images/photoshoot.svg",
+    //   title: "Style",
+    //   desc: "This isn't your sister's Forever 21 collection. We are take our time to ensure each stitch on every piece from our collection is filled with passion, style, and integrity with hopes that you treat it as well as we do.",
+    //   link: "/",
+    // },
     {
       id: 2,
-      img: "./images/photoshoot.svg",
-      title: "Style",
-      desc: "This isn't your sister's Forever 21 collection. We are take our time to ensure each stitch on every piece from our collection is filled with passion, style, and integrity with hopes that you treat it as well as we do.",
-      link: "/",
-    },
-    {
-      id: 3,
       img: "./images/shopping.svg",
       title: "Exclusivity",
       desc: "Each piece, like your NFT, is one of one. It’s handmade and stamped with a unique identifier. You’ll be the only one in the galaxy to own what we’ve made for you. How do we know this? Because you’re the only one in the world with this NFT in your wallet. ",
@@ -95,7 +95,7 @@ const Feature = () => {
     },
   ];
   return (
-    <FadeIn delay={1500} className="section animated-background" id="feature">
+    <FadeIn delay={1500} className="section bg-white" id="feature">
       <Container className="bg-white br-10 rounded p-4">
         <Row className="justify-content-center">
           <Col lg={6} md={8}>

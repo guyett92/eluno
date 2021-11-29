@@ -6,7 +6,7 @@ const data = {
   rows: [
     {
       title: "What is eluno?",
-      content: `Hand made, one of one, premium gear based on an NFT in your unique collection. You are the only one with this NFT and you should be the only one who can wear it on an exclusive and premium hoodie or tee.`,
+      content: `Hand made, one of one, premium gear based on an NFT in your collection. You are the only one with a BYAC, MAYC, or Punk — you should be the only one who can wear it on a premium hoodie or tee.`,
     },
     {
       title: "How does it work?",
@@ -20,7 +20,7 @@ const data = {
     {
       title: "How long does it take?",
       content:
-        "We are hand making every item and sending it through rigorous quality checks. Speed is important to us, but quality ranks at the very top.",
+        "Speed matters in Nascar and at the drive-thru—we are neither of those things. Quality is the guiding principle for this project.",
     },
     {
       title: "Where do you ship?",
