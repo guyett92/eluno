@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import Layout from "../components/Layout";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
@@ -12,7 +10,7 @@ import FAQ from "../components/FAQ";
 const Index = () => {
   return (
     <Layout pageTitle="eluno ⭐">
-      {/* <Header /> */}
+      <Header />
       <Hero />
       <Feature />
       <Vision />

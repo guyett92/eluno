@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Container,
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
 } from "reactstrap";
+import { AppContext } from "../contexts/ContextProvider";
+import Wallet from "./Wallet";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const context = useContext(AppContext);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -28,21 +30,19 @@ const Header = () => {
   };
 
   return (
-    <div className={`header${sticky ? " sticky" : ""}`}>
-      <Navbar light expand="md">
+    <div
+      className={`header${sticky ? " sticky" : ""} ${
+        context.store.walletConnected ? "not-visible" : ""
+      }`}
+    >
+      <Navbar expand="md">
         <Container>
-          <NavbarBrand href="/">
-            <img src="./images/logo.png" alt="logo" width="75px" />
-          </NavbarBrand>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} className="justify-content-end" navbar>
             <Nav className="m-auto" navbar>
               <NavItem>
-                <NavLink
-                  className={sticky ? "" : "text-dark nav-hover"}
-                  href="/order"
-                >
-                  Order
+                <NavLink className={sticky ? "" : "nav-hover"}>
+                  <Wallet />
                 </NavLink>
               </NavItem>
             </Nav>

@@ -136,6 +136,10 @@ a {
   text-align: center;
 }
 
+.not-visible {
+  display: none !important;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;

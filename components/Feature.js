@@ -50,9 +50,9 @@ const FeatureBox = (props) => {
                   {feature.title}
                 </h5>
                 <p className="text-muted mb-3 f-15">{feature.desc}</p>
-                <btn href={feature.link} className="f-16 btn aqua">
+                <a href={feature.link} className="f-16 btn aqua">
                   Read More <span className="right-icon ml-2">&#8594;</span>
-                </btn>
+                </a>
               </div>
             </Col>
             <Col md={{ size: 5, offset: 1 }} className="mt-5 mt-sm-0">
