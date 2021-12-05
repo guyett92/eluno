@@ -73,19 +73,19 @@ const Wallet = () => {
   };
 
   return (
-    <div className="btn btn-container">
-      <div className="border-container">
-        <a
-          className="btn"
-          role="button"
-          onClick={() => {
-            checkIfWalletIsConnected();
-            connectWalletAction();
-          }}
-        >
-          Connect Wallet
-        </a>
-      </div>
+    <div
+      className={`btn ${context.store.walletConnected ? "not-visible" : ""}`}
+    >
+      <a
+        className="btn wallet-button"
+        role="button"
+        onClick={() => {
+          checkIfWalletIsConnected();
+          connectWalletAction();
+        }}
+      >
+        Connect Wallet
+      </a>
     </div>
   );
 };

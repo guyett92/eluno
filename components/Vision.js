@@ -2,24 +2,20 @@ import React from "react";
 import { Container, Row, Col } from "reactstrap";
 const Vision = () => {
   return (
-    <section className="section vision-section" id="service">
+    <section className="section vision-section bg-light" id="vision">
       <Container>
         <Row className="justify-content-center">
-          <Col md={8}>
-            <div className="title text-center mb-5">
-              <h3 className="font-weight-normal text-light">
-                Limited Launch 1000
-              </h3>
-              <p className="text-muted pt-4">
-                Each order is limited to 1 shirt and 1 hoodie. We want you to
-                have the best. Our biggest fear is compromising on quality. We
-                could work with a manufacturer that prioritizes speed, but that
-                just doesn’t fit our style. Our pieces are meant to be unique to
-                you, last a lifetime and to continue to get more comfortable.
-                Unfortunately, this limits the quantities we can produce. But of
-                course, that makes your items more rare. Which we think is
-                pretty cool.
-              </p>
+          <Col md={11}>
+            <div className="text-center mb-5">
+              <h1 className="title most-titles text-dark">our vision</h1>
+              <h2 className="text-dark pt-4">
+                You’re proudly rocking an eluno and a friend or NFT fan scans
+                the shirt, links to your opensea page and makes an offer you
+                can’t refuse. Depending on the deal you strike with them, you
+                might need to give up your shirt. But at that point, you’ve just
+                loaded up your wallet and can pull the trigger on the next epic
+                NFT and proudly display it on your next eluno.
+              </h2>
             </div>
           </Col>
         </Row>

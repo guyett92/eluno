@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Faq from "react-faq-component";
 
 const data = {
-  title: "FAQ",
+  // title: "FAQ",
   rows: [
     {
       title: "What is eluno?",
@@ -79,6 +79,7 @@ const config = {
 const FAQ = () => {
   return (
     <section className="section faq-section" id="faq">
+      <h1 className="title most-titles text-white">faq</h1>
       <Faq data={data} styles={faqStyles} config={config} />
     </section>
   );
