@@ -7,8 +7,9 @@ const Quality = () => {
           <h2 className="text-white quality-text">
             We visited over 100 manufacturers, unrolled miles of fabrics, and
             meticulously rolled around searching for the optimum feel. We
-            selected Pima organic cotton usually reserved for royalty. This is
-            the quality your NFT deserves. This is the quality you deserve.
+            selected Pima organic cotton usually reserved for royalty. We tested
+            so many zippers that we nearly started a zipper fidget spinner
+            company. Sorry YKK, but we went with the best we could find.
           </h2>
         </div>
       </div>

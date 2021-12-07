@@ -13,7 +13,7 @@ const Wallet = () => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("No wallet detected");
+        // alert("No wallet detected");
         return;
       } else {
         console.log("We have the ethereum object:", ethereum);
@@ -40,7 +40,7 @@ const Wallet = () => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("Get MetaMask!");
+        // alert("Get MetaMask!");
         return;
       }
       // Request access

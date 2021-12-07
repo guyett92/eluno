@@ -9,8 +9,9 @@ const Vision = () => {
             <div className="text-center mb-5">
               <h1 className="title most-titles text-dark">our vision</h1>
               <h2 className="text-dark pt-4">
-                You’re proudly rocking an eluno and a friend or NFT fan scans
-                the shirt, links to your opensea page and makes an offer you
+                You’ve pulled your NFT into the physical world and it’s looking
+                sweet on your hoodie. A friend scans it, realizing you own their
+                favorite ape, links to your OpenSea page and makes an offer you
                 can’t refuse. Depending on the deal you strike with them, you
                 might need to give up your shirt. But at that point, you’ve just
                 loaded up your wallet and can pull the trigger on the next epic

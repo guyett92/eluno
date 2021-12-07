@@ -12,7 +12,7 @@ const Layout = (props) => {
       const { ethereum } = window;
 
       if (!ethereum) {
-        alert("No wallet detected");
+        // alert("No wallet detected");
         setIsLoading(false);
         return;
       } else {
