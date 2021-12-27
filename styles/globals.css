@@ -260,14 +260,6 @@ a {
   text-align: center;
 }
 
-/* 
-I can't make myself delete this
-.animated-background {
-  background: linear-gradient(-45deg, #000, #e73c7e, #00e0dd, #fff);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-} */
-
 .center {
   justify-content: center;
   display: grid;
@@ -291,6 +283,17 @@ I can't make myself delete this
 
 .not-visible {
   display: none !important;
+}
+
+.white {
+  color: white;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
 }
 
 /* @keyframes gradient {

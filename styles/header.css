@@ -15,6 +15,19 @@
   width: 100%;
   z-index: 91;
 }
+
+.nav-link {
+  color: #000 !important;
+}
+
+.sticky .nav-link {
+  color: white !important;
+}
+
+.sticky .nav-link:hover {
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
 .header.sticky .navbar {
   position: fixed;
   top: 0;

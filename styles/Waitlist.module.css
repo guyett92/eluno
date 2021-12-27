@@ -1,0 +1,33 @@
+.modalHeader {
+  font-family: "UniNeueBold";
+}
+
+.modalHeader > button {
+  background-color: white;
+  border: none;
+  font-size: 1.4rem;
+}
+
+.closeButton {
+  cursor: pointer;
+}
+
+.submitButton {
+  background-color: #53cfff;
+  border: none;
+}
+
+.submitButton:hover {
+  background-color: #0af8ff;
+}
+
+.input {
+  padding: 15px;
+  margin-top: 0.5rem;
+}
+
+.danger {
+  background: rgb(255, 0, 0, 0.4);
+  text-align: center;
+  font-weight: bold;
+}

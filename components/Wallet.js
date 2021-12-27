@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../contexts/ContextProvider";
+import OpenseaValidation from "../util/OpenseaValidation";
 
 const Wallet = () => {
   // State
@@ -50,43 +51,33 @@ const Wallet = () => {
 
       console.log("Connected", accounts[0]);
       setCurrentAccount(accounts[0]);
-      console.log(accounts[0]);
       context.actions.connectWallet(true, accounts[0]);
-      console.log(context.store.walletConnected);
-      console.log(context.store.connectedWallets);
-      fetch(
-        `https://api.opensea.io/api/v1/assets?owner=${accounts[0]}&order_direction=desc&offset=0&limit=20`
-      )
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            setCurrentNFTs(result);
-            console.log(currentNFTs);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
     } catch (e) {
       console.log(e);
     }
   };
 
   return (
-    <div
-      className={`btn ${context.store.walletConnected ? "not-visible" : ""}`}
-    >
-      <a
-        className="btn wallet-button"
-        role="button"
-        onClick={() => {
-          checkIfWalletIsConnected();
-          connectWalletAction();
-        }}
-      >
-        Connect Wallet
-      </a>
-    </div>
+    <>
+      {!context.store.walletConnected ? (
+        <div className={`btn`}>
+          <a
+            className="btn wallet-button"
+            role="button"
+            onClick={() => {
+              checkIfWalletIsConnected();
+              connectWalletAction();
+            }}
+          >
+            Connect Wallet
+          </a>
+        </div>
+      ) : (
+        <div className="truncate white">
+          {context.store.connectedWallets?.metamask}
+        </div>
+      )}
+    </>
   );
 };
 

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "reactstrap";
+import Waitlist from "./Waitlist";
 const Footer = () => {
+  const [modalShow, setModalShow] = useState(false);
   const links = [
     {
       id: 1,
@@ -70,11 +72,19 @@ const Footer = () => {
                 <h6 className="text-dark mb-3"></h6>
                 <div className="btn btn-container">
                   <div className="border-container">
-                    <a className="btn" role="button">
-                      Order Now
+                    <a
+                      className="btn"
+                      role="button"
+                      onClick={() => setModalShow(true)}
+                    >
+                      Join Waitlist
                     </a>
                   </div>
                 </div>
+                <Waitlist
+                  isOpen={modalShow}
+                  onHide={() => setModalShow(false)}
+                />
                 <ul className="list-unstyled footer-social-list mt-4">
                   <li className="list-inline-item">
                     <a href="#">

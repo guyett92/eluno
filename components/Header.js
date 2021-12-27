@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Collapse,
   Navbar,
@@ -7,17 +7,15 @@ import {
   NavItem,
   NavLink,
   NavbarText,
-  Container,
-  NavbarBrand,
 } from "reactstrap";
-import { AppContext } from "../contexts/ContextProvider";
+import Waitlist from "./Waitlist";
 import Wallet from "./Wallet";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [sticky, setSticky] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const context = useContext(AppContext);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -48,12 +46,18 @@ const Header = () => {
             <NavItem>
               <NavLink href="#team">team</NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="#waitlist" onClick={() => setModalShow(true)}>
+                waitlist
+              </NavLink>
+            </NavItem>
           </Nav>
         </Collapse>
         <NavbarText>
           <Wallet />
         </NavbarText>
       </Navbar>
+      <Waitlist isOpen={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 };
