@@ -48,9 +48,7 @@ const data = {
     },
     {
       title: "What if I sell my NFT?",
-      content: `Nice! We hope you made a healthy profit! Did you include your gear in the deal?${(
-        <br />
-      )}This does unlock the ability for the next owner to login and place an order. Unfortunately, there will now be 2 items in the physical world. Time to frame your old eluno.`,
+      content: `Nice! We hope you made a healthy profit! Did you include your gear in the deal? This does unlock the ability for the next owner to login and place an order. Unfortunately, there will now be 2 items in the physical world. Time to frame your old eluno.`,
     },
     {
       title: "How can I pay?",
