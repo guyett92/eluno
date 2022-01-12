@@ -363,6 +363,12 @@ a {
   }
 }
 
+@media screen and (max-height: 800px) and (max-width: 450px) {
+  .quality-section {
+    height: 1000px !important;
+  }
+}
+
 @media screen and (max-width: 525px) {
   .flex-container > h1 {
     font-size: 5em !important;
@@ -400,9 +406,11 @@ a {
   }
 
   .features,
-  .quality-section,
   .exc-section {
     height: auto;
+  }
+  .quality-section {
+    height: 1200px !important;
   }
 
   .image-container > img {
