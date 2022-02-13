@@ -421,6 +421,7 @@ a {
   .center > img {
     width: 150px;
     height: initial;
+    margin: 0 auto;
   }
 
   .features,
@@ -489,4 +490,17 @@ a {
   .features {
     height: 950px;
   }
+}
+
+.product-text {
+  color: white;
+}
+
+.price {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.dropdown {
+  margin-bottom: 0.7rem;
 }
