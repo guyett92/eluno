@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { AppContext } from "../contexts/ContextProvider";
+import { WalletContext } from "../contexts/WalletContext";
 import OpenseaValidation from "../util/OpenseaValidation";
 
 const Wallet = () => {
   // State
   const [currentAccount, setCurrentAccount] = useState(null);
   const [currentNFTs, setCurrentNFTs] = useState([]);
-  const context = useContext(AppContext);
+  const context = useContext(WalletContext);
 
   // Let's connect to the wallet
   const checkIfWalletIsConnected = async () => {
@@ -35,7 +35,6 @@ const Wallet = () => {
     }
   };
 
-  // FIXME: Convert to a promise
   const connectWalletAction = async () => {
     try {
       const { ethereum } = window;
@@ -74,6 +73,7 @@ const Wallet = () => {
         </div>
       ) : (
         <div className="truncate white">
+          {/* TODO: When web3modal and walletconnect are added check which wallet to show */}
           {context.store.connectedWallets?.metamask}
         </div>
       )}

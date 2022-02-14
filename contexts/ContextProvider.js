@@ -13,9 +13,6 @@ export const ContextWrapper = (props) => {
   const context = useContext(AppContext);
 
   const [store, setStore] = useState({
-    walletConnected: false,
-    nfts: [],
-    connectedWallets: {},
     products: [],
     product: {},
     checkout: {},
@@ -23,7 +20,7 @@ export const ContextWrapper = (props) => {
   });
 
   const [actions, setActions] = useState({
-    addNft: (NFT) => setStore({ ...store, nfts: nfts.push(NFT) }),
+    // TODO: Separate this from fetchAllProducts
     createCheckout: async () => {
       try {
         const checkout = await client.checkout.create();
@@ -39,6 +36,7 @@ export const ContextWrapper = (props) => {
           quantity: parseInt(quantity, 10),
         },
       ];
+      console.log(store.checkout);
       const checkout = await client.checkout.addLineItems(
         store.checkout.id,
         lineItemsToAdd
@@ -47,8 +45,9 @@ export const ContextWrapper = (props) => {
     },
     fetchAllProducts: async () => {
       const products = await client.product.fetchAll();
-      console.log(products);
-      setStore({ ...store, products: products });
+      const checkout = await client.checkout.create();
+      setStore({ ...store, products: products, checkout: checkout });
+      console.log(store);
     },
     fetchProductWithId: async (id) => {
       const product = await client.product.fetch(id);
@@ -60,14 +59,6 @@ export const ContextWrapper = (props) => {
     openCart: () => {
       setStore({ ...store, isCartOpen: true });
     },
-    connectWallet: (status, wallet) =>
-      setStore({
-        ...store,
-        walletConnected: status,
-        connectedWallets: {
-          metamask: wallet,
-        },
-      }),
   });
 
   return (

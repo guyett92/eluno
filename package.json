@@ -22,7 +22,8 @@
     "react-text-loop": "^2.3.0",
     "react-transition-group": "^4.4.2",
     "reactstrap": "^8.10.0",
-    "shopify-buy": "^2.14.0"
+    "shopify-buy": "^2.14.0",
+    "web3": "^1.7.0"
   },
   "devDependencies": {
     "eslint": "8.1.0",
