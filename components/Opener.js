@@ -8,13 +8,13 @@ const Opener = () => {
       if (elementExists) {
         document.getElementById("firstContainer").remove();
       }
-    }, 10000);
+    }, 6000);
     setTimeout(() => {
       const elementExists = document.getElementById("secondContainer");
       if (elementExists) {
         document.getElementById("secondContainer").remove();
       }
-    }, 20000);
+    }, 10000);
   }, []);
 
   return (
@@ -22,53 +22,72 @@ const Opener = () => {
       <div className="text-container">
         <h1
           className={"item-fadeout"}
-          style={{ animationDelay: "7s" }}
+          style={{ animationDelay: "3.5s" }}
           id="firstContainer"
         >
           <span className="item-fadein">The </span>
-          <span
-            className="item-fadein future-text"
-            style={{ animationDelay: "3s" }}
-          >
-            <span className="future-text">future</span>
+          <span className="item-fadein" style={{ animationDelay: "1.5s" }}>
+            <span>future</span>
           </span>
-          <span className="item-fadein" style={{ animationDelay: "4s" }}>
+          <span className="item-fadein" style={{ animationDelay: "2s" }}>
             {" "}
             of{" "}
           </span>
           <span
             className="item-fadein aqua-text"
-            style={{ animationDelay: "5s" }}
+            style={{ animationDelay: "2.5s" }}
           >
             style{" "}
           </span>
         </h1>
-        <h1
+        {/* <h1
           className={"item-fadeout"}
-          style={{ animationDelay: "17s" }}
+          style={{ animationDelay: "7.5s" }}
           id="secondContainer"
         >
-          <span className="item-fadein" style={{ animationDelay: "10s" }}>
+          <span className="item-fadein" style={{ animationDelay: "5s" }}>
             Premium
           </span>{" "}
           <span
             className="item-fadein aqua-text"
-            style={{ animationDelay: "11s" }}
+            style={{ animationDelay: "5.5s" }}
           >
-            <i>fashion,</i>
+            fashion,
           </span>{" "}
-          <span className="item-fadein" style={{ animationDelay: "12s" }}>
-            <span className="future-text">NFT</span>
+          <span className="item-fadein" style={{ animationDelay: "6s" }}>
+            <span>NFT</span>
           </span>
-          <span className="item-fadein" style={{ animationDelay: "13s" }}>
+          <span className="item-fadein" style={{ animationDelay: "6.5s" }}>
             {" "}
             art
           </span>
-        </h1>
+        </h1> */}
+        <div
+          className="item-fadeout banner"
+          style={{ animationDelay: "8.5s" }}
+          id="secondContainer"
+        >
+          <div
+            className="item-fadein"
+            style={{
+              animationDelay: "5s",
+              position: "relative",
+              display: "inline",
+            }}
+          >
+            <img src="/images/header.jpg" alt="header image" />
+            <img
+              style={{ animationDelay: "6.5s" }}
+              src="/images/infused.png"
+              alt="header image"
+              className="item-fadein overlay"
+            />
+          </div>
+        </div>
         <div
           className="item-fadein"
           id="thirdContainer"
-          style={{ animationDelay: "20s" }}
+          style={{ animationDelay: "10.5s" }}
         >
           <section className="section vision-section bg-light" id="clothing">
             <Container fluid>

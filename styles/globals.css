@@ -306,15 +306,15 @@ a {
 }
 
 .item-fadein {
-  animation: fadein 1s linear forwards 2s;
-  -webkit-animation: fadein 1s linear forwards 2s;
+  animation: fadein 1s linear forwards 1s;
+  -webkit-animation: fadein 1s linear forwards 1s;
   color: white;
   opacity: 0;
 }
 
 .item-fadeout {
-  animation: fadeout 2s linear forwards 1s;
-  -webkit-animation: fadeout 2s linear forwards 1s;
+  animation: fadeout 1.5s linear forwards 1s;
+  -webkit-animation: fadeout 1.5s linear forwards 1s;
   opacity: 1;
   position: absolute;
 }
@@ -340,6 +340,29 @@ a {
 
 .faq-link:hover {
   color: #00e0dd;
+}
+
+.banner {
+  width: 90vw;
+}
+
+.banner img {
+  width: 100%;
+}
+
+.overlay {
+  position: absolute;
+  overflow: hidden;
+  right: -20%;
+  transform: scale(0.5);
+  background-color: black;
+  vertical-align: middle;
+}
+
+.index-line {
+  width: 90%;
+  color: white;
+  margin: 1.5rem auto;
 }
 
 @-webkit-keyframes fadein {
