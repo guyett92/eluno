@@ -67,7 +67,7 @@ a {
 }
 
 .aqua-text {
-  color: #00e0dd;
+  color: #00e0dd !important;
   margin-bottom: 0 !important;
 }
 
@@ -296,6 +296,88 @@ a {
   width: 200px;
 }
 
+.text-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+.item-fadein {
+  animation: fadein 1s linear forwards 2s;
+  -webkit-animation: fadein 1s linear forwards 2s;
+  color: white;
+  opacity: 0;
+}
+
+.item-fadeout {
+  animation: fadeout 2s linear forwards 1s;
+  -webkit-animation: fadeout 2s linear forwards 1s;
+  opacity: 1;
+  position: absolute;
+}
+
+.future-text {
+  text-decoration: overline underline #00e0dd;
+}
+
+.gear-text {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: black;
+}
+
+.center > img:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.faq-link {
+  color: white;
+}
+
+.faq-link:hover {
+  color: #00e0dd;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -320,8 +402,8 @@ a {
   }
 
   .center > img {
-    width: 400px;
-    height: 573.72px;
+    width: 400.062726px;
+    height: 533.416968px;
   }
 }
 
@@ -358,8 +440,8 @@ a {
     padding-right: 2rem;
   }
   .center > img {
-    width: 275px;
-    height: 394.44px;
+    width: 274.995px;
+    height: 366.66px;
   }
 }
 
@@ -421,6 +503,20 @@ a {
   .center > img {
     width: 150px;
     height: initial;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-bottom: 1rem;
+  }
+
+  .center {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .center > h2 {
+    margin-left: 0.5rem;
   }
 
   .features,

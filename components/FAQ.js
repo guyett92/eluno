@@ -6,54 +6,82 @@ const data = {
   rows: [
     {
       title: "What is eluno?",
-      content: `Hand made, one of one, premium gear based on an NFT in your collection. You are the only one with a BYAC, MAYC, or Punk — you should be the only one who can wear it on a premium hoodie or tee.`,
+      content: `One of one custom NFT apparel. We hand make every piece of premium gear based on the NFTs in your collection. You are the only one with a unique BAYC, Azuki, Noun, or Punk — you should be the only one who can wear it.`,
     },
     {
       title: "How does it work?",
       content:
-        "It’s easy. Connect your wallet, choose your payment method, and ship! We’ll pull out the needle and thread and begin making it for you.",
+        "It’s easy. Connect your wallet, choose an NFT, and select payment method. Once we close the drop, we’ll gather shipping info and go into production! ",
+    },
+    {
+      title: "Why drops?",
+      content:
+        "We make everything by hand in small batches. We are obsessed with quality and we want to control every step of production. ",
     },
     {
       title: "Can I use any NFT in my wallet?",
-      content: `Any NFT that is part of a verified collection on OpenSea (https://opensea.io) can be used. We ensure authenticity and protect the true owner this way. We’d hate for someone to upload a clone of your artwork.`,
-    },
-    {
-      title: "How long does it take?",
-      content:
-        "Speed matters in Nascar and at the drive-thru—we are neither of those things. Quality is the guiding principle for this project.",
+      content: (
+        <>
+          <p>
+            Sure thing! Anything you want to wear proudly. As long as you own
+            the NFT. Before going into production, we will verify the legitimacy
+            of every NFT.
+          </p>
+          <p>There will be no refunds for stolen, cloned or fake artwork. </p>
+          <p>
+            A few ways to tell if it’s legit: It was minted from a verified
+            artist or project, it was purchased from a major marketplace:
+            Opensea, LooksRare, etc.
+          </p>
+        </>
+      ),
     },
     {
       title: "Where do you ship?",
-      content:
-        "Shipping is covered in the USA. Please choose a shipping location that you feel is safe and secure. In some cases, it might make sense to send your order to a PO Box or other secure locations if you are concerned about privacy.  We respect your privacy by keeping all data private in our system.",
+      content: "We cover shipping in the USA. For now.",
     },
     {
-      title: "Is my NFT safe?",
+      title: "My NFT is safe, right?",
       content:
-        "Our tech is set up to do only 2 things, verification of ownership and accept payment for the order. We can only view that the NFT you select is in your wallet. ",
+        "Our tech is set up to do only 2 things: verification of ownership and accepting payment for the order. We can only view that the NFT you select is in your wallet.",
     },
     {
       title: "Can I get more than one?",
+      content: (
+        <>
+          <p>We like our gear rare like your NFT and you can only get one. </p>
+          <p>
+            Need more or want something custom? Let’s chat:{" "}
+            <a className="faq-link" href="mailto:hello@eluno.io">
+              hello@eluno.io
+            </a>
+          </p>
+        </>
+      ),
+    },
+    {
+      title: "How does sizing work?",
       content:
-        "We live and breathe quality over quantity. We’ve hand selected materials, production facilities, tech and fulfillment. Eluno only builds one at a time and we shy away from large orders. We typically don’t make gear for resale at stores or boutiques.",
+        "Eluno is built to be unisex and meant to fit in line with current trends.",
     },
     {
-      title: "How can I get 10?!",
-      content: "Sorry, you cant. ☹️",
+      title: "Returns and Exchanges",
+      content: `Due to the unique nature of our product we are unable to accept returns. In fact, we can’t have anyone wearing your ape on unless they’ve purchased the NFT from you. But, if you’re not proud to wear it, we’d love to work with you to help make adjustments.`,
     },
     {
-      title: "What if it doesn't fit?",
+      title: "How long will it last?",
       content:
-        "If you do feel that this piece is not the perfect fit or feel, send it back to us within 30 days and we can exchange it for a brand new item. The previous item will be destroyed before shipping you a new one. There can only be 1 eluno.",
+        "Eluno is designed to last for 10+ years. If it does need a repair and you’re still holding the NFT, send it back and we’ll repair it for free!",
     },
     {
-      title: "What if I sell my NFT?",
-      content: `Nice! We hope you made a healthy profit! Did you include your gear in the deal? This does unlock the ability for the next owner to login and place an order. Unfortunately, there will now be 2 items in the physical world. Time to frame your old eluno.`,
+      title: "What if I sell my NFT before the drop closes?",
+      content:
+        "Nice! We hope you made a healthy profit! You’ll need to select a new NFT to feature on your eluno.",
     },
     {
       title: "How can I pay?",
       content:
-        "We accept fiat currency in the form of debit/credit and also accept BTC, ETH, DOGE, DAI, and USDC. Yes, we accept DOGE.",
+        "We accept BTC, ETH, DOGE, DAI, and USDC. Yes, we accept DOGE. We can also accept fiat currency in the form of debit/credit.",
     },
   ],
 };

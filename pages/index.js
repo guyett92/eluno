@@ -8,19 +8,22 @@ import FAQ from "../components/FAQ";
 import Gear from "../components/Gear";
 import Quality from "../components/Quality";
 import Exclusivity from "../components/Exclusivity";
+import Opener from "../components/Opener";
 
 const Index = () => {
   return (
     <Layout pageTitle="eluno ⭐">
-      <Hero />
+      {/* <Hero />
       <Feature />
       <Gear />
       <Vision />
       <Quality />
       <Exclusivity />
       <About />
+      <Footer /> */}
+      <Opener />
+      <hr style={{ color: "white" }} />
       <FAQ />
-      <Footer />
     </Layout>
   );
 };
