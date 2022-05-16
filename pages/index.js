@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import FAQ from "../components/FAQ";
 import Opener from "../components/Opener";
 import Header from "../components/Header";
+import NewFooter from "../components/NewFooter";
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,7 +21,8 @@ const Index = () => {
       <Opener />
       <FAQ />
       <hr className="index-line" />
-      <Footer />
+      {/* <Footer /> */}
+      <NewFooter />
     </Layout>
   );
 };

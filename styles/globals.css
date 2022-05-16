@@ -8,6 +8,11 @@
   src: local("UniNeueBold"),
     url(../public/fonts/UniNeueBold.otf) format("truetype");
 }
+@font-face {
+  font-family: "Century Gothic Bold";
+  src: local("Century Gothic Bold"),
+    url(../public/fonts/gothicb.ttf) format("truetype");
+}
 
 html,
 body {
@@ -21,6 +26,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a:hover {
+  color: #00e0dd;
 }
 
 * {
@@ -262,15 +271,10 @@ a {
 }
 
 .index-line {
-  width: 90%;
+  width: 100%;
   background-image: linear-gradient(90deg, #fff, #00e0dd);
   height: 3px !important;
   margin: 1.5rem auto;
-}
-
-.index-line:nth-of-type(2) {
-  width: 100%;
-  margin-bottom: 2rem;
 }
 
 .description {
@@ -283,6 +287,12 @@ a {
   text-align: left;
   top: 8px;
   left: 16px;
+}
+
+.new-footer {
+  color: white;
+  font-family: "Century Gothic Bold", sans-serif;
+  font-size: 1.5rem;
 }
 
 @-webkit-keyframes fadein {
