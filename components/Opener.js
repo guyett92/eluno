@@ -62,6 +62,7 @@ const Opener = () => {
             art
           </span>
         </h1> */}
+        {/* Old Text Here */}
         <div
           className="item-fadeout banner"
           style={{ animationDelay: "8.5s" }}
@@ -89,24 +90,52 @@ const Opener = () => {
           id="thirdContainer"
           style={{ animationDelay: "10.5s" }}
         >
-          <section className="section vision-section bg-light" id="clothing">
+          {/* <h1 className="logo-text">eluno</h1> */}
+          <section className="vision-section bg-light" id="clothing">
             <Container fluid>
               <h1 className="most-titles title text-dark text-center">
                 the gear
               </h1>
               <Row>
-                <Col className="center">
+                <Col className="center" xl="4">
                   <img src="/images/hoodie.png" alt="hoodie" width="549.99" />
                   <h2 className="text-center gear-text">the eluno hoodie</h2>
                 </Col>
                 <Col className="center">
-                  <img
-                    src="/images/tee.png"
-                    alt="t-shirt"
-                    width="549.99"
-                    height="733.32"
-                  />
-                  <h2 className="text-center gear-text">the eluno tee</h2>
+                  <p className="description">
+                    <b className="aqua-text">Eluno</b> — one of one clothing
+                    infused with your favorite NFTs.
+                    <br />
+                    <br />
+                    You built a legendary collection that lives in your wallet.
+                    The communities are epic and utilities are next level.
+                    <br />
+                    <br />
+                    But outside of Twitter, where do you brag about your
+                    collection? Please don’t tell us you pull out MetaMask and
+                    login to show off your collection in public…
+                    <br />
+                    <br />
+                    <b>Our mission is simple:</b> your NFT on the highest
+                    quality materials crypto can buy. This is not an off the
+                    rack blank or a screen printed collection logo that is one
+                    of 10,000…
+                    <br />
+                    <br />
+                    Each piece we make, like your NFT, is a one of one. It’s
+                    hand sewn from rolls of fabric we select and sewn based on a
+                    pattern designed from the ground up. It’s as if all our
+                    favorite hoodies formed a partnership and dropped a hoodie.
+                    <br />
+                    <br />
+                    You will be the only one on the planet to own the merch
+                    we’ve made for you. How do we know this? Because you are the
+                    only one in the galaxy with this NFT in your wallet and the
+                    ledger never lies.
+                    <br />
+                    <br />
+                    One of One, Made by <b className="aqua-text">Eluno</b>
+                  </p>
                 </Col>
               </Row>
             </Container>

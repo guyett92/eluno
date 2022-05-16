@@ -39,19 +39,6 @@ a {
   margin: 0 0 0 0;
 }
 
-.hero-section {
-  height: 100vh;
-  background-image: url("/images/city.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  color: white;
-}
-
-.section {
-  position: relative;
-}
-
 .white-section {
   background-color: #fff !important;
 }
@@ -75,71 +62,6 @@ a {
   color: #00e0dd !important;
 }
 
-.features,
-.quality-section,
-.exc-section {
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* Height of the header */
-  height: calc(100vh - 118px);
-}
-
-.features {
-  background-color: #1f1f1f !important;
-  background-image: url("/images/nfts.jpg");
-}
-
-.feature-section {
-  position: relative;
-}
-
-.feature-text {
-  padding-top: 2rem;
-  padding-left: 2rem;
-  width: 1200px;
-}
-
-.quality-section {
-  background-image: url("/images/background-hoodie.jpg");
-}
-
-.quality-section > div {
-  background-image: linear-gradient(to right, rgb(0, 0, 0), rgb(0, 0, 0, 0));
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding-left: 2rem;
-}
-
-.quality-text,
-.exc-text {
-  margin-bottom: 4rem;
-  width: 1000px;
-}
-
-.exc-section {
-  background-image: url("/images/nails.jpg");
-}
-
-.exc-section > div {
-  background-image: linear-gradient(to left, rgb(0, 0, 0), rgb(0, 0, 0, 0));
-  height: 100%;
-  text-align: right;
-  display: flex;
-  align-items: flex-end;
-  justify-content: right;
-  padding-right: 2rem;
-}
-
-.image-container {
-  height: 32rem;
-  display: grid;
-}
-
-.image-container > img {
-  align-self: center;
-}
-
 .faq-section {
   max-width: 1300px;
   margin-left: auto;
@@ -147,6 +69,7 @@ a {
   padding-left: 12px;
   padding-right: 12px;
   margin-bottom: 6rem;
+  margin-top: 1rem;
 }
 
 .border-container {
@@ -241,28 +164,11 @@ a {
   color: rgb(255, 255, 255, 0.7) !important;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 84vh;
-}
-
-.flex-container > h1 {
-  font-size: 10em;
-  font-family: "UniNeueBold";
-}
-
-.hero-footer {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
 .center {
   justify-content: center;
+  align-items: center;
   display: grid;
+  margin: 1rem;
 }
 
 .image-container-no-overflow {
@@ -279,10 +185,6 @@ a {
   padding-top: 2rem;
   padding-bottom: 2rem;
   font-family: "Avenir";
-}
-
-.not-visible {
-  display: none !important;
 }
 
 .white {
@@ -361,8 +263,26 @@ a {
 
 .index-line {
   width: 90%;
-  color: white;
+  background-image: linear-gradient(90deg, #fff, #00e0dd);
+  height: 3px !important;
   margin: 1.5rem auto;
+}
+
+.index-line:nth-of-type(2) {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.description {
+  color: black;
+  font-size: 1.3rem;
+}
+
+.logo-text {
+  position: absolute;
+  text-align: left;
+  top: 8px;
+  left: 16px;
 }
 
 @-webkit-keyframes fadein {
@@ -401,126 +321,42 @@ a {
   }
 }
 
-/* @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-} */
-
-@media screen and (max-width: 1900px) {
-  .feature-text {
-    width: 900px;
-  }
-}
-
 @media screen and (max-width: 1600px) {
-  .feature-text {
-    width: 860px;
-  }
-
   .center > img {
     width: 400.062726px;
     height: 533.416968px;
   }
 }
 
-@media screen and (max-width: 1370px) {
-  .image-container > img {
-    align-self: center;
-  }
-}
-
-@media screen and (max-width: 1275px) {
-  .space-center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
 @media screen and (max-width: 1100px) {
-  .quality-text,
-  .exc-text {
-    width: 100%;
-  }
-
-  .quality-section > div,
-  .exc-section > div {
-    padding-left: 2rem;
-    padding-right: 2rem;
+  .faq-section {
+    margin-top: 5rem;
   }
 }
 
 @media screen and (max-width: 875px) {
-  .feature-text {
-    width: 100%;
-    padding-right: 2rem;
-  }
   .center > img {
     width: 274.995px;
     height: 366.66px;
   }
-}
-
-@media screen and (max-height: 800px) and (max-width: 450px) {
-  .quality-section {
-    height: 1000px !important;
-  }
-}
-
-@media screen and (max-width: 585px) {
-  .image-container > img {
-    height: 300px !important;
+  .description {
+    font-size: 1rem;
   }
 }
 
 @media screen and (max-width: 525px) {
-  .flex-container > h1 {
-    font-size: 5em !important;
-  }
-
-  .feature-text > h2 {
-    font-size: 1.4rem;
-  }
-
   .most-titles {
     font-size: 3rem;
   }
 
-  .image-container {
-    height: 20rem;
-  }
-
-  .image-container > img {
-    height: initial !important;
-  }
-
-  .aaron > img {
-    width: 200px;
-  }
-
-  .jonah > img {
-    width: 200px;
-  }
-
-  .anayo > img {
-    width: 200px;
+  .center {
+    margin: 0.5rem;
   }
 }
 
 @media screen and (max-width: 300px) {
   .title {
     font-size: 3rem;
-  }
-
-  .feature-text > h2 {
-    font-size: 1.3rem;
   }
 
   .center > img {
@@ -541,71 +377,10 @@ a {
   .center > h2 {
     margin-left: 0.5rem;
   }
-
-  .features,
-  .exc-section {
-    height: auto;
-  }
-  .quality-section {
-    height: 1200px !important;
-  }
-
-  .image-container > img {
-    width: 200px;
-  }
-}
-
-@media screen and (max-height: 1100px) {
-  .vision-section {
-    height: auto;
-  }
-}
-
-@media screen and (max-height: 945px) {
-  .flex-container {
-    height: 80vh;
-  }
-  .features {
-    background-image: none;
-  }
-}
-
-@media screen and (max-height: 797px) {
-  .flex-container {
-    height: 77vh;
-  }
-}
-
-@media screen and (max-height: 667px) {
-  .flex-container {
-    height: 75vh;
-  }
-}
-
-@media screen and (max-height: 1175px) and (max-width: 445px) {
-  .features {
-    background-image: none;
-  }
 }
 
 @media screen and (max-height: 1140px) and (max-width: 598px) {
   .vision-section {
     height: initial;
-  }
-}
-
-@media screen and (max-height: 800px) and (max-width: 1665px) {
-  .features {
-    background-image: none;
-  }
-
-  .features {
-    height: auto;
-  }
-}
-
-@media screen and (max-height: 340px) and (max-width: 569px) {
-  .features {
-    height: 950px;
   }
 }
