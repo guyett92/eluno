@@ -42,9 +42,29 @@ const Order = () => {
   const context = useContext(AppContext);
   const walletContext = useContext(WalletContext);
 
-  // useEffect(() => {
-  //   // getNFTs();
-  // }, []);
+  const getNFTs = async () => {
+    try {
+      console.log(context.store.connectedWallets.metamask);
+      fetch(
+        `https://api.opensea.io/api/v1/assets?owner=${context.store.connectedWallets.metamask}&order_direction=desc&offset=0&limit=20`
+      )
+        .then((res) => res.json())
+        .then(
+          (result) => {
+            console.log(result);
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    getNFTs();
+  }, []);
 
   // TODO: Capture wallet address, contractId, Image, and nftId as part of the order process
   // TODO: Capture NFT contract and verify it as part of the order process
@@ -118,9 +138,10 @@ const Order = () => {
 
   return (
     <Layout pageTitle="eluno | Order">
+      <Header />
       <section className="section">
         <Container>
-          {context.store.products ? (
+          {/* {context.store.products ? (
             <Row className="justify-content-md-center product-text">
               {context.store.products.map((product) => (
                 <Col key={product.id} className="center">
@@ -202,7 +223,7 @@ const Order = () => {
           ) : (
             // TODO: Decide if I need to remove this
             <div>Loading</div>
-          )}
+          )} */}
           {nftsAreLoading && walletContext.store.connectedWallets?.metamask && (
             <div>Loading your NFTs...</div>
           )}
@@ -232,7 +253,6 @@ const Order = () => {
           )}
         </Container>
       </section>
-      <Footer />
     </Layout>
   );
 };

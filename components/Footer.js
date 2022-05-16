@@ -17,7 +17,7 @@ const Footer = () => {
       id: 2,
       title: "About Us",
       child: [
-        { title: "Contact", link: "#faq" },
+        { title: "Terms", link: "/terms" },
         { title: "FAQ", link: "#faq" },
         { title: "Privacy Policy", link: "#faq" },
       ],
