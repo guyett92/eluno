@@ -92,7 +92,7 @@ const Waitlist = (props) => {
         <Modal {...props} toggle={props.onHide} centered>
           <ModalHeader
             className={styles.modalHeader}
-            charCode={<MdOutlineClose />}
+            charCode="x"
             toggle={props.onHide}
           >
             Join Waitlist

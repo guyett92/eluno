@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "../contexts/ContextProvider";
-import OpenseaValidation from "../util/OpenseaValidation";
 
 const Wallet = () => {
   // State
