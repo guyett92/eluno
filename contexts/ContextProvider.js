@@ -17,18 +17,22 @@ export const ContextWrapper = (props) => {
     product: {},
     checkout: {},
     isCartOpen: false,
+    orderInfo: {
+      nftAddress: "",
+      nftName: "",
+    },
   });
 
   const [actions, setActions] = useState({
     // TODO: Separate this from fetchAllProducts
-    createCheckout: async () => {
-      try {
-        const checkout = await client.checkout.create();
-        setStore({ ...store, checkout: checkout });
-      } catch (err) {
-        console.log(err);
-      }
-    },
+    // createCheckout: async () => {
+    //   try {
+    //     setStore({ ...store, checkout: await client.checkout.create() });
+    //     console.log(store.checkout);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // },
     addItemToCart: async (variantId, quantity) => {
       const lineItemsToAdd = [
         {
@@ -47,7 +51,6 @@ export const ContextWrapper = (props) => {
       const products = await client.product.fetchAll();
       const checkout = await client.checkout.create();
       setStore({ ...store, products: products, checkout: checkout });
-      console.log(store);
     },
     fetchProductWithId: async (id) => {
       const product = await client.product.fetch(id);
@@ -58,6 +61,17 @@ export const ContextWrapper = (props) => {
     },
     openCart: () => {
       setStore({ ...store, isCartOpen: true });
+    },
+    updateOrderInfo: (nftAddress, nftName, nftTokenId, walletAddress) => {
+      setStore({
+        ...store,
+        orderInfo: {
+          nftAddress: nftAddress,
+          nftName: nftName,
+          nftTokenId: nftTokenId,
+          walletAddress: walletAddress,
+        },
+      });
     },
   });
 

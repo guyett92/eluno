@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext } from "react";
-import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
 import NFT from "../components/NFT";
@@ -16,6 +15,7 @@ import {
 import { AppContext } from "../contexts/ContextProvider";
 import { WalletContext } from "../contexts/WalletContext";
 import axios from "axios";
+import { client } from "../util/shopify";
 
 // TODO: Setup .env
 const airtableApi = "keyjWXvJitkpQrk0V";
@@ -27,7 +27,8 @@ const sizeData = {
   3: "extra-large",
 };
 
-const Order = () => {
+const Order = ({ products }) => {
+  console.log(products);
   const [dropdownOpen, setDropdownOpen] = useState({
     "eluno tee": false,
     "eluno hoodie": false,
@@ -38,23 +39,25 @@ const Order = () => {
   });
   const [nftsAreLoading, setNftsAreLoading] = useState(true);
   const [nfts, setNfts] = useState({});
+  const [fadeout, setFadeout] = useState(false);
+  const [checkoutId, setCheckoutId] = useState("");
 
   const context = useContext(AppContext);
   const walletContext = useContext(WalletContext);
 
   const getNFTs = async () => {
     try {
-      console.log(context.store.connectedWallets.metamask);
+      console.log(context.store.connectedWallets?.metamask);
       fetch(
-        `https://api.opensea.io/api/v1/assets?owner=${context.store.connectedWallets.metamask}&order_direction=desc&offset=0&limit=20`
+        `https://api.opensea.io/api/v1/assets?owner=${context.store.connectedWallets?.metamask}&order_direction=desc&offset=0&limit=20`
       )
         .then((res) => res.json())
         .then(
           (result) => {
-            console.log(result);
+            // console.log(result);
           },
           (err) => {
-            console.log(err);
+            // console.log(err);
           }
         );
     } catch (e) {
@@ -98,6 +101,7 @@ const Order = () => {
         imageUrl: item.meta.image?.url.BIG,
         description: item.meta.description,
         contract: item.contract,
+        neededImageUrl: item.meta.image?.url.ORIGINAL,
       };
     });
     console.log(fetchedItems);
@@ -121,9 +125,14 @@ const Order = () => {
     // console.log(data.records);
   };
 
+  const captureData = () => {
+    console.log("test");
+  };
+
   useEffect(() => {
     // TODO: Create cart as well without breaking this
     context.actions.fetchAllProducts();
+    setCheckoutId(context.store.checkout.id);
   }, []);
 
   useEffect(() => {
@@ -141,9 +150,9 @@ const Order = () => {
       <Header />
       <section className="section">
         <Container>
-          {/* {context.store.products ? (
+          {context.store.products ? (
             <Row className="justify-content-md-center product-text">
-              {context.store.products.map((product) => (
+              {products.map((product) => (
                 <Col key={product.id} className="center">
                   <h1 className="center">{product.title}</h1>
                   <img
@@ -158,6 +167,7 @@ const Order = () => {
                     {`$`}
                     {product.variants[0].price}
                   </p>
+                  <p></p>
                   <Dropdown
                     className="center"
                     isOpen={dropdownOpen[product.title]}
@@ -223,38 +233,119 @@ const Order = () => {
           ) : (
             // TODO: Decide if I need to remove this
             <div>Loading</div>
-          )} */}
+          )}
           {nftsAreLoading && walletContext.store.connectedWallets?.metamask && (
-            <div>Loading your NFTs...</div>
+            <div
+              style={{
+                color: "white",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                minHeight: "80vh",
+              }}
+            >
+              <h1>Loading your NFTs...</h1>
+            </div>
           )}
           {/* Once the NFTs are loaded */}
           {!nftsAreLoading && (
-            <Row className="justify-content-md-center product-text">
-              {/* Double check to see NFTs are available */}
-              {nfts && nfts.length > 0
-                ? nfts.map((nft) => {
+            <>
+              <div
+                className="item-fadeout"
+                id="firstStep"
+                style={{ animationDelay: "2s" }}
+              >
+                <h1
+                  className="item-fadein"
+                  style={{
+                    color: "white",
+                    textAlign: "center",
+                    animationDelay: "0s",
+                  }}
+                >
+                  Step 1: Choose an NFT
+                </h1>
+              </div>
+              <Row
+                className="justify-content-md-center product-text item-fadein"
+                style={{ animationDelay: "3.5s" }}
+              >
+                {/* Double check to see NFTs are available */}
+                {nfts && nfts.length > 0 ? (
+                  nfts.map((nft) => {
                     // Check to see if there is an image uploaded for the collection
                     if (nft.imageUrl) {
                       return (
-                        <Col className="center" key={nft.id}>
+                        <Col
+                          className="center"
+                          key={nft.id}
+                          onClick={() => {
+                            if (context.store.orderInfo?.nftAddress) {
+                              setFadeout(true);
+                            }
+                          }}
+                        >
                           <NFT
                             imgSrc={nft?.imageUrl}
                             name={nft.name}
                             id={nft.id}
                             description={nft.description}
+                            neededImageUrl={nft?.neededImageUrl}
+                            walletAddress={
+                              walletContext.store.connectedWallets?.metamask
+                            }
                           />
                         </Col>
                       );
                     }
                   })
-                : // TODO: Add a component for those that don't have NFTs
-                  "It seems you have no NFTs yet :("}
-            </Row>
+                ) : (
+                  // TODO: Add a component for those that don't have NFTs
+                  <div
+                    style={{
+                      color: "white",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      minHeight: "80vh",
+                    }}
+                  >
+                    <h1>Go get some NFTs!</h1>
+                  </div>
+                )}
+              </Row>
+            </>
           )}
         </Container>
       </section>
+      {!walletContext.store.connectedWallets.metamask && (
+        <div
+          style={{
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "80vh",
+          }}
+        >
+          <h1>Please connect your wallet to begin. 🚀🌕</h1>
+        </div>
+      )}
     </Layout>
   );
 };
 
 export default Order;
+
+export async function getServerSideProps() {
+  const products = await client.product.fetchAll(); // Fetch product
+  const infos = await client.shop.fetchInfo(); // Fetch shop Info if you think about SEO and title and ... to your page
+  const policies = await client.shop.fetchPolicies(); // fetch shop policy if you have any
+  return {
+    props: {
+      infos: JSON.parse(JSON.stringify(infos)),
+      policies: JSON.parse(JSON.stringify(policies)),
+      products: JSON.parse(JSON.stringify(products)),
+    },
+  };
+}

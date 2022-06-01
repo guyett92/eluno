@@ -1,7 +1,17 @@
 import React, { useEffect, useContext, useState } from "react";
+import { AppContext } from "../contexts/ContextProvider";
 
-const NFT = ({ id, imgSrc, name, description }) => {
+const NFT = ({
+  id,
+  imgSrc,
+  name,
+  description,
+  neededImageUrl,
+  walletAddress,
+}) => {
   const [isLoaded, sertIsLoaded] = useState(false);
+  const context = useContext(AppContext);
+
   const onLoad = () => {
     sertIsLoaded(true);
   };
@@ -14,6 +24,14 @@ const NFT = ({ id, imgSrc, name, description }) => {
           margin: "1rem auto",
         }}
         onLoad={onLoad}
+        onClick={() => {
+          context.actions.updateOrderInfo(
+            neededImageUrl,
+            id,
+            name,
+            walletAddress
+          );
+        }}
         src={imgSrc}
         className="image-container"
       />

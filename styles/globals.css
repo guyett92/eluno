@@ -219,7 +219,8 @@ a:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 200px;
+  width: 115px;
+  display: block;
 }
 
 .slide-one {

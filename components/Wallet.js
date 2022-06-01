@@ -6,7 +6,6 @@ import { AppContext } from "../contexts/ContextProvider";
 const Wallet = () => {
   // State
   const [currentAccount, setCurrentAccount] = useState(null);
-  const [currentNFTs, setCurrentNFTs] = useState([]);
   const context = useContext(WalletContext);
 
   // Let's connect to the wallet
@@ -57,6 +56,27 @@ const Wallet = () => {
     }
   };
 
+  const disconnectWalletAction = async () => {
+    try {
+      const accounts = await window.ethereum
+        .request({
+          method: "wallet_requestPermissions",
+          params: [
+            {
+              eth_accounts: {},
+            },
+          ],
+        })
+        .then(() =>
+          ethereum.request({
+            method: "eth_requestAccounts",
+          })
+        );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       {!context.store.walletConnected ? (
@@ -73,10 +93,26 @@ const Wallet = () => {
           </a>
         </div>
       ) : (
-        <div className="truncate white">
-          {/* TODO: When web3modal and walletconnect are added check which wallet to show */}
-          {context.store.connectedWallets?.metamask}
-        </div>
+        // FIXME: Add disconnect wallet button
+        // <div className={`btn`}>
+        //   <a
+        //     className="btn wallet-button"
+        //     role="button"
+        //     onClick={() => {
+        //       checkIfWalletIsConnected();
+        //       disconnectWalletAction();
+        //     }}
+        //   >
+        //     Disconnect{" "}
+        //     <span className="truncate white">
+        //       {context.store.connectedWallets?.metamask}
+        //     </span>
+        //   </a>
+        // </div>
+        // <div className="truncate white">
+        //   {context.store.connectedWallets?.metamask}
+        // </div>
+        ""
       )}
     </>
   );
