@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useReducer } from "react";
 import Client from "shopify-buy";
 
 const client = Client.buildClient({
@@ -7,57 +7,163 @@ const client = Client.buildClient({
   // might be graphql.myshopify.com
 });
 
+const shopReducer = (state, action) => {
+  switch (action.type) {
+    case 'FETCH_ALL_PRODUCTS': {
+      return {
+        ...state,
+        products: action.products,
+      }
+    }
+
+    case 'FETCH_PRODUCT': {
+      return {
+        ...state,
+        product: action.product,
+      }
+    }
+
+    case 'CREATE_CART': {
+      return {
+        ...state,
+        checkout: action.checkout,
+        isCartOpen: true,
+      }
+    }
+
+    case 'OPEN_CART': {
+      return {
+        ...state,
+        checkout: action.checkout,
+        isCartOpen: true,
+      }
+    }
+
+    case 'CLOSE_CART': {
+      return {
+        ...state,
+        isCartOpen: false,
+      }
+    }
+
+    case 'ADD_ITEM': {
+      return {
+        ...state,
+        checkout: action.checkout,
+      }
+    }
+
+    default:
+      return state;
+  }
+}
+
 export const AppContext = createContext(null);
 
-export const ContextWrapper = (props) => {
-  const context = useContext(AppContext);
+const initState = {
+  products: [],
+  product: {},
+  checkout: {},
+  isCartOpen: false,
+};
 
-  const [store, setStore] = useState({
-    products: [],
-    product: {},
-    checkout: {},
-    isCartOpen: false,
-  });
+export const ContextWrapper = (props) => {
+  const [store, dispatch] = useReducer(shopReducer, initState);
+  const { products, product, checkout, isCartOpen } = store;
 
   const [actions, setActions] = useState({
     // TODO: Separate this from fetchAllProducts
     createCheckout: async () => {
       try {
         const checkout = await client.checkout.create();
-        setStore({ ...store, checkout: checkout });
+        dispatch({
+          type: 'CREATE_CART',
+          checkout: checkout,
+          isCartOpen: true,
+        })
       } catch (err) {
         console.log(err);
       }
     },
-    addItemToCart: async (variantId, quantity) => {
+    addItemToCart: async (variantId, quantity, checkoutId) => {
       const lineItemsToAdd = [
         {
           variantId,
           quantity: parseInt(quantity, 10),
         },
       ];
-      console.log(store.checkout);
       const checkout = await client.checkout.addLineItems(
-        store.checkout.id,
+        checkoutId,
         lineItemsToAdd
       );
-      setStore({ ...store, checkout: checkout });
+      dispatch({
+        type: 'ADD_ITEM',
+        checkout: checkout,
+      });
+    },
+    addNftData: async (nftId, shopifyId, lineItemId, walletAddress, img, checkoutId) => {
+      // console.log(nftId, shopifyId, lineItemId, walletAddress, img, checkoutId)
+      console.log(lineItemId);
+      // const lineItemsToUpdate = [
+      //   { id: lineItemId, quantity: 3 }
+      // ]
+
+      // client.checkout.updateLineItems(checkoutId, [{ id: lineItemId }]).then((checkout) => {
+        console.log(checkout.lineItems)
+      // const data = checkout.lineItems[1].customAttributes.type.fieldBaseTypes;
+      const oldData = {};
+      // console.log(data);
+      oldData.key = "nftData"
+      oldData.value = JSON.stringify([{
+        walletAddress,
+        nftId,
+        imgUrl: img,
+      }])
+      console.log(oldData);
+
+      const lineItemsToUpdate = [{ 
+        id: lineItemId, 
+        customAttributes:  {
+          key: oldData.key,
+          value: oldData.value
+        }
+      }]
+
+      client.checkout.updateLineItems(checkoutId, lineItemsToUpdate).then(async (stuff) => {
+        console.log(stuff.lineItems[0].customAttributes[0].key, stuff.lineItems[0].customAttributes[0].value);
+      })
+      // })
+
+      // const input = {customAttributes: [{ key: 'nftData', value: [...value, { nftId, walletAddress, img }] }]}
+
+      // client.checkout.updateLineItems(checkoutId, input).then((checkout) => {
+      //   console.log(checkout.lineItems);
+      //   console.log(111111111111111, checkout.lineItems.customAttributes);
+      // })
     },
     fetchAllProducts: async () => {
       const products = await client.product.fetchAll();
-      const checkout = await client.checkout.create();
-      setStore({ ...store, products: products, checkout: checkout });
-      console.log(store);
+      dispatch({
+        type: 'FETCH_ALL_PRODUCTS',
+        products: products,
+      })
     },
     fetchProductWithId: async (id) => {
       const product = await client.product.fetch(id);
-      setStore({ ...store, product: product });
+      dispatch({
+        type: 'FETCH_PRODUCT',
+        product: product,
+      })
+    },
+    openCart: async (checkoutId) => {
+      const checkout = await client.checkout.fetch(checkoutId);
+      dispatch ({
+        type: 'OPEN_CART',
+        checkout: checkout,
+      })
     },
     closeCart: () => {
-      setStore({ ...store, isCartOpen: false });
-    },
-    openCart: () => {
-      setStore({ ...store, isCartOpen: true });
+      dispatch({type: 'CLOSE_CART'});
     },
   });
 

@@ -92,14 +92,14 @@ const Waitlist = (props) => {
         <Modal {...props} toggle={props.onHide} centered>
           <ModalHeader
             className={styles.modalHeader}
-            charCode={<MdOutlineClose />}
+            // charCode={<MdOutlineClose />}
             toggle={props.onHide}
           >
             Join Waitlist
           </ModalHeader>
           <ModalBody>
             <p>
-              We'd love to get everyone an eluno one day. Right now, we are
+              We`&apos;`d love to get everyone an eluno one day. Right now, we are
               limited. Join our waitlist to get the best chance to get your
               eluno.
             </p>

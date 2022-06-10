@@ -6,7 +6,6 @@ import LoadingIndicator from "../components/LoadingIndicator";
 import Header from "./Header";
 
 const Layout = (props) => {
-  const context = useContext(AppContext);
   const walletContext = useContext(WalletContext);
   const [isLoading, setIsLoading] = useState(true);
 

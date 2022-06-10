@@ -296,6 +296,20 @@ a {
   width: 200px;
 }
 
+.shop-card img {
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px rgb(211,211,211, 0.15);
+}
+
+.addButton {
+  min-width: 100%;
+}
+
+/* .product-container {
+  display: flex;
+  flex-direction: row;
+} */
+
 /* @keyframes gradient {
   0% {
     background-position: 0% 50%;
