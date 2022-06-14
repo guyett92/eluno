@@ -14,7 +14,6 @@ import {
 import { AppContext } from "../contexts/ContextProvider";
 import { WalletContext } from "../contexts/WalletContext";
 import axios from "axios";
-import Quality from "../components/Quality";
 
 // const customNftShopifyId = "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzcyNTMxOTMzNTk1NTM="; // NFT product ID
 
@@ -45,6 +44,10 @@ const Order = () => {
     // console.log(data.records);
   };
 
+  const captureData = () => {
+    console.log("test");
+  };
+
   useEffect(() => {
     // TODO: Create cart as well without breaking this
     context.actions.fetchAllProducts();
@@ -68,6 +71,7 @@ const Order = () => {
 
   return (
     <Layout pageTitle="eluno | Order">
+      <Header />
       <section className="section">
         <Container>
           <>
@@ -87,10 +91,36 @@ const Order = () => {
             </Link>
           }
         </Container>
+        <Footer />
       </section>
-      <Footer />
+      {!walletContext.store.connectedWallets.metamask && (
+        <div
+          style={{
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "80vh",
+          }}
+        >
+          <h1>Please connect your wallet to begin. 🚀🌕</h1>
+        </div>
+      )}
     </Layout>
   );
 };
 
 export default Order;
+
+// export async function getServerSideProps() {
+//   const products = await client.product.fetchAll(); // Fetch product
+//   const infos = await client.shop.fetchInfo(); // Fetch shop Info if you think about SEO and title and ... to your page
+//   const policies = await client.shop.fetchPolicies(); // fetch shop policy if you have any
+//   return {
+//     props: {
+//       infos: JSON.parse(JSON.stringify(infos)),
+//       policies: JSON.parse(JSON.stringify(policies)),
+//       products: JSON.parse(JSON.stringify(products)),
+//     },
+//   };
+// }

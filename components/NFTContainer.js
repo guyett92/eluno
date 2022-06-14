@@ -61,6 +61,7 @@ const NFTContainer = () => {
         };
       });
 
+      // placeholder nft
       // for (let i = 0; i < 30; i++) {
       //   fetchedItems.push({
       //     id: i + 1000,
@@ -170,7 +171,7 @@ const NFTContainer = () => {
           }) :
           <></>
         }
-        {currentNfts > 15 && 
+        {nfts.length >= 15 && 
           <Pagination postsPerPage={postsPerPage} totalPosts={nfts.length} paginate={paginate} />    
         }
       </>

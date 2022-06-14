@@ -147,6 +147,17 @@ export const ContextWrapper = (props) => {
     closeCart: () => {
       dispatch({type: 'CLOSE_CART'});
     },
+    updateOrderInfo: (nftAddress, nftName, nftTokenId, walletAddress) => {
+      setStore({
+        ...store,
+        orderInfo: {
+          nftAddress: nftAddress,
+          nftName: nftName,
+          nftTokenId: nftTokenId,
+          walletAddress: walletAddress,
+        },
+      });
+    },
   });
 
   return (
