@@ -100,19 +100,11 @@ export const ContextWrapper = (props) => {
         type: 'ADD_ITEM',
         checkout: checkout,
       });
-    },
-    addNftData: async (nftId, shopifyId, lineItemId, walletAddress, img, checkoutId) => {
-      // console.log(nftId, shopifyId, lineItemId, walletAddress, img, checkoutId)
-      console.log(lineItemId);
-      // const lineItemsToUpdate = [
-      //   { id: lineItemId, quantity: 3 }
-      // ]
 
-      // client.checkout.updateLineItems(checkoutId, [{ id: lineItemId }]).then((checkout) => {
-        console.log(checkout.lineItems)
-      // const data = checkout.lineItems[1].customAttributes.type.fieldBaseTypes;
+      return checkout;
+    },
+    addNftData: async ({ nftId, shopifyId, lineItemId, walletAddress, img, checkoutId }) => {
       const oldData = {};
-      // console.log(data);
       oldData.key = "nftData"
       oldData.value = JSON.stringify([{
         walletAddress,
@@ -129,17 +121,7 @@ export const ContextWrapper = (props) => {
         }
       }]
 
-      client.checkout.updateLineItems(checkoutId, lineItemsToUpdate).then(async (stuff) => {
-        console.log(stuff.lineItems[0].customAttributes[0].key, stuff.lineItems[0].customAttributes[0].value);
-      })
-      // })
-
-      // const input = {customAttributes: [{ key: 'nftData', value: [...value, { nftId, walletAddress, img }] }]}
-
-      // client.checkout.updateLineItems(checkoutId, input).then((checkout) => {
-      //   console.log(checkout.lineItems);
-      //   console.log(111111111111111, checkout.lineItems.customAttributes);
-      // })
+      await client.checkout.updateLineItems(checkoutId, lineItemsToUpdate);
     },
     fetchAllProducts: async () => {
       const products = await client.product.fetchAll();

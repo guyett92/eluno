@@ -74,39 +74,10 @@ const Order = () => {
             <Row className="product-container justify-content-md-center product-text">
               <ShopifyCarousel />
             </Row>
-            <Row>
+            <Row className="nft-container justify-content-md-center">
               <NFTContainer />
             </Row>
-            {/* <Row>
-              {!nftsAreLoading && (
-                nfts && nfts.length > 0 ? 
-                  nfts.map((nft) => {
-                    if (nft.imageUrl) {
-                      return (
-                        <Col className="center" key={nft.id}>
-                          <ShopCard 
-                            nftId={nft.id}
-                            shopifyId={customNftVariantId}
-                            lineItemId={customNftLineId}
-                            walletAddress={localStorage.getItem("address")}
-                            imgSrc={nft?.imageUrl}
-                            name={nft.name}
-                            price={'349.00'}
-                            checkoutId={context.store.checkout.id}
-                          />
-                        </Col>
-                      )
-                    }
-                  }) :
-                  <></>
-              )}                       
-            </Row> */}
           </>
-
-
-          {/* {nftsAreLoading && walletContext.store.connectedWallets?.metamask && (
-            <div>Loading your NFTs...</div>
-          )} */}
 
           {context.store.checkout.webUrl && 
             <Link

@@ -302,13 +302,23 @@ a {
 }
 
 .addButton {
-  min-width: 100%;
+  max-width: 100%;
 }
 
-/* .product-container {
-  display: flex;
-  flex-direction: row;
-} */
+.product-container {
+  max-width: 45%;
+  margin: auto;
+}
+
+.nft-container {
+  width: 100%;
+}
+
+.nft-card img {
+  max-width: 350px;
+  max-height: 400px;
+}
+
 
 /* @keyframes gradient {
   0% {
