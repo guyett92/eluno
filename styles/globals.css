@@ -225,7 +225,7 @@ a:hover {
 
 .shop-card img {
   border-radius: 10px;
-  box-shadow: 10px 10px 5px rgb(211,211,211, 0.15);
+  box-shadow: 10px 10px 5px rgb(211, 211, 211, 0.15);
 }
 
 .addButton {
@@ -244,10 +244,9 @@ a:hover {
 .nft-card {
   max-width: 325px;
   color: white;
-
 }
 
-.nft-card h1{
+.nft-card h1 {
   font-size: 28px;
 }
 
@@ -255,7 +254,6 @@ a:hover {
   max-width: 325px;
   max-height: 400px;
 }
-
 
 /* @keyframes gradient {
   0% {
@@ -351,8 +349,8 @@ a:hover {
 .logo-text {
   position: absolute;
   text-align: left;
-  top: 8px;
-  left: 16px;
+  top: 1px;
+  left: 10px;
   font-family: "Century Gothic Bold", sans-serif;
 }
 

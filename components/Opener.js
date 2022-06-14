@@ -77,9 +77,13 @@ const Opener = () => {
             </h1>
             <Row>
               <Col className="center" xl="4">
-                <Link passHref href="/order">
-                  <img src="/images/hoodie.png" alt="hoodie" width="549.99" />
-                </Link>
+                <video
+                  src="/images/animation.mp4"
+                  autoPlay
+                  loop
+                  alt="hoodie"
+                  width="549.99"
+                />
                 <h2 className="text-center gear-text">
                   <Link href="/order"> the eluno hoodie</Link>
                   <br />
