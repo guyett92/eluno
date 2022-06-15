@@ -83,6 +83,19 @@ const data = {
       content:
         "We accept BTC, ETH, DOGE, DAI, and USDC. Yes, we accept DOGE. We can also accept fiat currency in the form of debit/credit.",
     },
+    {
+      title: "How does sizing work?",
+      content: (
+        <>
+          Eluno is built to be unisex and meant to fit in line with current
+          trends. <i>All models are wearing size L</i>.
+        </>
+      ),
+    },
+    {
+      title: "How much does the hoodie cost?",
+      content: "$349 USD",
+    },
   ],
 };
 
@@ -94,6 +107,7 @@ const faqStyles = {
   arrowColor: "white",
   transitionDuration: "0.75s",
   rowContentPaddingBottom: "15px",
+  rowContentColor: "white",
 };
 
 const config = {
