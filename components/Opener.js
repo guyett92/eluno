@@ -73,7 +73,7 @@ const Opener = () => {
         <section className="vision-section bg-light" id="clothing">
           <Container fluid>
             <h1 className="most-titles title text-dark text-center">
-              the gear
+              <i>One of One, Made by Eluno</i>
             </h1>
             <Row>
               <Col className="center" xl="4">
@@ -85,9 +85,7 @@ const Opener = () => {
                   width="549.99"
                 />
                 <h2 className="text-center gear-text">
-                  <Link href="/order"> the eluno hoodie</Link>
-                  <br />
-                  <Link href="/order">order now</Link>
+                  <Link href="/order">Order the Eluno Hoodie</Link>
                 </h2>
               </Col>
               <Col className="center">
@@ -100,26 +98,29 @@ const Opener = () => {
                   The communities are epic and utilities are next level.
                   <br />
                   <br />
-                  But outside of Twitter, where do you brag about your
-                  collection? Please don’t tell us you pull out MetaMask and
-                  login to show off your collection in public…
+                  But outside of Twitter,{" "}
+                  <b>where do you flex your collection</b>? Please don&apos;t
+                  tell us you pull out MetaMask and login to show off your
+                  collection in public…
                   <br />
                   <br />
-                  <b>Our mission is simple:</b> your NFT on the highest quality
-                  materials crypto can buy. This is not an off the rack blank or
-                  a screen printed collection logo that is one of 10,000…
+                  Our mission is simple:{" "}
+                  <b>your NFT on the highest quality materials</b> crypto can
+                  buy. This is not an off the rack blank or a screen printed
+                  collection logo…
                   <br />
                   <br />
-                  Each piece we make, like your NFT, is a one of one. It’s hand
-                  sewn from rolls of fabric we select and sewn based on a
-                  pattern designed from the ground up. It’s as if all our
-                  favorite hoodies formed a partnership and dropped a hoodie.
+                  <b>Each piece</b> we make, like your NFT,{" "}
+                  <b>is a one of one</b>. It&apos;s hand sewn from rolls of
+                  fabric we select and sewn based on a pattern designed from the
+                  ground up. It&apos;s as if all of our favorite hoodies joined
+                  forces and dropped a hoodie.
                   <br />
                   <br />
-                  You will be the only one on the planet to own the merch we’ve
-                  made for you. How do we know this? Because you are the only
-                  one in the galaxy with this NFT in your wallet and the ledger
-                  never lies.
+                  <b>You will be the only one</b> on the planet to own the merch
+                  we&apos;ve made for you. How do we know this? Because you are
+                  the only one in the galaxy with this NFT in your wallet and
+                  the ledger never lies.
                   <br />
                   <br />
                   One of One, Made by <b className="aqua-text">Eluno</b>

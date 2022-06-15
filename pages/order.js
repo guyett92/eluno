@@ -1,16 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
-import Link from "next/link"
+import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
 import NFTContainer from "../components/NFTContainer";
 import ShopCard from "../components/ShopCard";
 import ShopifyCarousel from "../components/ShopifyCarousel";
-import {
-  Container,
-  Row,
-  Col,
-} from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import { AppContext } from "../contexts/ContextProvider";
 import { WalletContext } from "../contexts/WalletContext";
 import axios from "axios";
@@ -62,7 +58,7 @@ const Order = () => {
     // console.log('CONTEXT', context);
     // console.log('LINE ITEMS', context.store.checkout.lineItems);
     if (!localStorage.getItem("checkoutId") && context.store.checkout.id) {
-      localStorage.setItem("checkoutId", context.store.checkout.id)
+      localStorage.setItem("checkoutId", context.store.checkout.id);
     }
     // else {
     //   console.log(context.store.products[1].variants[0].id)
@@ -83,15 +79,12 @@ const Order = () => {
             </Row>
           </>
 
-          {context.store.checkout.webUrl && 
-            <Link
-              href={context.store.checkout.webUrl}
-              passHref>
+          {context.store.checkout.webUrl && (
+            <Link href={context.store.checkout.webUrl} passHref>
               <button>CHECKOUT</button>
             </Link>
-          }
+          )}
         </Container>
-        <Footer />
       </section>
       {!walletContext.store.connectedWallets.metamask && (
         <div
