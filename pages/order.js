@@ -64,9 +64,6 @@ const Order = () => {
     if (!localStorage.getItem("checkoutId") && context.store.checkout.id) {
       localStorage.setItem("checkoutId", context.store.checkout.id)
     }
-    // else {
-    //   console.log(context.store.products[1].variants[0].id)
-    // }
   }, [context]);
 
   return (
