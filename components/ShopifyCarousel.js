@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import ShopCard from "../components/ShopCard";
 import { Carousel } from 'react-responsive-carousel';
+import Link from "next/link";
 import {
   Container,
   Row,
@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { AppContext } from "../contexts/ContextProvider";
 
-const ShopifyCarousel = () => {
+const ShopifyCarousel = ({ confirmedNft }) => {
   const [products, setProducts] = useState([]);
   const [displayPrice, setDisplayPrice] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -22,16 +22,12 @@ const ShopifyCarousel = () => {
   const [dropDownOpen, setDropDownOpen] = useState(false);
   const [clothSize, setClothSize] = useState("");
   const [clothSizeVariant, setClothSizeVariant] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [lineItemCount, setlineItemCount] = useState(0);
   const context = useContext(AppContext);
 
   useEffect(() => {
-    const nonCustomItems = [];
-    context.store.products.map(product => {
-      if (product.title !== 'Custom NFT Clothes') {
-        nonCustomItems.push(product);
-      }
-    })
-    setProducts(nonCustomItems);
+    setProducts(context.store.products);
   }, [context]);
 
   useEffect(() => {
@@ -40,75 +36,121 @@ const ShopifyCarousel = () => {
       setDisplayName(products[0].title);
       setVariants(products[0].variants);
     }
-  }, [products])
+    setlineItemCount(context.store.checkout.lineItems.length);
+  }, [products]);
+
+  const onLoad = () => {
+		setIsLoaded(true);
+	};
+
 
   return (
     <>
-      <Carousel 
-        className="product-carousel"
-        activeIndex={0}
-        showThumbs={false} 
-        infiniteLoop={true}
-        onChange={(i) => {
-          setDisplayPrice(products[i].variants[0].price);
-          setDisplayName(products[i].title);
-          setVariants(products[i].variants);
-        }}
-      >
-        {products.length && 
-          products.map((product, i) => {
-
-            return (
-              <Col key={i} className="center">
-                <ShopCard 
-                  imgSrc={product.images[0].src}
-                  name={product.title}
-                />
-                <p className="text-center price">
-                  {`$${displayPrice}`}
-                </p>
-              </Col>
-            )
-          })
-        }
-      </Carousel>
-      <Dropdown
-        className="center"
-        isOpen={dropDownOpen}
-        toggle={() => setDropDownOpen(!dropDownOpen)}
-      >
-        <DropdownToggle caret>Size</DropdownToggle>
-        <DropdownMenu>
-          {variants && variants.map((variant, i) => {
-            return(
-              <DropdownItem
-                onClick={() => {
-                  setClothSize(variant.title.toLowerCase());
-                  setClothSizeVariant(i);
-                }}
-                key={i}
+      {products.length &&
+        products.map((product, i) => {
+          return (
+            <div key={i} className="center">
+              <h1 className="center">{product.title}</h1>
+              <Carousel 
+                className="product-carousel"
+                activeIndex={0}
+                showThumbs={false} 
+                infiniteLoop={true}
+                dynamicHeight={true}
               >
-                {`${variant.title.toLowerCase()}`}
-              </DropdownItem>
-            )
-          })}
-        </DropdownMenu>
-      </Dropdown>
-      <Button
-				className="addButton"
-				disabled={!clothSize.length}
-				onClick={async () => {
-					await context.actions.addItemToCart(
-						variants[clothSizeVariant].id,
-						1,
-						context.store.checkout.id,
-					)
-				}}
-			>
-				{dropDownOpen
-					? `Choose a Size`
-					: `Add ${clothSize} ${displayName} to cart`}
-			</Button>
+                {product.images.map((image, j) => {
+                  return (
+                    <Col key={j} className="product-image-container">
+                      <img
+                        style={{
+                          display: isLoaded ? "block" : "none",
+                          // margin: "1rem auto",
+                        }}
+                        onLoad={ onLoad }
+                        src={ image.src }
+                        // className="image-container"
+                      />
+                    </Col>
+                  )
+                })}
+              </Carousel>
+              <p 
+                className="center"
+                style={{ fontStyle: "italic" }}
+              >
+                All models are wearing size L hoodie.
+              </p>
+              <h2 className="price">{ displayPrice }</h2>
+              <Dropdown
+                className="center"
+                isOpen={dropDownOpen}
+                toggle={() => setDropDownOpen(!dropDownOpen)}
+              >
+                <DropdownToggle caret>{ clothSize.length > 0 ? clothSize : "Size" }</DropdownToggle>
+                <DropdownMenu>
+                  {variants && variants.map((variant, i) => {
+                    return(
+                      <DropdownItem
+                        onClick={() => {
+                          setClothSize(variant.title);
+                          setClothSizeVariant(i);
+                        }}
+                        key={i}
+                      >
+                        {variant.title}
+                      </DropdownItem>
+                    )
+                  })}
+                </DropdownMenu>
+              </Dropdown>
+              <Button
+                className="end-button"
+                disabled={!clothSize.length}
+                onClick={async () => {
+                  const cart = await context.actions.addItemToCart(
+                    variants[clothSizeVariant].id,
+                    1,
+                    context.store.checkout.id,
+                  )
+                  const lineItems = cart.lineItems
+                  let lineItemId;
+                  for (let i = 0; i < lineItems.length; i++) {
+                    if (lineItems[i].variant.title.toLowerCase() === clothSize.toLowerCase()) {
+                      lineItemId = lineItems[i].id;
+                    }
+                  }
+                  await context.actions.addNftData({
+                    nftId: confirmedNft.id, 
+                    shopifyId: variants[clothSizeVariant].id,
+                    lineItemId: lineItemId,
+                    wallet: localStorage.getItem("address"), 
+                    img: confirmedNft?.imageUrl,
+                    checkoutId: context.store.checkout.id,
+                  });
+                  setlineItemCount(cart.lineItems.length);
+                }}
+              >
+                {
+                  dropDownOpen
+                  ? `Choose a Size`
+                  : `Add ${clothSize} ${displayName} to cart`
+                }
+              </Button>
+              {context.store.checkout.webUrl && (
+                <Link href={context.store.checkout.webUrl.length > 0 ? context.store.checkout.webUrl : ""} passHref>
+                  <Button
+                    className="end-button"
+                    disabled={!(lineItemCount > 0 && clothSize.length)}
+                    style={{ display: clothSize.length ? "block" : "none" }}
+                  >
+                    Checkout
+                  </Button>
+                </Link>
+              )}
+            </div>
+          )
+        })
+      }
     </>
   )
 }

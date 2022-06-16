@@ -51,6 +51,7 @@ a:hover {
   padding-bottom: 0px;
   padding-right: 2rem;
   padding-left: 2rem;
+  width: 100%;
 }
 
 .aqua {
@@ -174,13 +175,18 @@ a:hover {
   margin: 1rem;
 }
 
-.image-container {
-  height: 32rem;
+.product-image-container {
+  /* height: 32rem; */
   display: grid;
+  margin: 0;
 }
 
-.image-container > img {
+.product-image-container img {
   align-self: center;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  box-shadow: 10px 10px 5px rgb(211, 211, 211, 0.15);
 }
 
 @media screen and (max-width: 1370px) {
@@ -223,13 +229,14 @@ a:hover {
   display: block;
 }
 
-.shop-card img {
-  border-radius: 10px;
-  box-shadow: 10px 10px 5px rgb(211, 211, 211, 0.15);
+.end-button {
+  max-width: 100%;
+  margin-bottom: 10px;
 }
 
-.addButton {
-  max-width: 100%;
+.clear-cart-btn {
+  position: absolute;
+  right: 100px;
 }
 
 .product-container {
@@ -237,22 +244,44 @@ a:hover {
   margin: auto;
 }
 
+.product-carousel {
+  position: relative;
+}
+
+.white-text {
+  color: white;
+}
+
 .nft-container {
   width: 100%;
 }
 
+.nft-image-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 80%;
+}
+
 .nft-card {
-  max-width: 325px;
+  position: relative;
+  max-width: 350px;
+  min-height: 550px;
   color: white;
+  border-radius: 15px;
 }
 
 .nft-card h1 {
-  font-size: 28px;
+  font-size: 26px;
 }
 
 .nft-card img {
-  max-width: 325px;
-  max-height: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.border-selected {
+  border: solid 5px lightblue;
 }
 
 /* @keyframes gradient {
@@ -472,13 +501,9 @@ a:hover {
   }
 }
 
-.product-text {
-  color: white;
-}
-
 .price {
   font-size: 2rem;
-  margin-top: 1rem;
+  margin: 0 auto 0 auto
 }
 
 .dropdown {

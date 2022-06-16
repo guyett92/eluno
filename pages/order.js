@@ -4,9 +4,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
 import NFTContainer from "../components/NFTContainer";
-import ShopCard from "../components/ShopCard";
 import ShopifyCarousel from "../components/ShopifyCarousel";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { AppContext } from "../contexts/ContextProvider";
 import { WalletContext } from "../contexts/WalletContext";
 import axios from "axios";
@@ -17,6 +16,7 @@ import axios from "axios";
 const airtableApi = "keyjWXvJitkpQrk0V";
 
 const Order = () => {
+  const [confirmedNft, setConfirmedNft] = useState();
   const context = useContext(AppContext);
   const walletContext = useContext(WalletContext);
 
@@ -44,6 +44,13 @@ const Order = () => {
     console.log("test");
   };
 
+  const clearCart = async (e) => {
+    // e.preventDefault();
+    await context.actions.createCheckout();
+    localStorage.setItem("checkoutId", null);
+    setConfirmedNft(null);
+  }
+
   useEffect(() => {
     // TODO: Create cart as well without breaking this
     context.actions.fetchAllProducts();
@@ -57,30 +64,27 @@ const Order = () => {
   useEffect(() => {
     // console.log('CONTEXT', context);
     // console.log('LINE ITEMS', context.store.checkout.lineItems);
-    if (!localStorage.getItem("checkoutId") && context.store.checkout.id) {
+    // if (!localStorage.getItem("checkoutId") && context.store.checkout.id) {
       localStorage.setItem("checkoutId", context.store.checkout.id);
-    }
+    // }
   }, [context]);
 
   return (
     <Layout pageTitle="eluno | Order">
       <Header />
-      <section className="section">
+        <section className="section">
         <Container>
-          <>
-            <Row className="product-container justify-content-md-center product-text">
-              <ShopifyCarousel />
+          <button className="clear-cart-btn" onClick={(e) => clearCart(e)}>Clear Cart</button>
+          {confirmedNft ? 
+            <Row className="product-container justify-content-md-center white-text">
+              <ShopifyCarousel confirmedNft={confirmedNft} />
+            </Row> 
+            :
+            <Row className="nft-container justify-content-md-center white-text">
+              <h1 className="center">Choose a NFT</h1>
+              <NFTContainer setConfirmedNft={setConfirmedNft} />
             </Row>
-            <Row className="nft-container justify-content-md-center">
-              <NFTContainer />
-            </Row>
-          </>
-
-          {context.store.checkout.webUrl && (
-            <Link href={context.store.checkout.webUrl} passHref>
-              <button>CHECKOUT</button>
-            </Link>
-          )}
+          }
         </Container>
       </section>
       {!walletContext.store.connectedWallets.metamask && (
