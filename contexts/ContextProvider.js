@@ -111,7 +111,6 @@ export const ContextWrapper = (props) => {
         nftId,
         imgUrl: img,
       }])
-      console.log(oldData);
 
       const lineItemsToUpdate = [{ 
         id: lineItemId, 
