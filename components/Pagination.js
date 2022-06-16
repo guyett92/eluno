@@ -1,5 +1,4 @@
 import React from "react";
-import { PaginationItem } from "reactstrap";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   const pageNumbers = [];
@@ -10,7 +9,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   }
 
   return (
-    <nav>
+    <nav className="center">
       <ul className="pagination">
         {pageNumbers.map((number) => (
           <li key={number} className="page-item">
