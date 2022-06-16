@@ -278,6 +278,8 @@ a:hover {
 .nft-card img {
   width: 100%;
   height: auto;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px rgb(211, 211, 211, 0.15);
 }
 
 .border-selected {

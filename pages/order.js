@@ -74,7 +74,7 @@ const Order = () => {
       <Header />
         <section className="section">
         <Container>
-          <button className="clear-cart-btn" onClick={(e) => clearCart(e)}>Clear Cart</button>
+          <button className="clear-cart-btn btn btn-secondary" onClick={(e) => clearCart(e)}>Clear Cart</button>
           {confirmedNft ? 
             <Row className="product-container justify-content-md-center white-text">
               <ShopifyCarousel confirmedNft={confirmedNft} />
