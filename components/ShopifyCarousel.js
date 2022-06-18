@@ -35,8 +35,8 @@ const ShopifyCarousel = ({ confirmedNft }) => {
       setDisplayPrice(products[0].variants[0].price);
       setDisplayName(products[0].title);
       setVariants(products[0].variants);
+      setlineItemCount(context.store.checkout.lineItems.length);
     }
-    setlineItemCount(context.store.checkout.lineItems.length);
   }, [products]);
 
   const onLoad = () => {
@@ -75,7 +75,7 @@ const ShopifyCarousel = ({ confirmedNft }) => {
                 })}
               </Carousel>
               <p 
-                className="center"
+                className="center product-text"
                 style={{ fontStyle: "italic" }}
               >
                 All models are wearing size L hoodie.

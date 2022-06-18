@@ -1,21 +1,14 @@
 import React, { useEffect, useContext, useState } from "react";
 import Pagination from "./Pagination";
 import {
-  Container,
-  Row,
   Col,
-  Dropdown,
-  DropdownItem,
-  DropdownToggle,
-  DropdownMenu,
   Button,
-  ButtonToggle
 } from "reactstrap";
 import { WalletContext } from "../contexts/WalletContext";
 import { AppContext } from "../contexts/ContextProvider";
 import axios from "axios";
 
-const NFTContainer = ({ setConfirmedNft }) => {
+const NFTContainer = () => {
   const [nfts, setNfts] = useState({});
   const [selectedNft, setSelectedNft] = useState();
   const [nftIdx, setNftIdx] = useState();
@@ -26,7 +19,7 @@ const NFTContainer = ({ setConfirmedNft }) => {
 
   const walletContext = useContext(WalletContext);
   // const context = useContext(AppContext);
-
+ 
   useEffect(() => {
     const fetchNftByOwner = async () => {
       const { data } = await axios.get(
@@ -50,15 +43,15 @@ const NFTContainer = ({ setConfirmedNft }) => {
       });
 
       // placeholder nft
-      // for (let i = 0; i < 30; i++) {
-      //   fetchedItems.push({
-      //     id: i + 1000,
-      //     name: 'random' + i,
-      //     imageUrl: "http://via.placeholder.com/300",
-      //     description: "desc",
-      //     contract: "contract"
-      //   })
-      // }
+      for (let i = 0; i < 30; i++) {
+        fetchedItems.push({
+          id: i + 1000,
+          name: 'random' + i,
+          imageUrl: "http://via.placeholder.com/300",
+          description: "desc",
+          contract: "contract"
+        })
+      }
 
       setNfts(fetchedItems);
     };
@@ -83,6 +76,10 @@ const NFTContainer = ({ setConfirmedNft }) => {
       setSelectedNft(nft);
       setNftIdx(i);
     }
+  }
+
+  const handleConfirm = () => {
+    localStorage.setItem("nftData", JSON.stringify(selectedNft));
   }
 
   let currentNfts = [];
@@ -116,7 +113,6 @@ const NFTContainer = ({ setConfirmedNft }) => {
                       }}
                       onLoad={ onLoad }
                       src={ nft?.imageUrl }
-                      // className="image-container"
                     />
                   </div>
                 </Col>
@@ -135,9 +131,9 @@ const NFTContainer = ({ setConfirmedNft }) => {
         <Button
           className="confirmButton"
           disabled={!selectedNft}
-          onClick={() => setConfirmedNft(selectedNft)}
+          onClick={handleConfirm}
         >
-          Confirm NFT    
+          <a href="order2">Confirm NFT</a> 
         </Button>
       </>
     )                      
