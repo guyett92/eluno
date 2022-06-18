@@ -47,10 +47,10 @@ const Order = () => {
         <section className="section">
         <Container>
           <ClearCartButton />
-            <Row className="nft-container justify-content-md-center white-text">
-              <h1 className="center">Choose a NFT</h1>
-              <NFTContainer/>
-            </Row>
+          <Row className="nft-container justify-content-md-center white-text">
+            <h1 className="center">Choose a NFT</h1>
+            <NFTContainer/>
+          </Row>
         </Container>
       </section>
       {!walletContext.store.connectedWallets.metamask && (

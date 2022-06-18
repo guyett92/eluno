@@ -64,11 +64,9 @@ const ShopifyCarousel = ({ confirmedNft }) => {
                       <img
                         style={{
                           display: isLoaded ? "block" : "none",
-                          // margin: "1rem auto",
                         }}
                         onLoad={ onLoad }
                         src={ image.src }
-                        // className="image-container"
                       />
                     </Col>
                   )

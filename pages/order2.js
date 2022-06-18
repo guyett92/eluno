@@ -16,7 +16,7 @@ const Order2 = () => {
     } else {
       context.actions.openCart(localStorage.getItem("checkoutId"));
     }
-    setNftData(localStorage.getItem("nftData"));
+    setNftData(JSON.parse(localStorage.getItem("nftData")));
   }, []);
   
   useEffect(() => {
