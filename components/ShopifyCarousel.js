@@ -37,7 +37,7 @@ const ShopifyCarousel = ({ confirmedNft }) => {
       setVariants(products[0].variants);
       setlineItemCount(context.store.checkout.lineItems.length);
     }
-  }, [products]);
+  }, [products, context.store.checkout.lineItems.length]);
 
   const onLoad = () => {
 		setIsLoaded(true);

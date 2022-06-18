@@ -43,15 +43,15 @@ const NFTContainer = () => {
       });
 
       // placeholder nft
-      for (let i = 0; i < 30; i++) {
-        fetchedItems.push({
-          id: i + 1000,
-          name: 'random' + i,
-          imageUrl: "http://via.placeholder.com/300",
-          description: "desc",
-          contract: "contract"
-        })
-      }
+      // for (let i = 0; i < 30; i++) {
+      //   fetchedItems.push({
+      //     id: i + 1000,
+      //     name: 'random' + i,
+      //     imageUrl: "http://via.placeholder.com/300",
+      //     description: "desc",
+      //     contract: "contract"
+      //   })
+      // }
 
       setNfts(fetchedItems);
     };
