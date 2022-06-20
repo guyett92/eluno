@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
-import { AppContext } from "../contexts/ContextProvider";
+import { WalletContext } from "../contexts/WalletContext";
 import OpenseaValidation from "../util/OpenseaValidation";
+import { AppContext } from "../contexts/ContextProvider";
 
 const Wallet = () => {
   // State
   const [currentAccount, setCurrentAccount] = useState(null);
-  const [currentNFTs, setCurrentNFTs] = useState([]);
-  const context = useContext(AppContext);
+  const context = useContext(WalletContext);
 
   // Let's connect to the wallet
   const checkIfWalletIsConnected = async () => {
@@ -35,7 +35,6 @@ const Wallet = () => {
     }
   };
 
-  // FIXME: Convert to a promise
   const connectWalletAction = async () => {
     try {
       const { ethereum } = window;
@@ -57,6 +56,27 @@ const Wallet = () => {
     }
   };
 
+  const disconnectWalletAction = async () => {
+    try {
+      const accounts = await window.ethereum
+        .request({
+          method: "wallet_requestPermissions",
+          params: [
+            {
+              eth_accounts: {},
+            },
+          ],
+        })
+        .then(() =>
+          ethereum.request({
+            method: "eth_requestAccounts",
+          })
+        );
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <>
       {!context.store.walletConnected ? (
@@ -73,9 +93,26 @@ const Wallet = () => {
           </a>
         </div>
       ) : (
-        <div className="truncate white">
-          {context.store.connectedWallets?.metamask}
-        </div>
+        // FIXME: Add disconnect wallet button
+        // <div className={`btn`}>
+        //   <a
+        //     className="btn wallet-button"
+        //     role="button"
+        //     onClick={() => {
+        //       checkIfWalletIsConnected();
+        //       disconnectWalletAction();
+        //     }}
+        //   >
+        //     Disconnect{" "}
+        //     <span className="truncate white">
+        //       {context.store.connectedWallets?.metamask}
+        //     </span>
+        //   </a>
+        // </div>
+        // <div className="truncate white">
+        //   {context.store.connectedWallets?.metamask}
+        // </div>
+        ""
       )}
     </>
   );

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import { AppContext } from "../contexts/ContextProvider";
+import { WalletContext } from "../contexts/WalletContext";
 import LoadingIndicator from "../components/LoadingIndicator";
+import Header from "./Header";
 
 const Layout = (props) => {
-  const context = useContext(AppContext);
+  const walletContext = useContext(WalletContext);
   const [isLoading, setIsLoading] = useState(true);
 
   const checkIfWalletIsConnected = async () => {
@@ -24,7 +26,7 @@ const Layout = (props) => {
         if (accounts.length !== 0) {
           const account = accounts[0];
           console.log("Authorized account found:", account);
-          context.actions.connectWallet(true, accounts[0]);
+          walletContext.actions.connectWallet(true, accounts[0]);
           setIsLoading(false);
         } else {
           console.log("No authorized account found.");
@@ -57,7 +59,19 @@ const Layout = (props) => {
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
       </Head>
-      <div>{isLoading ? <LoadingIndicator /> : props.children}</div>
+      <div>
+        {isLoading ? (
+          <LoadingIndicator />
+        ) : props.pageTitle === "eluno ⭐" ? (
+          props.children
+        ) : (
+          <>
+            {/* TODO: Make this work with order page */}
+            {/* <Header /> */}
+            {props.children}
+          </>
+        )}
+      </div>
     </div>
   );
 };

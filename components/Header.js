@@ -32,8 +32,8 @@ const Header = () => {
   return (
     <div className={`header${sticky ? " sticky" : ""}`}>
       <Navbar expand="md" dark>
-        <NavbarToggler onClick={toggle} />
-        <Collapse className="collapse-header" isOpen={isOpen} navbar>
+        {/* <NavbarToggler onClick={toggle} /> */}
+        {/* <Collapse className="collapse-header" isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink className="nav-link" href="#clothing">
@@ -52,7 +52,7 @@ const Header = () => {
               </NavLink>
             </NavItem>
           </Nav>
-        </Collapse>
+        </Collapse> */}
         <NavbarText>
           <Wallet />
         </NavbarText>

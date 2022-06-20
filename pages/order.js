@@ -1,76 +1,86 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
-import { Container, Row, Col } from "reactstrap";
+import NFTContainer from "../components/NFTContainer";
+import ClearCartButton from "../components/ClearCartButton";
+import { Container, Row, Col, Button } from "reactstrap";
+import { AppContext } from "../contexts/ContextProvider";
+import { WalletContext } from "../contexts/WalletContext";
+import axios from "axios";
+
+// TODO: Setup .env
+const airtableApi = "keyjWXvJitkpQrk0V";
 
 const Order = () => {
-  // const getNFTs = async () => {
-  //   try {
-  //     console.log(currentAccount);
-  //     fetch(
-  //       `https://api.opensea.io/api/v1/assets?owner=${currentAccount}&order_direction=desc&offset=0&limit=20`
-  //     )
-  //       .then((res) => res.json())
-  //       .then(
-  //         (result) => {
-  //           console.log(result);
-  //         },
-  //         (err) => {
-  //           console.log(err);
-  //         }
-  //       );
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+  const context = useContext(AppContext);
+  const walletContext = useContext(WalletContext);
 
-  // useEffect(() => {
-  //   // getNFTs();
-  // }, []);
+  // TODO: Capture wallet address, contractId, Image, and nftId as part of the order process
+  // TODO: Capture NFT contract and verify it as part of the order process
+
+  const checkNftContracts = async () => {
+    // TODO: Check if NFT is part of a contract that we approve. If not, then have them request it in a new process
+  };
+
+  const addNftToPurchaseList = async () => {
+    // TODO: Add NFT to the database we are using to store if they have purchased that NFT before
+  };
+
+  const checkNftForRepurchase = async () => {
+    //TODO: Check if NFT has been purchased before - we might not need this. Not a worry right now
+    const { data } = await axios.get(
+      // https://airtable.com/appaR4vhmUf9FPP3m/api/docs#curl/table:table%201:list
+      `https://api.airtable.com/v0/appaR4vhmUf9FPP3m/Table%201?api_key=${airtableApi}`
+    );
+    // console.log(data.records);
+  };
+
+  const captureData = () => {
+    console.log("test");
+  };
 
   return (
     <Layout pageTitle="eluno | Order">
       <Header />
-      <section className="section">
+        <section className="section">
         <Container>
-          <Row className="justify-content-md-center">
-            <Col className="center">
-              <h1>Hoodie</h1>
-              <div className="image-container-no-overflow">
-                <img src="/images/monstera.jpg" alt="" />
-              </div>
-              <div>
-                <a
-                  className="buy-with-crypto"
-                  href="https://commerce.coinbase.com/checkout/20dc7f60-3272-406e-a092-3e2c4f6f1fca"
-                >
-                  Buy with Crypto
-                </a>
-                <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807"></script>
-              </div>
-            </Col>
-            <Col className="center">
-              <h1>Shirt</h1>
-              <div className="image-container-no-overflow">
-                <img src="/images/eva.jpg" alt="" />
-              </div>
-              <div>
-                <a
-                  className="buy-with-crypto"
-                  href="https://commerce.coinbase.com/checkout/4220b634-dc1b-48fc-ad86-38c540823d24"
-                >
-                  Buy with Crypto
-                </a>
-                <script src="https://commerce.coinbase.com/v1/checkout.js?version=201807"></script>
-              </div>
-            </Col>
+          <ClearCartButton />
+          <Row className="nft-container justify-content-md-center white-text">
+            <h1 className="center">Choose a NFT</h1>
+            <NFTContainer/>
           </Row>
         </Container>
       </section>
-      <Footer />
+      {!walletContext.store.connectedWallets.metamask && (
+        <div
+          style={{
+            color: "white",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "80vh",
+          }}
+        >
+          <h1>Please connect your wallet to begin. 🚀🌕</h1>
+        </div>
+      )}
     </Layout>
   );
 };
 
 export default Order;
+
+// export async function getServerSideProps() {
+//   const products = await client.product.fetchAll(); // Fetch product
+//   const infos = await client.shop.fetchInfo(); // Fetch shop Info if you think about SEO and title and ... to your page
+//   const policies = await client.shop.fetchPolicies(); // fetch shop policy if you have any
+//   return {
+//     props: {
+//       infos: JSON.parse(JSON.stringify(infos)),
+//       policies: JSON.parse(JSON.stringify(policies)),
+//       products: JSON.parse(JSON.stringify(products)),
+//     },
+//   };
+// }
