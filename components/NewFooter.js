@@ -8,9 +8,6 @@ const NewFooter = () => {
           <Col>
             <p>eluno</p>
           </Col>
-          <Col style={{ textAlign: "right" }}>
-            <a href="order">Order Now</a>
-          </Col>
         </Row>
       </Container>
     </footer>

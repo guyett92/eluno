@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Row, Col, Container } from "reactstrap";
 import Link from "next/link";
 
 const Opener = () => {
+  const thirdContainerRef = useRef(null);
+
   useEffect(() => {
     setTimeout(() => {
       const elementExists = document.getElementById("firstContainer");
@@ -11,9 +13,9 @@ const Opener = () => {
       }
     }, 6000);
     setTimeout(() => {
-      const elementExists = document.getElementById("secondContainer");
+      const elementExists = document.getElementById("thirdContainer");
       if (elementExists) {
-        document.getElementById("secondContainer").remove();
+        thirdContainerRef.current.scrollIntoView();
       }
     }, 10000);
   }, []);
@@ -43,7 +45,7 @@ const Opener = () => {
         </h1>
       </div>
       <div
-        className="item-fadeout slide-two"
+        className="slide-two"
         style={{ animationDelay: "8.5s" }}
         id="secondContainer"
       >
@@ -68,6 +70,7 @@ const Opener = () => {
         className="item-fadein slide-three"
         id="thirdContainer"
         style={{ animationDelay: "10.5s" }}
+        ref={thirdContainerRef}
       >
         <h1 className="logo-text">eluno</h1>
         <section className="vision-section bg-light" id="clothing">
@@ -127,6 +130,9 @@ const Opener = () => {
                   One of One, Made by <b className="aqua-text">Eluno</b>
                 </p>
               </Col>
+              {/* <Col style={{ textAlign: "right" }}> */}
+                <a href="order" className="aqua-text">Order Now</a>
+              {/* </Col> */}
             </Row>
           </Container>
         </section>
