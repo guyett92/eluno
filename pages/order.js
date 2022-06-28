@@ -14,6 +14,8 @@ import axios from "axios";
 const airtableApi = "keyjWXvJitkpQrk0V";
 
 const Order = () => {
+  const [claimedNfts, setClaimedNfts] = useState([]);
+
   const context = useContext(AppContext);
   const walletContext = useContext(WalletContext);
 
@@ -46,6 +48,7 @@ const Order = () => {
       <Header />
         <section className="section">
         <Container>
+
           <ClearCartButton />
           <Row className="nft-container justify-content-md-center white-text">
             <h1 className="center">Choose a NFT</h1>

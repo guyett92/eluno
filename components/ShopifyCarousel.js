@@ -14,7 +14,7 @@ import {
 } from "reactstrap";
 import { AppContext } from "../contexts/ContextProvider";
 
-const ShopifyCarousel = ({ confirmedNft }) => {
+const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
   const [products, setProducts] = useState([]);
   const [displayPrice, setDisplayPrice] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -43,6 +43,33 @@ const ShopifyCarousel = ({ confirmedNft }) => {
 		setIsLoaded(true);
 	};
 
+  const handleClick = async () => {
+    if (!cartNfts[confirmedNft.id]) {
+      const cart = await context.actions.addItemToCart(
+        variants[clothSizeVariant].id,
+        1,
+        context.store.checkout.id,
+      )
+      const lineItems = cart.lineItems
+      let lineItemId;
+      for (let i = 0; i < lineItems.length; i++) {
+        if (lineItems[i].variant.title.toLowerCase() === clothSize.toLowerCase()) {
+          lineItemId = lineItems[i].id;
+        }
+      }
+      await context.actions.addNftData({
+        nftId: confirmedNft.id, 
+        shopifyId: variants[clothSizeVariant].id,
+        lineItemId: lineItemId,
+        wallet: localStorage.getItem("address"), 
+        img: confirmedNft?.imageUrl,
+        checkoutId: context.store.checkout.id,
+      });
+      setlineItemCount(cart.lineItems.length);
+    } else {
+      alert("This NFT has been claimed already!")
+    }
+  }
 
   return (
     <>
@@ -104,29 +131,7 @@ const ShopifyCarousel = ({ confirmedNft }) => {
               <Button
                 className="end-button"
                 disabled={!clothSize.length}
-                onClick={async () => {
-                  const cart = await context.actions.addItemToCart(
-                    variants[clothSizeVariant].id,
-                    1,
-                    context.store.checkout.id,
-                  )
-                  const lineItems = cart.lineItems
-                  let lineItemId;
-                  for (let i = 0; i < lineItems.length; i++) {
-                    if (lineItems[i].variant.title.toLowerCase() === clothSize.toLowerCase()) {
-                      lineItemId = lineItems[i].id;
-                    }
-                  }
-                  await context.actions.addNftData({
-                    nftId: confirmedNft.id, 
-                    shopifyId: variants[clothSizeVariant].id,
-                    lineItemId: lineItemId,
-                    wallet: localStorage.getItem("address"), 
-                    img: confirmedNft?.imageUrl,
-                    checkoutId: context.store.checkout.id,
-                  });
-                  setlineItemCount(cart.lineItems.length);
-                }}
+                onClick={handleClick}
               >
                 {
                   dropDownOpen

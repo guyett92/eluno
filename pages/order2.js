@@ -4,8 +4,10 @@ import { Container, Row, Col, Button } from "reactstrap";
 import { AppContext } from "../contexts/ContextProvider";
 import ClearCartButton from "../components/ClearCartButton";
 
+
 const Order2 = () => {
   const [nftData, setNftData] = useState("");
+  const [cartNfts, setCartNfts] = useState([]);
 
   const context = useContext(AppContext);
   
@@ -14,7 +16,15 @@ const Order2 = () => {
     if (!localStorage.getItem("checkoutId") || localStorage.getItem("checkoutId") === "undefined") {
       context.actions.createCheckout();
     } else {
-      context.actions.openCart(localStorage.getItem("checkoutId"));
+      const nfts = {};
+      const getCheckout = async () => {
+        const checkout = await context.actions.openCart(localStorage.getItem("checkoutId"));
+        checkout.lineItems.forEach((item) => {
+          nfts[JSON.parse(item.customAttributes[0].value)[0].nftId] = true;
+        })
+        setCartNfts(nfts);
+      }
+      getCheckout();
     }
     setNftData(JSON.parse(localStorage.getItem("nftData")));
   }, []);
@@ -30,7 +40,7 @@ const Order2 = () => {
       <ClearCartButton />
       <Row className="product-container justify-content-md-center white-text">
         {context.store.checkout.id && 
-          <ShopifyCarousel confirmedNft={nftData} />
+          <ShopifyCarousel confirmedNft={nftData} cartNfts={cartNfts} />
         }  
       </Row> 
     </Container>

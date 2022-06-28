@@ -18,7 +18,6 @@ const NFTContainer = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const walletContext = useContext(WalletContext);
-  // const context = useContext(AppContext);
  
   useEffect(() => {
     const fetchNftByOwner = async () => {
@@ -31,7 +30,7 @@ const NFTContainer = () => {
       setNftsAreLoading(false);
 
       let fetchedItems = data.items.filter((item) => {
-        console.log(item);
+        // console.log(item);
         if (item.meta) {
           item.meta.image.url.BIG
         }
