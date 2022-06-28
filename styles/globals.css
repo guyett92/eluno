@@ -63,6 +63,10 @@ a:hover {
   margin-bottom: 0 !important;
 }
 
+.order-text {
+  font-size: 36px;
+}
+
 .nav-hover:hover {
   color: #00e0dd !important;
 }
