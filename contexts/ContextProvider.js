@@ -103,11 +103,11 @@ export const ContextWrapper = (props) => {
 
       return checkout;
     },
-    addNftData: async ({ nftId, shopifyId, lineItemId, walletAddress, img, checkoutId }) => {
+    addNftData: async ({ nftId, shopifyId, lineItemId, wallet, img, checkoutId }) => {
       const oldData = {};
       oldData.key = "nftData"
       oldData.value = JSON.stringify([{
-        walletAddress,
+        wallet,
         nftId,
         imgUrl: img,
       }])
