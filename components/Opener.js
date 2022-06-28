@@ -131,7 +131,7 @@ const Opener = () => {
                 </p>
               </Col>
               {/* <Col style={{ textAlign: "right" }}> */}
-                <a href="order" className="aqua-text">Order Now</a>
+                <a href="order" className="aqua-text order-text">Order Now</a>
               {/* </Col> */}
             </Row>
           </Container>
