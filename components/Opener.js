@@ -15,7 +15,7 @@ const Opener = () => {
     setTimeout(() => {
       const thirdContainer = document.getElementById("thirdContainer");
       if (thirdContainer) {
-        // thirdContainerRef.current.scrollIntoView();
+        thirdContainerRef.current.scrollIntoView();
       }
     }, 10000);
   }, []);
@@ -57,7 +57,7 @@ const Opener = () => {
             display: "inline",
           }}
         >
-          <img 
+          <img
             src="/images/eluno-logo.png"
             alt="eluno-logo"
             className="eluno-logo"
