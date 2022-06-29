@@ -331,6 +331,11 @@ a:hover {
   align-self: center;
 }
 
+.slide-two .eluno-logo {
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
 .slide-three {
   width: 100%;
   display: flex;
