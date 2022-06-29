@@ -12,7 +12,7 @@ const NFTContainer = () => {
   const [nfts, setNfts] = useState({});
   const [selectedNft, setSelectedNft] = useState();
   const [nftIdx, setNftIdx] = useState();
-  const [nftsAreLoading, setNftsAreLoading] = useState(true);
+  const [nftsAreLoading, setNftsAreLoading] = useState(true);``
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(15);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,28 +21,27 @@ const NFTContainer = () => {
  
   useEffect(() => {
     const fetchNftByOwner = async () => {
+      const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}/getNFTs/`;
       const { data } = await axios.get(
         // TODO: Once OpenSea gives me an API key, change to OpenSea
         // https://ethereum-api.rarible.org/v0.1/doc#operation/getNftItemById
-        `https://ethereum-api.rarible.org/v0.1/nft/items/byOwner?owner=${walletContext.store.connectedWallets.metamask}`
+        // `https://ethereum-api.rarible.org/v0.1/nft/items/byOwner?owner=${walletContext.store.connectedWallets.metamask}`
+        `${baseURL}?owner=${walletContext.store.connectedWallets.metamask}`
       );
   
       setNftsAreLoading(false);
 
-      let fetchedItems = data.items.filter((item) => {
-        // console.log(item);
-        if (item.meta) {
-          item.meta.image.url.BIG
-        }
+      let fetchedItems = data.ownedNfts.filter((item) => {
+        return item.metadata.image.length > 0
       });
-  
+
       fetchedItems = fetchedItems.map((item) => {
         return {
-          id: item.id,
-          name: item.meta.name,
-          imageUrl: item.meta.image?.url.BIG,
-          description: item.meta.description,
-          contract: item.contract,
+          id: parseInt(item.id.tokenId, 16),
+          name: item.title,
+          imageUrl: item.metadata.image.replace("ipfs://", "https://ipfs.io/ipfs/"),
+          description: item.description,
+          contract: item.contract.address,
         };
       });
 
@@ -105,20 +104,19 @@ const NFTContainer = () => {
                   className="nft-card" 
                   key={i}
                   onClick={() => clickNft(nft, i)}
-                  style={{ border : nftIdx === i ? "5px solid blue" : "" }}
+                  style={{
+                    border : nftIdx === i ? "5px solid blue" : "",
+                    backgroundImage: `url("${nft.imageUrl}")`
+                  }}
      
                 >
-                  <h1 className="center">{ nft.name }</h1>
-                  <div className="nft-image-container">
-                    <img
-                      style={{
-                        display: isLoaded ? "block" : "none",
-                        margin: "1rem auto",
-                      }}
-                      onLoad={ onLoad }
+                  <h1>{ nft.name }</h1>
+                    <video
                       src={ nft?.imageUrl }
+                      autoPlay
+                      muted
+                      loop
                     />
-                  </div>
                 </Col>
               )
             }
