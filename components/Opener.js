@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, Button } from "reactstrap";
 import Link from "next/link";
 
 const Opener = () => {
@@ -7,15 +7,15 @@ const Opener = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      const elementExists = document.getElementById("firstContainer");
-      if (elementExists) {
+      const firstContainer = document.getElementById("firstContainer");
+      if (firstContainer) {
         document.getElementById("firstContainer").remove();
       }
     }, 6000);
     setTimeout(() => {
-      const elementExists = document.getElementById("thirdContainer");
-      if (elementExists) {
-        thirdContainerRef.current.scrollIntoView();
+      const thirdContainer = document.getElementById("thirdContainer");
+      if (thirdContainer) {
+        // thirdContainerRef.current.scrollIntoView();
       }
     }, 10000);
   }, []);
@@ -57,6 +57,11 @@ const Opener = () => {
             display: "inline",
           }}
         >
+          <img 
+            src="/images/eluno-logo.png"
+            alt="eluno-logo"
+            className="eluno-logo"
+          />
           <img src="/images/header.jpg" alt="header image" />
           <img
             style={{ animationDelay: "6.5s" }}
@@ -72,11 +77,10 @@ const Opener = () => {
         style={{ animationDelay: "10.5s" }}
         ref={thirdContainerRef}
       >
-        <h1 className="logo-text">eluno</h1>
-        <section className="vision-section bg-light" id="clothing">
+        <section className="vision-section" id="clothing">
           <Container fluid>
-            <h1 className="most-titles title text-dark text-center">
-              <i>One of One, Made by Eluno</i>
+            <h1 className="vision-title text-center">
+              One of One, Made by Eluno
             </h1>
             <Row>
               <Col className="center vid-container" xl="5">
@@ -92,9 +96,9 @@ const Opener = () => {
                   <Link href="/order">Order the Eluno Hoodie</Link>
                 </h2>
               </Col>
-              <Col className="center">
+              <Col>
                 <p className="description">
-                  <b className="aqua-text">Eluno</b> — one of one clothing
+                  Eluno — one of one clothing
                   infused with your favorite NFTs.
                   <br />
                   <br />
@@ -127,14 +131,25 @@ const Opener = () => {
                   the ledger never lies.
                   <br />
                   <br />
-                  One of One, Made by <b className="aqua-text">Eluno</b>
+                  One of One, Made by Eluno
                 </p>
               </Col>
-              {/* <Col style={{ textAlign: "right" }}> */}
-                <a href="order" className="aqua-text order-text">Order Now</a>
-              {/* </Col> */}
+            </Row>
+            <Row className="center">
+              <Link href="/order">
+                <button className="order-button">Order Eluno Hoodie</button>
+              </Link>
             </Row>
           </Container>
+        </section>
+        <section className="eluno-pic-section">
+          <img
+            src="/images/vision-pics.png"
+            alt="vision-pics"
+          />
+          <Link href="/order">
+            <button className="order-button">Order Eluno Hoodie</button>
+          </Link>
         </section>
       </div>
     </div>

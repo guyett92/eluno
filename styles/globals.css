@@ -31,10 +31,12 @@ a:hover {
   box-sizing: border-box;
 }
 
-.title {
+.vision-title {
   font-size: 3.9rem;
+  font-weight: 800px !important;
+  color: green;
   margin-bottom: 1rem !important;
-  font-family: "Century Gothic Bold", sans-serif;
+  font-family: "Century Gothic", sans-serif;
 }
 
 .most-titles {
@@ -48,10 +50,25 @@ a:hover {
 }
 
 .vision-section {
-  padding-bottom: 0px;
+  padding: 4rem 2rem 0 2rem;
+  /* padding-bottom: 0px;
   padding-right: 2rem;
-  padding-left: 2rem;
+  padding-left: 2rem; */
   width: 100%;
+  color: white;
+}
+
+.eluno-pic-section {
+  margin-top: 100px;
+  width: 100%;
+}
+
+.eluno-pic-section img {
+  width: 100%;
+}
+
+.eluno-pic-section button {
+  margin: 5rem 0 5rem 0;
 }
 
 .aqua {
@@ -63,8 +80,18 @@ a:hover {
   margin-bottom: 0 !important;
 }
 
+.order-section {
+  padding-top: 100px;
+}
+
 .order-text {
   font-size: 36px;
+}
+
+.order-button {
+  height: 90px;
+  width: 450px;
+  font-size: 40px;
 }
 
 .nav-hover:hover {
@@ -266,51 +293,39 @@ a:hover {
   }
 }
 
-.nft-image-container {
-  display: flex;
-  align-items: center;
-  position: relative;
-  height: 70%;
-}
-
 .nft-card {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   position: relative;
   max-width: 300px;
-  max-height: 400px;
-  width: 50%;
+  min-height: 400px;
   color: white;
   border-radius: 15px;
+  margin: 50px 15px 15px 15px;
+  padding: 0;
 }
 
 .nft-card h1 {
+  position: absolute;
+  top: -30px;
+  width: 100%;
+  text-align: center;
   font-size: calc(0.75em + 1vmin);
 }
 
-.nft-card img {
-  position: relative;
-  max-width: 100%;
-  max-height: 100%;
-  height: auto;
+.nft-card video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   border-radius: 15px;
-  box-shadow: 10px 10px 5px rgb(211, 211, 211, 0.15);
 }
-
 
 .border-selected {
   border: solid 5px lightblue;
 }
-
-/* @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-} */
 
 .slide-two img {
   width: 100%;
@@ -319,7 +334,8 @@ a:hover {
 
 .slide-three {
   width: 100%;
-  padding-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .slide-one,
@@ -387,8 +403,9 @@ a:hover {
 }
 
 .description {
-  color: black;
   font-size: 1.3rem;
+  margin-top: 1rem;
+  text-align: left;
 }
 
 .logo-text {
@@ -399,10 +416,40 @@ a:hover {
   font-family: "Century Gothic Bold", sans-serif;
 }
 
+.eluno-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px !important;
+}
+
 .new-footer {
-  color: white;
+  position: relative;
+  display: flex;
+  background-color: white;
   font-family: "Century Gothic Bold", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  width: 100%;
+  height: 180px;
+}
+
+.logo-container {
+  width: 50%;
+  height: 100px;
+}
+
+.logo-container .eluno-logo {
+  width: 150px !important;
+}
+
+.team-container {
+  display: flex;
+  width: 50%;
+  padding-top: 10px;
+}
+
+.follow-us {
+  margin-left: 25%;
 }
 
 @-webkit-keyframes fadein {

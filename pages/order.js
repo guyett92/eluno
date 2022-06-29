@@ -3,6 +3,7 @@ import Link from "next/link";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Layout from "../components/Layout";
+import Wallet from "../components/Wallet";
 import NFTContainer from "../components/NFTContainer";
 import ClearCartButton from "../components/ClearCartButton";
 import { Container, Row, Col, Button } from "reactstrap";
@@ -45,30 +46,27 @@ const Order = () => {
 
   return (
     <Layout pageTitle="eluno | Order">
-      <Header />
-        <section className="section">
-        <Container>
-
+      {/* <Header /> */}
+        <section className="order-section">
           <ClearCartButton />
           <Row className="nft-container justify-content-md-center white-text">
             <h1 className="center">Choose a NFT</h1>
-            <NFTContainer/>
+            <Wallet />
+            {!walletContext.store.connectedWallets.metamask && (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "100px"
+                }}
+              >
+                <h1>Please connect your wallet to begin. 🚀🌕</h1>
+              </div>
+            )}
+            <NFTContainer />
           </Row>
-        </Container>
       </section>
-      {!walletContext.store.connectedWallets.metamask && (
-        <div
-          style={{
-            color: "white",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            minHeight: "80vh",
-          }}
-        >
-          <h1>Please connect your wallet to begin. 🚀🌕</h1>
-        </div>
-      )}
     </Layout>
   );
 };
