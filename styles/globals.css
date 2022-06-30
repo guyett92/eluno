@@ -68,7 +68,7 @@ a:hover {
 
 .eluno-pic-section p {
   margin-top: 20px;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .eluno-pic-section button {
@@ -290,9 +290,15 @@ a:hover {
 .order-button {
   height: 80px;
   width: 280px;
-  /* min-width: 100%; */
   font-size: 24px;
   margin: 0 auto;
+}
+
+.disclaimer {
+  margin-top: 20px;
+  max-width: 280px;
+  font-size: 8px;
+  color: #dfe3eb;
 }
 
 .end-button {
@@ -453,7 +459,7 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 120px !important;
+  width: 8% !important;
 }
 
 .fixed-bottom {
