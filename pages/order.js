@@ -17,7 +17,6 @@ const airtableApi = "keyjWXvJitkpQrk0V";
 
 const Order = () => {
   const [nftData, setNftData] = useState("");
-  const [cartNfts, setCartNfts] = useState([]);
   // const [selectedNft, setSelectedNft] = useState();
 
   const context = useContext(AppContext);
@@ -28,15 +27,7 @@ const Order = () => {
     if (!localStorage.getItem("checkoutId") || localStorage.getItem("checkoutId") === "undefined") {
       context.actions.createCheckout();
     } else {
-      const nfts = {};
-      const getCheckout = async () => {
-        const checkout = await context.actions.openCart(localStorage.getItem("checkoutId"));
-        checkout.lineItems.forEach((item) => {
-          nfts[JSON.parse(item.customAttributes[0].value)[0].nftId] = true;
-        })
-        setCartNfts(nfts);
-      }
-      getCheckout();
+      context.actions.openCart(localStorage.getItem("checkoutId"));
     }
   }, []);
 
@@ -70,7 +61,7 @@ const Order = () => {
               && (
                 <>
                   <NFTContainer setNftData={setNftData} />
-                  <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
+                  <Checkout confirmedNft={nftData} />
                 </>
               )
           }
