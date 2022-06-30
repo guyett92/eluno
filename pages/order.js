@@ -66,20 +66,13 @@ const Order = () => {
             >
               <h1>Please connect your wallet to begin. 🚀🌕</h1>
             </div>
-          ) : (
-            context.store.checkout.id && (
+          ) : context.store.checkout.id 
+            && (
               <>
-                <NFTContainer />
-                <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
+                <NFTContainer setNftData={setNftData} />
+                <Checkout confirmedNft={nftData} />
               </>
             )
-            : context.store.checkout.id 
-              && (
-                <>
-                  <NFTContainer setNftData={setNftData} />
-                  <Checkout confirmedNft={nftData} />
-                </>
-              )
           }
         </Row>
       </section>
