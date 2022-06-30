@@ -72,7 +72,7 @@ a:hover {
 }
 
 .eluno-pic-section button {
-  margin: 5rem 0 5rem 0;
+  margin: 0rem 0 0rem 0;
 }
 
 .aqua {
@@ -226,7 +226,7 @@ a:hover {
 
 .clear-cart-btn {
   position: absolute;
-  font-size: 12px;
+  font-size: 16px;
   right: 4%;
   top: 1.5%;
 }
@@ -272,7 +272,7 @@ a:hover {
   .image-container > img {
     height: 300px !important;
   }
-  
+
   .product-text {
     font-size: 12px;
   }
@@ -288,10 +288,11 @@ a:hover {
 }
 
 .order-button {
-  height: 90px;
-  width: 400px;
+  height: 80px;
+  width: 280px;
   /* min-width: 100%; */
-  font-size: 40px;
+  font-size: 24px;
+  margin: 0 auto;
 }
 
 .end-button {
@@ -455,6 +456,20 @@ a:hover {
   width: 120px !important;
 }
 
+.fixed-bottom {
+  bottom: 0% !important;
+  position: fixed !important;
+  color: black;
+}
+
+.logo {
+  position: absolute;
+  left: 4%;
+  top: 0.25%;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
 .new-footer {
   position: relative;
   display: flex;
@@ -480,9 +495,9 @@ a:hover {
   max-width: 150px !important;
 }
 
-/* .team-container p {
-  font-size: 1.25vw;
-} */
+.team-container p {
+  z-index: 1;
+}
 
 .footer-col-container {
   display: flex;
@@ -506,14 +521,24 @@ a:hover {
 
 @media screen and (max-width: 1300px) {
   .team-container p {
-    font-size: 16px !important
-  };
+    font-size: 16px !important;
+  }
 }
 
 @media screen and (max-width: 900px) {
   .team-container p {
-    font-size: 14px !important
-  };
+    font-size: 14px !important;
+  }
+  .logo-container .eluno-logo {
+    width: 120px !important;
+  }
+  .follow-us {
+    font-size: .9rem;
+  }
+  
+  .follow-us img {
+    top: 25px;
+  }
 }
 
 @-webkit-keyframes fadein {
@@ -630,7 +655,7 @@ a:hover {
 
 .price {
   font-size: 2rem;
-  margin: 0 auto 0 auto
+  margin: 0 auto 0 auto;
 }
 
 .dropdown {
