@@ -91,12 +91,6 @@ const Checkout = ({ confirmedNft }) => {
         products.map((product, i) => {
           return (
             <div key={i} className="center">
-              <p
-                className="text-center product-text"
-                style={{ fontStyle: "italic", fontSize: "24px" }}
-              >
-                All models are wearing size L hoodie.
-              </p>
               <h2 className="price">{displayPrice}</h2>
               <Dropdown
                 className="center"
@@ -133,6 +127,7 @@ const Checkout = ({ confirmedNft }) => {
                   // : `Add ${clothSize} ${displayName} to cart`
                 }
               </button>
+              <p className="disclaimer"><i>By ordering this NFT you are attesting to the fact that you own this NFT and are liable for any repercussive actions that come with using the artwork on an Eluno. Eluno, its team, and its partners hold no liability or responsibility for the artwork chosen to be used and can not be held liable for any actions that occur as a result of your purchase.</i></p>
               {context.store.checkout.webUrl && (
                 <Link
                   href={
