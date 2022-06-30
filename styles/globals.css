@@ -49,7 +49,7 @@ a:hover {
 }
 
 .vision-section {
-  padding: 4rem 2rem 0 2rem;
+  padding: 2rem 0 2rem 0 2rem;
   /* padding-bottom: 0px;
   padding-right: 2rem;
   padding-left: 2rem; */
@@ -459,7 +459,7 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 8% !important;
+  width: 8%;
 }
 
 .fixed-bottom {
@@ -470,7 +470,6 @@ a:hover {
 
 .logo {
   position: absolute;
-  left: 4%;
   top: 0.25%;
   -webkit-filter: invert(100%);
   filter: invert(100%);
@@ -487,7 +486,7 @@ a:hover {
   margin: 0;
 }
 
-.new-footer img {
+.new-footer .icons {
   max-width: 25px;
 }
 
@@ -497,12 +496,17 @@ a:hover {
 }
 
 .logo-container .eluno-logo {
-  width: 150px !important;
-  max-width: 150px !important;
+  width: 100px;
 }
 
-.team-container p {
+/* .team-container {
+  display: flex;
+} */
+
+.team-container {
   z-index: 1;
+  font-size: 14px;
+  line-height: 15px;
 }
 
 .footer-col-container {
@@ -536,16 +540,27 @@ a:hover {
     font-size: 14px !important;
   }
   
-  .logo-container .eluno-logo {
-    width: 120px !important;
-  }
-  
   .follow-us {
     font-size: .9rem;
   }
   
   .follow-us img {
     top: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .follow-us {
+    font-size: .8rem;
+  }
+
+  .follow-us img {
+    top: 20px;
+    left: -20px;
+  }
+
+  .new-footer .icons {
+    max-width: 20px;
   }
 }
 

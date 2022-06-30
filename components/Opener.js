@@ -83,18 +83,15 @@ const Opener = () => {
               One of One, Made by Eluno
             </h1>
             <Row>
-              <Col className="center vid-container" xl="5">
+              <Col className="vid-container" xl="5">
                 <video
                   src="/images/animation.mp4"
                   muted
                   autoPlay
                   loop
                   alt="hoodie"
-                  width="100%"
+                  width="98%"
                 />
-                <h2 className="text-center gear-text">
-                  <Link href="/order">Order the Eluno Hoodie</Link>
-                </h2>
               </Col>
               <Col>
                 <p className="description">

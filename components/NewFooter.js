@@ -13,35 +13,37 @@ const NewFooter = ({ orderPage = "" }) => {
           />
         </Link>
       </Col>
-      <Col className="team-container footer-col-container mt-2">
-        <p>
+      <Col className="footer-col-container mt-2">
+        <p className="team-container">
           Team: <br />
-          <a
-            href="https://twitter.com/jonahpeake"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @jonahpeake
-          </a>
-          <br />
-          <a
-            href="https://twitter.com/guyettaaron"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @guyettaaron
-          </a>
-          <br />
-          <a
-            href="https://www.linkedin.com/in/anayon/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @anayo
-          </a>
-          <br />
-          <a>@jovan</a>
-          <br />
+          <div className="team-members mt-1">
+            <a
+              href="https://twitter.com/jonahpeake"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @jonahpeake
+            </a>
+            <br />
+            <a
+              href="https://twitter.com/guyettaaron"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @guyettaaron
+            </a>
+            <br />
+            <a
+              href="https://www.linkedin.com/in/anayon/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @anayo
+            </a>
+            <br />
+            <a>@jovan</a>
+            <br />
+          </div>
         </p>
       </Col>
       <Col className="footer-col-container mt-3">
@@ -52,8 +54,8 @@ const NewFooter = ({ orderPage = "" }) => {
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/icons/twitter.png" alt="twitter" />
-            &nbsp;@eluno_io
+            <img className="icons" src="/icons/twitter.png" alt="twitter" />
+            @eluno_io
           </a>
         </p>
       </Col>
