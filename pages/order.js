@@ -70,8 +70,8 @@ const Order = () => {
             : context.store.checkout.id 
               && (
                 <>
-                  <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
                   <NFTContainer />
+                  <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
                 </>
               )
           }
