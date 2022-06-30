@@ -24,7 +24,10 @@ const Order = () => {
 
   useEffect(() => {
     context.actions.fetchAllProducts();
-    if (!localStorage.getItem("checkoutId") || localStorage.getItem("checkoutId") === "undefined") {
+    if (
+      !localStorage.getItem("checkoutId") ||
+      localStorage.getItem("checkoutId") === "undefined"
+    ) {
       context.actions.createCheckout();
     } else {
       context.actions.openCart(localStorage.getItem("checkoutId"));
@@ -40,22 +43,35 @@ const Order = () => {
   return (
     <Layout pageTitle="eluno | Order">
       <section className="order-section">
+        <Link passHref href="/">
+          <img
+            src="/images/eluno-logo.png"
+            width={100}
+            className="logo"
+            alt="eluno logo"
+          />
+        </Link>
         <ClearCartButton />
         <Row className="nft-container justify-content-md-center white-text">
-          <h1 className="center">Choose a NFT</h1>
+          <h1 className="center">Choose an NFT</h1>
           <Wallet />
-          {!walletContext.store.connectedWallets.metamask 
-            ? (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: "100px"
-                }}
-              >
-                <h1>Please connect your wallet to begin. 🚀🌕</h1>
-              </div>
+          {!walletContext.store.connectedWallets.metamask ? (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginTop: "100px",
+              }}
+            >
+              <h1>Please connect your wallet to begin. 🚀🌕</h1>
+            </div>
+          ) : (
+            context.store.checkout.id && (
+              <>
+                <NFTContainer />
+                <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
+              </>
             )
             : context.store.checkout.id 
               && (
@@ -85,7 +101,6 @@ export default Order;
 //     },
 //   };
 // }
-
 
 // // TODO: Capture wallet address, contractId, Image, and nftId as part of the order process
 // // TODO: Capture NFT contract and verify it as part of the order process
