@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { Carousel } from 'react-responsive-carousel';
 import Link from "next/link";
 import {
   Container,
@@ -13,8 +11,9 @@ import {
   DropdownMenu,
 } from "reactstrap";
 import { AppContext } from "../contexts/ContextProvider";
+import { WalletContext } from "../contexts/WalletContext";
 
-const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
+const Checkout = ({ confirmedNft, cartNfts }) => {
   const [products, setProducts] = useState([]);
   const [displayPrice, setDisplayPrice] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -25,10 +24,11 @@ const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [lineItemCount, setlineItemCount] = useState(0);
   const context = useContext(AppContext);
+  const wallet = useContext(WalletContext);
 
   useEffect(() => {
     setProducts(context.store.products);
-  }, [context]);
+  }, [context, wallet]);
 
   useEffect(() => {
     if (products.length) {
@@ -37,7 +37,7 @@ const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
       setVariants(products[0].variants);
       setlineItemCount(context.store.checkout.lineItems.length);
     }
-  }, [products, context.store.checkout.lineItems.length]);
+  }, [products, context.store]);
 
   const onLoad = () => {
 		setIsLoaded(true);
@@ -61,7 +61,7 @@ const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
         nftId: confirmedNft.id, 
         shopifyId: variants[clothSizeVariant].id,
         lineItemId: lineItemId,
-        wallet: localStorage.getItem("address"), 
+        wallet: wallet.store.connectedWallets.metamask, 
         img: confirmedNft?.imageUrl,
         checkoutId: context.store.checkout.id,
       });
@@ -77,31 +77,9 @@ const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
         products.map((product, i) => {
           return (
             <div key={i} className="center">
-              <h1 className="center">{product.title}</h1>
-              <Carousel 
-                className="product-carousel"
-                activeIndex={0}
-                showThumbs={false} 
-                infiniteLoop={true}
-                dynamicHeight={true}
-              >
-                {product.images.map((image, j) => {
-                  return (
-                    <Col key={j} className="product-image-container">
-                      <img
-                        style={{
-                          display: isLoaded ? "block" : "none",
-                        }}
-                        onLoad={ onLoad }
-                        src={ image.src }
-                      />
-                    </Col>
-                  )
-                })}
-              </Carousel>
               <p 
                 className="center product-text"
-                style={{ fontStyle: "italic" }}
+                style={{ fontStyle: "italic", fontSize: "24px" }}
               >
                 All models are wearing size L hoodie.
               </p>
@@ -128,26 +106,27 @@ const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
                   })}
                 </DropdownMenu>
               </Dropdown>
-              <Button
-                className="end-button"
+              <button
+                className="order-button mt-4"
                 disabled={!clothSize.length}
                 onClick={handleClick}
               >
                 {
                   dropDownOpen
                   ? `Choose a Size`
-                  : `Add ${clothSize} ${displayName} to cart`
+                  : `Add to cart`
+                  // : `Add ${clothSize} ${displayName} to cart`
                 }
-              </Button>
+              </button>
               {context.store.checkout.webUrl && (
                 <Link href={context.store.checkout.webUrl.length > 0 ? context.store.checkout.webUrl : ""} passHref>
-                  <Button
-                    className="end-button"
+                  <button
+                    className="order-button my-5"
                     disabled={!(lineItemCount > 0 && clothSize.length)}
                     style={{ display: clothSize.length ? "block" : "none" }}
                   >
                     Checkout
-                  </Button>
+                  </button>
                 </Link>
               )}
             </div>
@@ -158,4 +137,4 @@ const ShopifyCarousel = ({ confirmedNft, cartNfts }) => {
   )
 }
 
-export default ShopifyCarousel;
+export default Checkout;
