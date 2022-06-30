@@ -103,13 +103,14 @@ export const ContextWrapper = (props) => {
 
       return checkout;
     },
-    addNftData: async ({ nftId, shopifyId, lineItemId, wallet, img, checkoutId }) => {
+    addNftData: async ({ nftId, contractId, shopifyId, lineItemId, wallet, img, checkoutId }) => {
       const oldData = {};
       oldData.key = "nftData"
       oldData.value = JSON.stringify([{
-        wallet,
         nftId,
+        contractId,
         imgUrl: img,
+        wallet,
       }])
 
       const lineItemsToUpdate = [{ 
@@ -147,6 +148,10 @@ export const ContextWrapper = (props) => {
     },
     closeCart: () => {
       dispatch({type: 'CLOSE_CART'});
+    },
+    fetchCart: async (checkoutId) => {
+      const checkout = await client.checkout.fetch(checkoutId);
+      return checkout;
     },
     updateOrderInfo: (nftAddress, nftName, nftTokenId, walletAddress) => {
       setStore({
