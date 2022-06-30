@@ -10,8 +10,8 @@ import axios from "axios";
 
 const NFTContainer = () => {
   const [nfts, setNfts] = useState({});
-  const [selectedNft, setSelectedNft] = useState();
   const [nftIdx, setNftIdx] = useState();
+  const [selectedNft, setSelectedNft] = useState();
   const [nftsAreLoading, setNftsAreLoading] = useState(true);``
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(15);
@@ -130,13 +130,15 @@ const NFTContainer = () => {
             paginate={paginate} 
           />    
         }
-        <Button
-          className="confirmButton"
-          disabled={!selectedNft}
-          onClick={handleConfirm}
-        >
-          <a href="order2">Confirm NFT</a> 
-        </Button>
+        <div className="center w-100">
+          <button
+            className="order-button"
+            disabled={!selectedNft}
+            onClick={handleConfirm}
+          >
+            Confirm NFT
+          </button>
+        </div>
       </>
     )                      
   );

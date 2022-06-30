@@ -312,6 +312,7 @@ a:hover {
   background-position: center;
   position: relative;
   max-width: 300px;
+  min-width: 300px;
   min-height: 400px;
   color: white;
   border-radius: 15px;
