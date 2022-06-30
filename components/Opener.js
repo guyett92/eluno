@@ -98,8 +98,8 @@ const Opener = () => {
               </Col>
               <Col>
                 <p className="description">
-                  Eluno — one of one clothing
-                  infused with your favorite NFTs.
+                  Eluno — <b>one of one apparel</b> infused with your favorite
+                  NFTs.
                   <br />
                   <br />
                   You built a legendary collection that lives in your wallet.
@@ -131,25 +131,28 @@ const Opener = () => {
                   the ledger never lies.
                   <br />
                   <br />
-                  One of One, Made by Eluno
+                  <b>One of One, Made by Eluno</b>
                 </p>
               </Col>
             </Row>
             <Row className="center">
-              <Link href="/order">
-                <button className="order-button">Order Eluno Hoodie</button>
+              <Link href="/order" passHref>
+                <button className="order-button btn btn-secondary">
+                  Order Eluno Hoodie
+                </button>
               </Link>
             </Row>
           </Container>
         </section>
         <section className="eluno-pic-section">
-          <img
-            src="/images/vision-pics.png"
-            alt="vision-pics"
-          />
-          <p>Models wearing size L</p>
-          <Link href="/order">
-            <button className="order-button">Order Eluno Hoodie</button>
+          <img src="/images/vision-pics.png" alt="vision-pics" />
+          <p>
+            <i>All models wearing size L</i>
+          </p>
+          <Link href="/order" passHref>
+            <button className="order-button btn btn-secondary">
+              Order Eluno Hoodie
+            </button>
           </Link>
         </section>
       </div>

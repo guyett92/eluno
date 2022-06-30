@@ -55,12 +55,14 @@ const Order = () => {
   return (
     <Layout pageTitle="eluno | Order">
       <section className="order-section">
-        <img
-          src="/images/eluno-logo.png"
-          width={100}
-          className="logo"
-          alt="eluno logo"
-        />
+        <Link passHref href="/">
+          <img
+            src="/images/eluno-logo.png"
+            width={100}
+            className="logo"
+            alt="eluno logo"
+          />
+        </Link>
         <ClearCartButton />
         <Row className="nft-container justify-content-md-center white-text">
           <h1 className="center">Choose an NFT</h1>

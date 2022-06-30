@@ -1,14 +1,17 @@
 import { Col, Container, Row } from "reactstrap";
+import Link from "next/link";
 
 const NewFooter = ({ orderPage = "" }) => {
   return (
     <Row className={`new-footer ${orderPage}`}>
       <Col className="logo-container footer-col-container">
-        <img
-          src="/images/eluno-logo.png"
-          alt="eluno-logo"
-          className="eluno-logo"
-        />
+        <Link passHref href="/">
+          <img
+            src="/images/eluno-logo.png"
+            alt="eluno-logo"
+            className="eluno-logo"
+          />
+        </Link>
       </Col>
       <Col className="team-container footer-col-container mt-2">
         <p>
