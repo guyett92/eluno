@@ -54,23 +54,24 @@ const Order = () => {
         <Row className="nft-container justify-content-md-center white-text">
           <h1 className="center">Choose a NFT</h1>
           <Wallet />
-          {!walletContext.store.connectedWallets.metamask && (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginTop: "100px"
-              }}
-            >
-              <h1>Please connect your wallet to begin. 🚀🌕</h1>
-            </div>
-          )}
+          {!walletContext.store.connectedWallets.metamask 
+            ? (
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginTop: "100px"
+                }}
+              >
+                <h1>Please connect your wallet to begin. 🚀🌕</h1>
+              </div>
+            )
+            : context.store.checkout.id 
+              && <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
+          }
           <NFTContainer />
         </Row>
-        {context.store.checkout.id && 
-          <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
-        }  
       </section>
     </Layout>
   );
