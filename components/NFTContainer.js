@@ -8,7 +8,7 @@ import { WalletContext } from "../contexts/WalletContext";
 import { AppContext } from "../contexts/ContextProvider";
 import axios from "axios";
 
-const NFTContainer = () => {
+const NFTContainer = ({ setNftData }) => {
   const [nfts, setNfts] = useState({});
   const [nftIdx, setNftIdx] = useState();
   const [selectedNft, setSelectedNft] = useState();
@@ -82,7 +82,7 @@ const NFTContainer = () => {
   }
 
   const handleConfirm = () => {
-    localStorage.setItem("nftData", JSON.stringify(selectedNft));
+    setNftData(selectedNft);
   }
 
   let currentNfts = [];

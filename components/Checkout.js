@@ -14,7 +14,7 @@ import { AppContext } from "../contexts/ContextProvider";
 import { WalletContext } from "../contexts/WalletContext";
 import NewFooter from "./NewFooter";
 
-const Checkout = ({ confirmedNft, cartNfts }) => {
+const Checkout = ({ confirmedNft }) => {
   const [products, setProducts] = useState([]);
   const [displayPrice, setDisplayPrice] = useState("");
   const [displayName, setDisplayName] = useState("");
@@ -24,6 +24,7 @@ const Checkout = ({ confirmedNft, cartNfts }) => {
   const [clothSizeVariant, setClothSizeVariant] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [lineItemCount, setlineItemCount] = useState(0);
+  // const [cartNfts, setCartNfts] = useState([]);
   const context = useContext(AppContext);
   const wallet = useContext(WalletContext);
 
@@ -45,7 +46,15 @@ const Checkout = ({ confirmedNft, cartNfts }) => {
   };
 
   const handleClick = async () => {
-    if (!cartNfts[confirmedNft.id]) {
+    const cartNfts = {};
+    const checkout = await context.actions.fetchCart(localStorage.getItem("checkoutId"));
+    if (checkout.lineItems.length > 0) {
+      checkout.lineItems.forEach((item) => {
+        cartNfts[JSON.parse(item.customAttributes[0].value)[0].contractId] = true;
+      })
+    }
+
+    if (!cartNfts[confirmedNft.contract]) {
       const cart = await context.actions.addItemToCart(
         variants[clothSizeVariant].id,
         1,
@@ -60,8 +69,10 @@ const Checkout = ({ confirmedNft, cartNfts }) => {
           lineItemId = lineItems[i].id;
         }
       }
+
       await context.actions.addNftData({
         nftId: confirmedNft.id,
+        contractId: confirmedNft.contract,
         shopifyId: variants[clothSizeVariant].id,
         lineItemId: lineItemId,
         wallet: wallet.store.connectedWallets.metamask,
@@ -133,8 +144,8 @@ const Checkout = ({ confirmedNft, cartNfts }) => {
                 >
                   <button
                     className="order-button my-4 btn btn-success"
-                    disabled={!(lineItemCount > 0 && clothSize.length)}
-                    style={{ display: clothSize.length ? "block" : "none" }}
+                    disabled={!lineItemCount > 0}
+                    style={{ display: lineItemCount > 0 ? "block" : "none" }}
                   >
                     Checkout
                   </button>

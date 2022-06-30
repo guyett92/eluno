@@ -495,9 +495,9 @@ a:hover {
   max-width: 150px !important;
 }
 
-/* .team-container p {
-  font-size: 1.25vw;
-} */
+.team-container p {
+  z-index: 1;
+}
 
 .footer-col-container {
   display: flex;
@@ -528,6 +528,18 @@ a:hover {
 @media screen and (max-width: 900px) {
   .team-container p {
     font-size: 14px !important;
+  }
+  
+  .logo-container .eluno-logo {
+    width: 120px !important;
+  }
+  
+  .follow-us {
+    font-size: .9rem;
+  }
+  
+  .follow-us img {
+    top: 25px;
   }
 }
 

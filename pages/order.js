@@ -17,7 +17,6 @@ const airtableApi = "keyjWXvJitkpQrk0V";
 
 const Order = () => {
   const [nftData, setNftData] = useState("");
-  const [cartNfts, setCartNfts] = useState([]);
   // const [selectedNft, setSelectedNft] = useState();
 
   const context = useContext(AppContext);
@@ -31,19 +30,8 @@ const Order = () => {
     ) {
       context.actions.createCheckout();
     } else {
-      const nfts = {};
-      const getCheckout = async () => {
-        const checkout = await context.actions.openCart(
-          localStorage.getItem("checkoutId")
-        );
-        checkout.lineItems.forEach((item) => {
-          nfts[JSON.parse(item.customAttributes[0].value)[0].nftId] = true;
-        });
-        setCartNfts(nfts);
-      };
-      getCheckout();
+      context.actions.openCart(localStorage.getItem("checkoutId"));
     }
-    setNftData(JSON.parse(localStorage.getItem("nftData")));
   }, []);
 
   useEffect(() => {
@@ -78,14 +66,14 @@ const Order = () => {
             >
               <h1>Please connect your wallet to begin. 🚀🌕</h1>
             </div>
-          ) : (
-            context.store.checkout.id && (
+          ) : context.store.checkout.id 
+            && (
               <>
-                <NFTContainer />
-                <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
+                <NFTContainer setNftData={setNftData} />
+                <Checkout confirmedNft={nftData} />
               </>
             )
-          )}
+          }
         </Row>
       </section>
     </Layout>
