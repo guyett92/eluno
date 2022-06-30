@@ -141,7 +141,9 @@ export const ContextWrapper = (props) => {
       dispatch ({
         type: 'OPEN_CART',
         checkout: checkout,
-      })
+      });
+
+      return checkout;
     },
     closeCart: () => {
       dispatch({type: 'CLOSE_CART'});
