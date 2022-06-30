@@ -66,6 +66,11 @@ a:hover {
   width: 100%;
 }
 
+.eluno-pic-section p {
+  margin-top: 20px;
+  font-size: 28px;
+}
+
 .eluno-pic-section button {
   margin: 5rem 0 5rem 0;
 }
@@ -77,20 +82,6 @@ a:hover {
 .aqua-text {
   color: #00e0dd !important;
   margin-bottom: 0 !important;
-}
-
-.order-section {
-  padding-top: 100px;
-}
-
-.order-text {
-  font-size: 36px;
-}
-
-.order-button {
-  height: 90px;
-  width: 450px;
-  font-size: 40px;
 }
 
 .nav-hover:hover {
@@ -233,11 +224,6 @@ a:hover {
   display: block;
 }
 
-.end-button {
-  max-width: 100%;
-  margin-bottom: 10px;
-}
-
 .clear-cart-btn {
   position: absolute;
   font-size: 12px;
@@ -292,6 +278,34 @@ a:hover {
   }
 }
 
+.order-section {
+  padding-top: 100px;
+  color: white;
+}
+
+.order-text {
+  font-size: 36px;
+}
+
+.order-button {
+  height: 90px;
+  width: 400px;
+  /* min-width: 100%; */
+  font-size: 40px;
+}
+
+.end-button {
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.nft-container {
+  max-width: 100vw;
+  margin: 0;
+  align-items: center;
+  justify-content: center !important;
+}
+
 .nft-card {
   background-size: cover;
   background-repeat: no-repeat;
@@ -307,7 +321,7 @@ a:hover {
 
 .nft-card h1 {
   position: absolute;
-  top: -30px;
+  top: -40px;
   width: 100%;
   text-align: center;
   font-size: calc(0.75em + 1vmin);
@@ -320,6 +334,19 @@ a:hover {
   width: 100%;
   height: 100%;
   border-radius: 15px;
+}
+
+.checkout-container {
+  width: 100%;
+}
+
+.checkout-container {
+  text-align: center;
+}
+
+.checkout-container p {
+  margin-top: 20px;
+  font-size: 26px;
 }
 
 .border-selected {
@@ -434,7 +461,12 @@ a:hover {
   font-family: "Century Gothic Bold", sans-serif;
   font-size: 1.3rem;
   width: 100%;
-  height: 180px;
+  height: auto;
+  margin: 0;
+}
+
+.new-footer img {
+  max-width: 25px;
 }
 
 .logo-container {
@@ -444,16 +476,43 @@ a:hover {
 
 .logo-container .eluno-logo {
   width: 150px !important;
+  max-width: 150px !important;
 }
 
-.team-container {
+/* .team-container p {
+  font-size: 1.25vw;
+} */
+
+.footer-col-container {
   display: flex;
-  width: 50%;
-  padding-top: 10px;
+}
+
+.icons {
+  position: relative;
+  left: 5px;
 }
 
 .follow-us {
+  position: relative;
   margin-left: 25%;
+}
+
+.follow-us img {
+  position: absolute;
+  left: -25px;
+  top: 36px;
+}
+
+@media screen and (max-width: 1300px) {
+  .team-container p {
+    font-size: 16px !important
+  };
+}
+
+@media screen and (max-width: 900px) {
+  .team-container p {
+    font-size: 14px !important
+  };
 }
 
 @-webkit-keyframes fadein {
