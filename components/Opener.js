@@ -147,6 +147,7 @@ const Opener = () => {
             src="/images/vision-pics.png"
             alt="vision-pics"
           />
+          <p>Models wearing size L</p>
           <Link href="/order">
             <button className="order-button">Order Eluno Hoodie</button>
           </Link>
