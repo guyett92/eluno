@@ -41,6 +41,7 @@ const Layout = (props) => {
 
   useEffect(() => {
     checkIfWalletIsConnected();
+    window.scrollTo(0, 0);
   }, []);
 
   return (

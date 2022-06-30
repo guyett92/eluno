@@ -20,7 +20,7 @@ const Index = () => {
       {/* {isLoaded && <Header />} */}
       <Opener />
       <FAQ />
-      <hr className="index-line" />
+      {/* <hr className="index-line" /> */}
       {/* <Footer /> */}
       <NewFooter />
     </Layout>
