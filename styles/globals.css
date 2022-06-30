@@ -369,6 +369,7 @@ a:hover {
 .slide-two .eluno-logo {
   -webkit-filter: invert(100%);
   filter: invert(100%);
+  width: 8% !important;
 }
 
 .slide-three {
@@ -459,7 +460,6 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 8%;
 }
 
 .fixed-bottom {
