@@ -19,6 +19,11 @@ const data = {
         "We make everything by hand in small batches. We are obsessed with quality and we want to control every step of production. ",
     },
     {
+      title: "When will I receive my order?",
+      content:
+        "Once the drop sells out we will go into production! At that point, it will take around 30-45 days to hand sew and print every hoodie. ",
+    },
+    {
       title: "Can I use any NFT in my wallet?",
       content: (
         <>
