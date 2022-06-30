@@ -38,7 +38,6 @@ const Order = () => {
       }
       getCheckout();
     }
-    setNftData(JSON.parse(localStorage.getItem("nftData")));
   }, []);
 
   useEffect(() => {
@@ -70,7 +69,7 @@ const Order = () => {
             : context.store.checkout.id 
               && (
                 <>
-                  <NFTContainer />
+                  <NFTContainer setNftData={setNftData} />
                   <Checkout confirmedNft={nftData} cartNfts={cartNfts} />
                 </>
               )

@@ -82,7 +82,7 @@ const NFTContainer = () => {
   }
 
   const handleConfirm = () => {
-    localStorage.setItem("nftData", JSON.stringify(selectedNft));
+    setNftData(JSON.stringify(selectedNft));
   }
 
   let currentNfts = [];
