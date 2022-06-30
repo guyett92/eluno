@@ -9,22 +9,23 @@ const ClearCartButton = () => {
     if (context.store.checkout.lineItems) {
       setlineItemCount(context.store.checkout.lineItems.length);
     }
-  }, [context.store])
-
+  }, [context.store]);
 
   const clearCart = async () => {
     await context.actions.createCheckout();
     localStorage.setItem("checkoutId", null);
-  }
-  
+  };
+
   return (
     <>
-      {lineItemCount > 0 && 
-        <button 
-          className="clear-cart-btn btn btn-secondary" 
-          onClick={(e) => clearCart(e)}>Clear Cart
+      {lineItemCount > 0 && (
+        <button
+          className="clear-cart-btn btn btn-danger"
+          onClick={(e) => clearCart(e)}
+        >
+          Clear Cart
         </button>
-      }
+      )}
     </>
   );
 };

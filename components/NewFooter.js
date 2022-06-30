@@ -1,41 +1,60 @@
 import { Col, Container, Row } from "reactstrap";
+import Link from "next/link";
 
-const NewFooter = () => {
+const NewFooter = ({ orderPage = "" }) => {
   return (
-    <Row className="new-footer">
+    <Row className={`new-footer ${orderPage}`}>
       <Col className="logo-container footer-col-container">
-        <img 
-          src="/images/eluno-logo.png"
-          alt="eluno-logo"
-          className="eluno-logo"
-        />
-      </Col>
-      <Col className="footer-col-container mt-3">
-        <p>
-          Jonah <br />
-          Aaron <br />
-          Anayo <br />
-          Jovan <br />
-        </p>
-        <div className="icons">
-          <img src="/icons/twitter.png"/> <br />
-          <img src="/icons/twitter.png"/> <br />
-          <img src="/icons/linkedin.png"/> <br />
-        </div>
+        <Link passHref href="/">
+          <img
+            src="/images/eluno-logo.png"
+            alt="eluno-logo"
+            className="eluno-logo"
+          />
+        </Link>
       </Col>
       <Col className="team-container footer-col-container mt-2">
         <p>
           Team: <br />
-          @jonapeake (twitter / linkedin) <br />
-          @Aaron (twitter / linkedin) <br />
-          @Anayo (linkedin) <br />
-          @jovan (Not sure) <br />
+          <a
+            href="https://twitter.com/jonahpeake"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @jonahpeake
+          </a>
+          <br />
+          <a
+            href="https://twitter.com/guyettaaron"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @guyettaaron
+          </a>
+          <br />
+          <a
+            href="https://www.linkedin.com/in/anayon/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            @anayo
+          </a>
+          <br />
+          <a>@jovan</a>
+          <br />
         </p>
       </Col>
       <Col className="footer-col-container mt-3">
         <p className="follow-us">
           Follow us <br />
-          <img src="/icons/twitter.png"/>@eluno_io
+          <a
+            href="https://twitter.com/eluno_io"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img src="/icons/twitter.png" alt="twitter" />
+            &nbsp;@eluno_io
+          </a>
         </p>
       </Col>
     </Row>
