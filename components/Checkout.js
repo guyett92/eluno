@@ -13,23 +13,27 @@ import {
 import { AppContext } from "../contexts/ContextProvider";
 import { WalletContext } from "../contexts/WalletContext";
 import NewFooter from "./NewFooter";
+import { render } from "react-dom";
 
 const Checkout = ({ confirmedNft }) => {
   const [products, setProducts] = useState([]);
   const [displayPrice, setDisplayPrice] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [variants, setVariants] = useState([]);
-  const [dropDownOpen, setDropDownOpen] = useState(false);
-  const [clothSize, setClothSize] = useState("");
+  const [sizeDropDownOpen, setSizeDropDownOpen] = useState(false);
+  const [colorDropDownOpen, setColorDropDownOpen] = useState(false);
   const [clothSizeVariant, setClothSizeVariant] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [lineItemCount, setlineItemCount] = useState(0);
-  // const [cartNfts, setCartNfts] = useState([]);
+  const [clothSize, setClothSize] = useState("");
+  const [sweaterColor, setSweaterColor] = useState("");
+  const [buttonText, setButtonText] = useState("");
   const context = useContext(AppContext);
   const wallet = useContext(WalletContext);
 
   useEffect(() => {
     setProducts(context.store.products);
+    console.log(!clothSize.length && !sweaterColor.length)
   }, [context, wallet]);
 
   useEffect(() => {
@@ -40,6 +44,10 @@ const Checkout = ({ confirmedNft }) => {
       setlineItemCount(context.store.checkout.lineItems.length);
     }
   }, [products, context.store]);
+
+  useEffect(() => {
+    getButtonText();
+  }, [clothSize, sweaterColor])
 
   const onLoad = () => {
     setIsLoaded(true);
@@ -70,20 +78,35 @@ const Checkout = ({ confirmedNft }) => {
         }
       }
 
-      await context.actions.addNftData({
+      const data = {
         nftId: confirmedNft.id,
-        contractId: confirmedNft.contract,
+        contractAddr: confirmedNft.contract,
         shopifyId: variants[clothSizeVariant].id,
         lineItemId: lineItemId,
         wallet: wallet.store.connectedWallets.metamask,
         img: confirmedNft?.imageUrl,
         checkoutId: context.store.checkout.id,
-      });
+        sweaterColor: sweaterColor,
+      }
+
+      await context.actions.addNftData(data);
       setlineItemCount(cart.lineItems.length);
     } else {
       alert("This NFT has been claimed already!");
     }
   };
+
+  const getButtonText = () => {
+    let text = "";
+    if (!clothSize) {
+      text = "Choose a Size";
+    } else if (!sweaterColor) {
+      text = "Choose a Color";
+    } else {
+      text = "Add to cart";
+    }
+    setButtonText(text);
+  }
 
   return (
     <div style={{ minHeight: "80vh" }}>
@@ -94,10 +117,10 @@ const Checkout = ({ confirmedNft }) => {
               <h2 className="price">{displayPrice}</h2>
               <Dropdown
                 className="center"
-                isOpen={dropDownOpen}
-                toggle={() => setDropDownOpen(!dropDownOpen)}
+                isOpen={sizeDropDownOpen}
+                toggle={() => setSizeDropDownOpen(!sizeDropDownOpen)}
               >
-                <DropdownToggle caret>
+                <DropdownToggle caret disabled={!confirmedNft}>
                   {clothSize.length > 0 ? clothSize : "Size"}
                 </DropdownToggle>
                 <DropdownMenu>
@@ -117,15 +140,39 @@ const Checkout = ({ confirmedNft }) => {
                     })}
                 </DropdownMenu>
               </Dropdown>
+
+              <Dropdown
+                className="center"
+                isOpen={colorDropDownOpen}
+                toggle={() => setColorDropDownOpen(!colorDropDownOpen)}
+              >
+                <DropdownToggle caret disabled={!confirmedNft}>
+                  {sweaterColor.length > 0 ? sweaterColor : "Color"}
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem
+                    onClick={() => {
+                      setSweaterColor("Black");
+                    }}
+                  >
+                    Black
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      setSweaterColor("White");
+                    }}
+                  >
+                    White
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+
               <button
                 className="order-button mt-3 btn btn-primary"
-                disabled={!clothSize.length}
+                disabled={(!clothSize.length || !sweaterColor.length)}
                 onClick={handleClick}
               >
-                {
-                  dropDownOpen ? `Choose a Size` : `Add to cart`
-                  // : `Add ${clothSize} ${displayName} to cart`
-                }
+                {buttonText}
               </button>
               <p className="disclaimer"><i>By ordering this NFT you are attesting to the fact that you own this NFT and are liable for any repercussive actions that come with using the artwork on an Eluno. Eluno, its team, and its partners hold no liability or responsibility for the artwork chosen to be used and can not be held liable for any actions that occur as a result of your purchase.</i></p>
               {context.store.checkout.webUrl && (

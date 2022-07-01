@@ -80,6 +80,7 @@ const NFTContainer = ({ setNftData }) => {
       setSelectedNft(nft);
       setNftIdx(i);
     }
+    setNftData(null);
   }
 
   const handleConfirm = () => {
