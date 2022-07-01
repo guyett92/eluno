@@ -36,11 +36,8 @@ const Opener = () => {
             {" "}
             of{" "}
           </span>
-          <span
-            className="item-fadein aqua-text"
-            style={{ animationDelay: "2.5s" }}
-          >
-            style{" "}
+          <span className="item-fadein" style={{ animationDelay: "2.5s" }}>
+            <b>style</b>{" "}
           </span>
         </h1>
       </div>
@@ -117,7 +114,7 @@ const Opener = () => {
                   <br />
                   <b>Each piece</b> we make, like your NFT,{" "}
                   <b>is a one of one</b>. It&apos;s hand sewn from rolls of
-                  fabric we select and sewn based on a pattern designed from the
+                  fabric we select and based on a pattern we designed from the
                   ground up. It&apos;s as if all of our favorite hoodies joined
                   forces and dropped a hoodie.
                   <br />

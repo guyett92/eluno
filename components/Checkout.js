@@ -46,7 +46,7 @@ const Checkout = ({ confirmedNft }) => {
 
   useEffect(() => {
     getButtonText();
-  }, [clothSize, sweaterColor])
+  }, [clothSize, sweaterColor]);
 
   const onLoad = () => {
     setIsLoaded(true);
@@ -54,11 +54,15 @@ const Checkout = ({ confirmedNft }) => {
 
   const handleClick = async () => {
     const cartNfts = {};
-    const checkout = await context.actions.fetchCart(localStorage.getItem("checkoutId"));
+    const checkout = await context.actions.fetchCart(
+      localStorage.getItem("checkoutId")
+    );
     if (checkout.lineItems.length > 0) {
       checkout.lineItems.forEach((item) => {
-        cartNfts[JSON.parse(item.customAttributes[0].value).contractAddr] = true;
-      })
+        cartNfts[
+          JSON.parse(item.customAttributes[0].value).contractAddr
+        ] = true;
+      });
     }
 
     if (!cartNfts[confirmedNft.contract]) {
@@ -86,7 +90,7 @@ const Checkout = ({ confirmedNft }) => {
         img: confirmedNft?.imageUrl,
         checkoutId: context.store.checkout.id,
         sweaterColor: sweaterColor,
-      }
+      };
 
       await context.actions.addNftData(data);
       setlineItemCount(cart.lineItems.length);
@@ -105,7 +109,7 @@ const Checkout = ({ confirmedNft }) => {
       text = "Add to cart";
     }
     setButtonText(text);
-  }
+  };
 
   return (
     <div style={{ minHeight: "80vh" }}>
@@ -165,18 +169,27 @@ const Checkout = ({ confirmedNft }) => {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-              <div className="center w-100">
+              <div className="center">
                 <button
                   className="order-button mt-3 btn btn-primary"
-                  disabled={(!clothSize.length || !sweaterColor.length)}
+                  disabled={!clothSize.length || !sweaterColor.length}
                   onClick={handleClick}
                 >
                   {buttonText}
                 </button>
               </div>
-              <p className="disclaimer mx-auto"><i>By ordering this NFT you are attesting to the fact that you own this NFT and are liable for any repercussive actions that come with using the artwork on an Eluno. Eluno, its team, and its partners hold no liability or responsibility for the artwork chosen to be used and can not be held liable for any actions that occur as a result of your purchase.</i></p>
+              <p className="disclaimer mx-auto">
+                <i>
+                  By ordering this NFT you are attesting to the fact that you
+                  own this NFT and are liable for any repercussive actions that
+                  come with using the artwork on an Eluno. Eluno, its team, and
+                  its partners hold no liability or responsibility for the
+                  artwork chosen to be used and can not be held liable for any
+                  actions that occur as a result of your purchase.
+                </i>
+              </p>
               {context.store.checkout.webUrl && (
-                <div className="center w-100">
+                <div className="center">
                   <Link
                     href={
                       context.store.checkout.webUrl.length > 0
