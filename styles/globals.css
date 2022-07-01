@@ -460,11 +460,13 @@ a:hover {
   color: black;
 }
 
-.logo {
+.order-section .logo {
   position: absolute;
   top: 0.25%;
   -webkit-filter: invert(100%);
   filter: invert(100%);
+  width: 30%;
+  max-width: 100px;
 }
 
 .new-footer {
@@ -554,6 +556,26 @@ a:hover {
 
   .new-footer .icons {
     max-width: 20px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .follow-us {
+    font-size: .7rem;
+  }
+
+  .follow-us img {
+    top: 15px;
+    left: -20px;
+  }
+
+  .logo-container .eluno-logo {
+    left: -10px;
+    width: 100px;
+  }
+
+  .team-container {
+    font-size: 12px;
   }
 }
 
