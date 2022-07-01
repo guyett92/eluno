@@ -54,7 +54,7 @@ const data = {
       title: "Can I get more than one?",
       content: (
         <>
-          <p>We like our gear rare like your NFT and you can only get one. </p>
+          <p>We like our gear rare like your NFTs and you can only get one <i>hoodie per NFT.</i></p>
           <p>
             Need more or want something custom? Let’s chat:{" "}
             <a className="faq-link" href="mailto:hello@eluno.io">
