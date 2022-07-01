@@ -38,6 +38,16 @@ a:hover {
   font-family: "Century Gothic", sans-serif;
 }
 
+@media screen and (max-width: 480px) {
+  .vision-title{
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .vision-title{
+    font-size: 2rem;
+  }
+}
 .most-titles {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -50,6 +60,7 @@ a:hover {
 
 .vision-section {
   padding: 2rem 0 2rem 0 2rem;
+  margin-top: 2rem;
   /* padding-bottom: 0px;
   padding-right: 2rem;
   padding-left: 2rem; */
@@ -493,10 +504,6 @@ a:hover {
   width: 100px;
   max-height: 100%;
 }
-
-/* .team-container {
-  display: flex;
-} */
 
 .team-container {
   z-index: 1;

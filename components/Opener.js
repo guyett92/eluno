@@ -45,7 +45,7 @@ const Opener = () => {
         </h1>
       </div>
       <div
-        className="slide-two"
+        className="slide-two item-fadeout"
         style={{ animationDelay: "8.5s" }}
         id="secondContainer"
       >
