@@ -142,7 +142,7 @@ const Opener = () => {
           </Container>
         </section>
         <section className="eluno-pic-section">
-          <img src="/images/vision-pics.png" alt="vision-pics" />
+          <img src="/images/vision-pics-fabric.png" alt="vision-pics" />
           <p>
             <i>All models wearing size L</i>
           </p>
