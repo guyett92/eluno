@@ -294,13 +294,6 @@ a:hover {
   margin: 0 auto;
 }
 
-.disclaimer {
-  margin-top: 20px;
-  max-width: 280px;
-  font-size: 8px;
-  color: #dfe3eb;
-}
-
 .end-button {
   max-width: 100%;
   margin-bottom: 10px;
@@ -314,13 +307,13 @@ a:hover {
 }
 
 .nft-card {
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  max-width: 300px;
-  min-width: 300px;
-  min-height: 400px;
+  max-width: 10%;
+  min-width: 250px;
+  min-height: 300px;
   color: white;
   border-radius: 15px;
   margin: 50px 15px 15px 15px;
@@ -340,21 +333,20 @@ a:hover {
   left: 0;
   top: 0;
   width: 100%;
+  min-width: 250px;
   height: 100%;
-  border-radius: 15px;
 }
 
 .checkout-container {
   width: 100%;
-}
-
-.checkout-container {
   text-align: center;
 }
 
-.checkout-container p {
+.disclaimer {
   margin-top: 20px;
-  font-size: 26px;
+  max-width: 280px;
+  font-size: 8px;
+  color: #dfe3eb;
 }
 
 .border-selected {
