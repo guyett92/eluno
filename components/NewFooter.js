@@ -15,7 +15,7 @@ const NewFooter = ({ orderPage = "" }) => {
       </Col>
       <Col className="footer-col-container mt-2">
         <p className="team-container">
-          Team: <br />
+          Team <br />
           <div className="team-members mt-1">
             <a
               href="https://twitter.com/jonahpeake"
@@ -46,17 +46,17 @@ const NewFooter = ({ orderPage = "" }) => {
           </div>
         </p>
       </Col>
-      <Col className="footer-col-container mt-3">
+      <Col className="footer-col-container mt-2">
         <p className="follow-us">
-          Follow us <br />
-          <a
+          Follow Us <br />
+          {/* <a
             href="https://twitter.com/eluno_io"
             target="_blank"
             rel="noreferrer"
           >
-            <img className="icons" src="/icons/twitter.png" alt="twitter" />
+            <img className="icons" src="/icons/twitter.png" alt="twitter" /> */}
             @eluno_io
-          </a>
+          {/* </a> */}
         </p>
       </Col>
     </Row>
