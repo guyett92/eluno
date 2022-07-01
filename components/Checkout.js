@@ -57,7 +57,7 @@ const Checkout = ({ confirmedNft }) => {
     const checkout = await context.actions.fetchCart(localStorage.getItem("checkoutId"));
     if (checkout.lineItems.length > 0) {
       checkout.lineItems.forEach((item) => {
-        cartNfts[JSON.parse(item.customAttributes[0].value)[0].contractId] = true;
+        cartNfts[JSON.parse(item.customAttributes[0].value).contractAddr] = true;
       })
     }
 
