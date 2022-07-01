@@ -33,7 +33,6 @@ const Checkout = ({ confirmedNft }) => {
 
   useEffect(() => {
     setProducts(context.store.products);
-    console.log(!clothSize.length && !sweaterColor.length)
   }, [context, wallet]);
 
   useEffect(() => {
@@ -113,7 +112,7 @@ const Checkout = ({ confirmedNft }) => {
       {products.length &&
         products.map((product, i) => {
           return (
-            <div key={i} className="center">
+            <div key={i} className=" checkout-container">
               <h2 className="price">{displayPrice}</h2>
               <Dropdown
                 className="center"
@@ -166,32 +165,35 @@ const Checkout = ({ confirmedNft }) => {
                   </DropdownItem>
                 </DropdownMenu>
               </Dropdown>
-
-              <button
-                className="order-button mt-3 btn btn-primary"
-                disabled={(!clothSize.length || !sweaterColor.length)}
-                onClick={handleClick}
-              >
-                {buttonText}
-              </button>
-              <p className="disclaimer"><i>By ordering this NFT you are attesting to the fact that you own this NFT and are liable for any repercussive actions that come with using the artwork on an Eluno. Eluno, its team, and its partners hold no liability or responsibility for the artwork chosen to be used and can not be held liable for any actions that occur as a result of your purchase.</i></p>
-              {context.store.checkout.webUrl && (
-                <Link
-                  href={
-                    context.store.checkout.webUrl.length > 0
-                      ? context.store.checkout.webUrl
-                      : ""
-                  }
-                  passHref
+              <div className="center w-100">
+                <button
+                  className="order-button mt-3 btn btn-primary"
+                  disabled={(!clothSize.length || !sweaterColor.length)}
+                  onClick={handleClick}
                 >
-                  <button
-                    className="order-button my-4 btn btn-success"
-                    disabled={!lineItemCount > 0}
-                    style={{ display: lineItemCount > 0 ? "block" : "none" }}
+                  {buttonText}
+                </button>
+              </div>
+              <p className="disclaimer mx-auto"><i>By ordering this NFT you are attesting to the fact that you own this NFT and are liable for any repercussive actions that come with using the artwork on an Eluno. Eluno, its team, and its partners hold no liability or responsibility for the artwork chosen to be used and can not be held liable for any actions that occur as a result of your purchase.</i></p>
+              {context.store.checkout.webUrl && (
+                <div className="center w-100">
+                  <Link
+                    href={
+                      context.store.checkout.webUrl.length > 0
+                        ? context.store.checkout.webUrl
+                        : ""
+                    }
+                    passHref
                   >
-                    Checkout
-                  </button>
-                </Link>
+                    <button
+                      className="order-button my-4 btn btn-success"
+                      disabled={!lineItemCount > 0}
+                      style={{ display: lineItemCount > 0 ? "block" : "none" }}
+                    >
+                      Checkout
+                    </button>
+                  </Link>
+                </div>
               )}
             </div>
           );

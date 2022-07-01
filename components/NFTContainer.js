@@ -7,6 +7,7 @@ import {
 import { WalletContext } from "../contexts/WalletContext";
 import { AppContext } from "../contexts/ContextProvider";
 import axios from "axios";
+import { MdApi } from "react-icons/md";
 
 const NFTContainer = ({ setNftData }) => {
   const [nfts, setNfts] = useState({});
@@ -32,8 +33,10 @@ const NFTContainer = ({ setNftData }) => {
       setNftsAreLoading(false);
       console.log("DATA", data);
       let fetchedItems = data.ownedNfts.filter((item) => {
-        console.log(item); 
-        return item.metadata.image.length > 0
+        if (Object.keys(item.metadata).length !== 0) {
+          return item.metadata.image.length > 0
+        }
+        return false;
       });
 
       fetchedItems = fetchedItems.map((item) => {
