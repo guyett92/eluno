@@ -39,12 +39,12 @@ a:hover {
 }
 
 @media screen and (max-width: 480px) {
-  .vision-title{
+  .vision-title {
     font-size: 2.5rem;
   }
 }
 @media screen and (max-width: 320px) {
-  .vision-title{
+  .vision-title {
     font-size: 2rem;
   }
 }
@@ -339,6 +339,11 @@ a:hover {
   font-size: calc(0.75em + 1vmin);
 }
 
+.vid-container {
+  display: flex;
+  align-items: center;
+}
+
 .nft-card video {
   position: absolute;
   left: 0;
@@ -541,11 +546,11 @@ a:hover {
   .team-container p {
     font-size: 14px !important;
   }
-  
+
   .follow-us {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  
+
   .follow-us img {
     top: 25px;
   }
@@ -553,7 +558,7 @@ a:hover {
 
 @media screen and (max-width: 400px) {
   .follow-us {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
 
   .follow-us img {
@@ -568,7 +573,7 @@ a:hover {
 
 @media screen and (max-width: 300px) {
   .follow-us {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 
   .follow-us img {

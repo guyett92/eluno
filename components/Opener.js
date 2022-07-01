@@ -84,8 +84,8 @@ const Opener = () => {
             </h1>
             <Row>
               <Col className="vid-container" xl="5">
-                <video
-                  src="/images/animation.mp4"
+                <img
+                  src="/images/intro.gif"
                   muted
                   autoPlay
                   loop
