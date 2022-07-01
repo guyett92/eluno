@@ -14,7 +14,7 @@ const NewFooter = ({ orderPage = "" }) => {
         </Link>
       </Col>
       <Col className="footer-col-container mt-2">
-        <p className="team-container">
+        <div className="team-container">
           Team <br />
           <div className="team-members mt-1">
             <a
@@ -44,7 +44,7 @@ const NewFooter = ({ orderPage = "" }) => {
             <a>@jovan</a>
             <br />
           </div>
-        </p>
+        </div>
       </Col>
       <Col className="footer-col-container mt-2">
         <p className="follow-us">

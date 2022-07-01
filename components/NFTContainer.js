@@ -33,9 +33,8 @@ const NFTContainer = ({ setNftData }) => {
       setNftsAreLoading(false);
       console.log("DATA", data);
       let fetchedItems = data.ownedNfts.filter((item) => {
-        if (JSON.stringify(item.metadata) !== '{}' || !item.metadata) {
-          console.log(item);
-          return item.metadata.image.length > 0
+        if (JSON.stringify(item.metadata) !== '{}' || !item.metadata.image) {
+          return true;
         }
         return false;
       });
