@@ -19,6 +19,11 @@ const data = {
         "We make everything by hand in small batches. We are obsessed with quality and we want to control every step of production. ",
     },
     {
+      title: "When will I receive my order?",
+      content:
+        "Once the drop sells out we will go into production! At that point, it will take around 30-45 days to hand sew and print every hoodie. ",
+    },
+    {
       title: "Can I use any NFT in my wallet?",
       content: (
         <>
@@ -49,7 +54,10 @@ const data = {
       title: "Can I get more than one?",
       content: (
         <>
-          <p>We like our gear rare like your NFT and you can only get one. </p>
+          <p>
+            We like our gear rare like your NFTs and you can only get one{" "}
+            <i>hoodie per NFT.</i>
+          </p>
           <p>
             Need more or want something custom? Let’s chat:{" "}
             <a className="faq-link" href="mailto:hello@eluno.io">
@@ -58,11 +66,6 @@ const data = {
           </p>
         </>
       ),
-    },
-    {
-      title: "How does sizing work?",
-      content:
-        "Eluno is built to be unisex and meant to fit in line with current trends.",
     },
     {
       title: "Returns and Exchanges",

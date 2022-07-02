@@ -38,6 +38,16 @@ a:hover {
   font-family: "Century Gothic", sans-serif;
 }
 
+@media screen and (max-width: 480px) {
+  .vision-title {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 320px) {
+  .vision-title {
+    font-size: 2rem;
+  }
+}
 .most-titles {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -49,7 +59,8 @@ a:hover {
 }
 
 .vision-section {
-  padding: 4rem 2rem 0 2rem;
+  padding: 2rem 0 2rem 0 2rem;
+  margin-top: 2rem;
   /* padding-bottom: 0px;
   padding-right: 2rem;
   padding-left: 2rem; */
@@ -68,7 +79,7 @@ a:hover {
 
 .eluno-pic-section p {
   margin-top: 20px;
-  font-size: 28px;
+  font-size: 20px;
 }
 
 .eluno-pic-section button {
@@ -290,7 +301,6 @@ a:hover {
 .order-button {
   height: 80px;
   width: 280px;
-  /* min-width: 100%; */
   font-size: 24px;
   margin: 0 auto;
 }
@@ -308,13 +318,13 @@ a:hover {
 }
 
 .nft-card {
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
-  max-width: 300px;
-  min-width: 300px;
-  min-height: 400px;
+  max-width: 10%;
+  min-width: 250px;
+  min-height: 300px;
   color: white;
   border-radius: 15px;
   margin: 50px 15px 15px 15px;
@@ -329,26 +339,30 @@ a:hover {
   font-size: calc(0.75em + 1vmin);
 }
 
+.vid-container {
+  display: flex;
+  align-items: center;
+}
+
 .nft-card video {
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
+  min-width: 250px;
   height: 100%;
-  border-radius: 15px;
 }
 
 .checkout-container {
   width: 100%;
-}
-
-.checkout-container {
   text-align: center;
 }
 
-.checkout-container p {
+.disclaimer {
   margin-top: 20px;
-  font-size: 26px;
+  max-width: 280px;
+  font-size: 8px;
+  color: #dfe3eb;
 }
 
 .border-selected {
@@ -363,6 +377,7 @@ a:hover {
 .slide-two .eluno-logo {
   -webkit-filter: invert(100%);
   filter: invert(100%);
+  width: 8% !important;
 }
 
 .slide-three {
@@ -453,7 +468,6 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 120px !important;
 }
 
 .fixed-bottom {
@@ -462,12 +476,13 @@ a:hover {
   color: black;
 }
 
-.logo {
+.order-section .logo {
   position: absolute;
-  left: 4%;
   top: 0.25%;
   -webkit-filter: invert(100%);
   filter: invert(100%);
+  width: 30%;
+  max-width: 100px;
 }
 
 .new-footer {
@@ -481,7 +496,7 @@ a:hover {
   margin: 0;
 }
 
-.new-footer img {
+.new-footer .icons {
   max-width: 25px;
 }
 
@@ -491,12 +506,14 @@ a:hover {
 }
 
 .logo-container .eluno-logo {
-  width: 150px !important;
-  max-width: 150px !important;
+  width: 100px;
+  max-height: 100%;
 }
 
-.team-container p {
+.team-container {
   z-index: 1;
+  font-size: 14px;
+  line-height: 15px;
 }
 
 .footer-col-container {
@@ -529,17 +546,48 @@ a:hover {
   .team-container p {
     font-size: 14px !important;
   }
-  
-  .logo-container .eluno-logo {
-    width: 120px !important;
-  }
-  
+
   .follow-us {
-    font-size: .9rem;
+    font-size: 0.9rem;
   }
-  
+
   .follow-us img {
     top: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .follow-us {
+    font-size: 0.8rem;
+  }
+
+  .follow-us img {
+    top: 20px;
+    left: -20px;
+  }
+
+  .new-footer .icons {
+    max-width: 20px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .follow-us {
+    font-size: 0.7rem;
+  }
+
+  .follow-us img {
+    top: 15px;
+    left: -20px;
+  }
+
+  .logo-container .eluno-logo {
+    left: -10px;
+    width: 100px;
+  }
+
+  .team-container {
+    font-size: 12px;
   }
 }
 

@@ -13,47 +13,48 @@ const NewFooter = ({ orderPage = "" }) => {
           />
         </Link>
       </Col>
-      <Col className="team-container footer-col-container mt-2">
-        <p>
-          Team: <br />
-          <a
-            href="https://twitter.com/jonahpeake"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @jonahpeake
-          </a>
-          <br />
-          <a
-            href="https://twitter.com/guyettaaron"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @guyettaaron
-          </a>
-          <br />
-          <a
-            href="https://www.linkedin.com/in/anayon/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            @anayo
-          </a>
-          <br />
-          <a>@jovan</a>
-          <br />
-        </p>
+      <Col className="footer-col-container mt-2">
+        <div className="team-container">
+          Team <br />
+          <span className="team-members mt-1" style={{ display: "block" }}>
+            <a
+              href="https://twitter.com/jonahpeake"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @jonahpeake
+            </a>
+            <br />
+            <a
+              href="https://twitter.com/guyettaaron"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @guyettaaron
+            </a>
+            <br />
+            <a
+              href="https://www.linkedin.com/in/anayon/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              @anayo
+            </a>
+            <br />
+            <a>@jovan</a>
+            <br />
+          </span>
+        </div>
       </Col>
-      <Col className="footer-col-container mt-3">
+      <Col className="footer-col-container mt-2">
         <p className="follow-us">
-          Follow us <br />
+          Follow Us <br />
           <a
             href="https://twitter.com/eluno_io"
             target="_blank"
             rel="noreferrer"
           >
-            <img src="/icons/twitter.png" alt="twitter" />
-            &nbsp;@eluno_io
+            @eluno_io
           </a>
         </p>
       </Col>

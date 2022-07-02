@@ -1,26 +1,26 @@
 import React, { useEffect, useContext, useState } from "react";
 import Pagination from "./Pagination";
-import {
-  Col,
-  Button,
-} from "reactstrap";
+import { Col, Button } from "reactstrap";
 import { WalletContext } from "../contexts/WalletContext";
 import { AppContext } from "../contexts/ContextProvider";
 import axios from "axios";
+import { MdApi } from "react-icons/md";
 
 const NFTContainer = ({ setNftData }) => {
   const [nfts, setNfts] = useState({});
   const [nftIdx, setNftIdx] = useState();
   const [selectedNft, setSelectedNft] = useState();
-  const [nftsAreLoading, setNftsAreLoading] = useState(true);``
+  const [nftsAreLoading, setNftsAreLoading] = useState(true);
+  ``;
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(15);
   const [isLoaded, setIsLoaded] = useState(false);
 
   const walletContext = useContext(WalletContext);
- 
+
   useEffect(() => {
     const fetchNftByOwner = async () => {
+      console.log(process.env.NEXT_PUBLIC_ALCHEMY_API_KEY);
       const baseURL = `https://eth-mainnet.alchemyapi.io/nft/v2/${process.env.NEXT_PUBLIC_ALCHEMY_API_KEY}/getNFTs/`;
       const { data } = await axios.get(
         // TODO: Once OpenSea gives me an API key, change to OpenSea
@@ -28,18 +28,24 @@ const NFTContainer = ({ setNftData }) => {
         // `https://ethereum-api.rarible.org/v0.1/nft/items/byOwner?owner=${walletContext.store.connectedWallets.metamask}`
         `${baseURL}?owner=${walletContext.store.connectedWallets.metamask}`
       );
-  
-      setNftsAreLoading(false);
 
+      setNftsAreLoading(false);
+      console.log("DATA", data);
       let fetchedItems = data.ownedNfts.filter((item) => {
-        return item.metadata.image.length > 0
+        if (JSON.stringify(item.metadata) !== "{}" || !item.metadata.image) {
+          return true;
+        }
+        return false;
       });
 
       fetchedItems = fetchedItems.map((item) => {
         return {
           id: parseInt(item.id.tokenId, 16),
           name: item.title,
-          imageUrl: item.metadata.image.replace("ipfs://", "https://ipfs.io/ipfs/"),
+          imageUrl: item.metadata.image?.replace(
+            "ipfs://",
+            "https://ipfs.io/ipfs/"
+          ),
           description: item.description,
           contract: item.contract.address,
         };
@@ -64,12 +70,12 @@ const NFTContainer = ({ setNftData }) => {
   }, [walletContext.store.connectedWallets.metamask]);
 
   const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber)
-  }
+    setCurrentPage(pageNumber);
+  };
 
   const onLoad = () => {
-		setIsLoaded(true);
-	};
+    setIsLoaded(true);
+  };
 
   const clickNft = (nft, i) => {
     if (nftIdx === i) {
@@ -79,11 +85,12 @@ const NFTContainer = ({ setNftData }) => {
       setSelectedNft(nft);
       setNftIdx(i);
     }
-  }
+    setNftData(null);
+  };
 
   const handleConfirm = () => {
     setNftData(selectedNft);
-  }
+  };
 
   let currentNfts = [];
   if (nfts.length > 0) {
@@ -95,41 +102,36 @@ const NFTContainer = ({ setNftData }) => {
   return (
     !nftsAreLoading && (
       <>
-        {nfts && currentNfts.length > 0 ? 
+        {nfts && currentNfts.length > 0 ? (
           currentNfts.map((nft, i) => {
             if (nft.imageUrl) {
               return (
                 <Col
                   sm={4}
-                  className="nft-card" 
+                  className="nft-card"
                   key={i}
                   onClick={() => clickNft(nft, i)}
                   style={{
-                    border : nftIdx === i ? "5px solid blue" : "",
-                    backgroundImage: `url("${nft.imageUrl}")`
+                    border: nftIdx === i ? "5px solid blue" : "",
+                    backgroundImage: `url("${nft.imageUrl}")`,
                   }}
-     
                 >
-                  <h1>{ nft.name }</h1>
-                    <video
-                      src={ nft?.imageUrl }
-                      autoPlay
-                      muted
-                      loop
-                    />
+                  <h1>{nft.name}</h1>
+                  <video src={nft?.imageUrl} autoPlay muted loop />
                 </Col>
-              )
+              );
             }
-          }) :
+          })
+        ) : (
           <></>
-        }
-        {nfts.length >= 15 && 
-          <Pagination 
-            postsPerPage={postsPerPage} 
-            totalPosts={nfts.length} 
-            paginate={paginate} 
-          />    
-        }
+        )}
+        {nfts.length >= 15 && (
+          <Pagination
+            postsPerPage={postsPerPage}
+            totalPosts={nfts.length}
+            paginate={paginate}
+          />
+        )}
         <div className="center w-100">
           <button
             className="order-button"
@@ -140,7 +142,7 @@ const NFTContainer = ({ setNftData }) => {
           </button>
         </div>
       </>
-    )                      
+    )
   );
 };
 
