@@ -54,7 +54,10 @@ const data = {
       title: "Can I get more than one?",
       content: (
         <>
-          <p>We like our gear rare like your NFTs and you can only get one <i>hoodie per NFT.</i></p>
+          <p>
+            We like our gear rare like your NFTs and you can only get one{" "}
+            <i>hoodie per NFT.</i>
+          </p>
           <p>
             Need more or want something custom? Let’s chat:{" "}
             <a className="faq-link" href="mailto:hello@eluno.io">
@@ -63,11 +66,6 @@ const data = {
           </p>
         </>
       ),
-    },
-    {
-      title: "How does sizing work?",
-      content:
-        "Eluno is built to be unisex and meant to fit in line with current trends.",
     },
     {
       title: "Returns and Exchanges",
